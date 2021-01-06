@@ -17,13 +17,9 @@ install.packages("tidyverse")
 ```
 
 ```
-## also installing the dependencies 'pkgbuild', 'diffobj', 'rematch2', 'brio', 'desc', 'pkgload', 'praise', 'ps', 'waldo', 'colorspace', 'sys', 'testthat', 'farver', 'labeling', 'munsell', 'RColorBrewer', 'viridisLite', 'askpass', 'rematch', 'prettyunits', 'processx', 'backports', 'ellipsis', 'generics', 'assertthat', 'fansi', 'DBI', 'lifecycle', 'R6', 'tidyselect', 'blob', 'withr', 'vctrs', 'gtable', 'isoband', 'scales', 'pkgconfig', 'curl', 'openssl', 'utf8', 'clipr', 'BH', 'cpp11', 'cellranger', 'progress', 'callr', 'fs', 'whisker', 'selectr', 'broom', 'cli', 'crayon', 'dbplyr', 'dplyr', 'forcats', 'ggplot2', 'haven', 'hms', 'httr', 'lubridate', 'modelr', 'pillar', 'purrr', 'readr', 'readxl', 'reprex', 'rstudioapi', 'rvest', 'tibble', 'tidyr', 'xml2'
-```
-
-```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/h3/f3f7hglx5px5q4_4r8zk3jzw0000gn/T//Rtmp7VKzO5/downloaded_packages
+## 	/var/folders/h3/f3f7hglx5px5q4_4r8zk3jzw0000gn/T//RtmpHyn5Sq/downloaded_packages
 ```
 
 ```r
@@ -33,7 +29,7 @@ install.packages("nycflights13")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/h3/f3f7hglx5px5q4_4r8zk3jzw0000gn/T//Rtmp7VKzO5/downloaded_packages
+## 	/var/folders/h3/f3f7hglx5px5q4_4r8zk3jzw0000gn/T//RtmpHyn5Sq/downloaded_packages
 ```
 
 ## Working directory
