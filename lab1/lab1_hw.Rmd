@@ -3,9 +3,8 @@ title: "Lab 1 Homework"
 author: "Lean Alvarez"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
     theme: spacelab
-    toc: no
 ---
 
 ## Instructions
