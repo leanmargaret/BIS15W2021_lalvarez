@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Install Packages
+## Install Packages 
 ```{r}
 options(repos = c(CRAN = "http://cran.rstudio.com"))
 install.packages("tidyverse")
