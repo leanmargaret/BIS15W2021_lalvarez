@@ -1,6 +1,6 @@
 ---
 title: "Getting Started"
-date: "`r Sys.Date()`"
+date: "2021-01-08"
 output:
   html_document: 
     theme: spacelab
@@ -9,8 +9,13 @@ output:
     keep_md: yes
 ---
 
-```{r}
+
+```r
 getwd()
+```
+
+```
+## [1] "/Users/alvarezlean/Desktop/BIS15W2021_lalvarez/lab1"
 ```
 
 ## Background  
