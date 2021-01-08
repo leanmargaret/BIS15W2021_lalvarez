@@ -1,6 +1,6 @@
 ---
 title: "R, RStudio, and RMarkdown"
-date: "`r Sys.Date()`"
+date: "2021-01-08"
 output:
   html_document: 
     theme: spacelab
@@ -24,15 +24,25 @@ When you first open RStudio, you should see your screen divided into four quadra
 Before you begin any project in RStudio, it is important that you are in the correct "working directory". This is the folder on your computer where you are currently working; it is the location where RStudio will save all of your work. At first, most of the problems people encounter are because they are not in the correct working directory.  
 
 Run the following code by clicking the small green arrow to check your current working directory.  
-```{r get-working-directory}
+
+```r
 getwd()
+```
+
+```
+## [1] "/Users/alvarezlean/Desktop/BIS15W2021_lalvarez/lab1"
 ```
 
 If you are not in the **lab 1 folder**, please navigate to it: Session>Set Working Directory>Choose Directory>Desktop>lab1.  
 
 Re-run the code below to confirm.
-```{r get-working-directory-2}
+
+```r
 getwd()
+```
+
+```
+## [1] "/Users/alvarezlean/Desktop/BIS15W2021_lalvarez/lab1"
 ```
 
 ## R  
@@ -40,18 +50,33 @@ Double click to open R (not RStudio) and find the carrot `>`. This is where comm
 
 ## Arithmetic  
 You can use R as a calculator; just enter the expression and press return.  Experiment by evaluating the following expression.
-```{r arithmetic-ex-1}
+
+```r
 4*12
 ```
 
+```
+## [1] 48
+```
+
 Order of operations applies and you don't need to add an '=' sign.
-```{r arithmetic-ex-2}
+
+```r
 (4*12)/2
 ```
 
+```
+## [1] 24
+```
+
 Statistics are what R was originally written for and there are thousands of packages for specialized statistics depending on your needs.
-```{r arithmetic-ex-3}
+
+```r
 mean(4, 6, 8, 5, 6, 7, 7, 7)
+```
+
+```
+## [1] 4
 ```
 
 ## RMarkdown  
@@ -89,15 +114,19 @@ In order to make the html file, you need to "Knit" the file. Knitting just means
 2. Go back to your "RMarkdown Practice" file and experiment with titles, text, and syntax.  
 3. Copy and paste the following two pieces of code into the document (include the gray code "chunks").      
 
-```{r message=FALSE, warning=FALSE}
+
+```r
 #install.packages("tidyverse")
 library("tidyverse")
 ```
 
-```{r}
+
+```r
 ggplot(mtcars, aes(x = factor(cyl))) +
     geom_bar()
 ```
+
+![](lab1_2_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 4. Now `knit` the file to html using the knit button at the top of the page.  
 5. Lastly, commit and push this file to your GitHub repository.  
