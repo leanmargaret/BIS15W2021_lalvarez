@@ -65,7 +65,7 @@ experiments_matrix
 
 6. Calculate the mean temperature of all three springs.
 ```{r}
-avg <- rowSums(experiments_matrix)
+avg <- rowSums(experiments_matrix)/3
 avg
 ```
 

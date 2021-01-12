@@ -11,7 +11,7 @@
 
 <meta name="author" content="Lean Alvarez" />
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2021-01-12" />
 
 <title>Lab 2 Homework</title>
 
@@ -399,7 +399,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 2 Homework</h1>
 <h4 class="author">Lean Alvarez</h4>
-<h4 class="date">2021-01-08</h4>
+<h4 class="date">2021-01-12</h4>
 
 </div>
 
@@ -466,26 +466,26 @@ experiments_matrix</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Calculate the mean temperature of all three springs.</li>
 </ol>
-<pre class="r"><code>avg &lt;- rowSums(experiments_matrix)
+<pre class="r"><code>avg &lt;- rowSums(experiments_matrix)/3
 avg</code></pre>
 <pre><code>##  Bluebell Spring      Opal Spring Riverside Spring   Too Hot Spring 
-##           106.95           103.85            89.55           118.40 
+##         35.65000         34.61667         29.85000         39.46667 
 ##   Mystery Spring   Emerald Spring     Black Spring     Pearl Spring 
-##            92.55            90.60            98.20           106.40</code></pre>
+##         30.85000         30.20000         32.73333         35.46667</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Add this as a new column in the data matrix.</li>
 </ol>
 <pre class="r"><code>all_experiments_matrix &lt;- cbind(experiments_matrix, avg)
 all_experiments_matrix</code></pre>
-<pre><code>##                   Jill Steve Susan    avg
-## Bluebell Spring  36.25 35.40 35.30 106.95
-## Opal Spring      35.15 35.35 33.35 103.85
-## Riverside Spring 30.70 29.65 29.20  89.55
-## Too Hot Spring   39.70 40.05 38.65 118.40
-## Mystery Spring   31.85 31.40 29.30  92.55
-## Emerald Spring   30.20 30.65 29.75  90.60
-## Black Spring     32.90 32.50 32.80  98.20
-## Pearl Spring     36.80 36.45 33.15 106.40</code></pre>
+<pre><code>##                   Jill Steve Susan      avg
+## Bluebell Spring  36.25 35.40 35.30 35.65000
+## Opal Spring      35.15 35.35 33.35 34.61667
+## Riverside Spring 30.70 29.65 29.20 29.85000
+## Too Hot Spring   39.70 40.05 38.65 39.46667
+## Mystery Spring   31.85 31.40 29.30 30.85000
+## Emerald Spring   30.20 30.65 29.75 30.20000
+## Black Spring     32.90 32.50 32.80 32.73333
+## Pearl Spring     36.80 36.45 33.15 35.46667</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Show Susan’s value for Opal Spring only.</li>
 </ol>

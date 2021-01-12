@@ -1,7 +1,7 @@
 ---
 title: "Lab 2 Homework"
 author: "Lean Alvarez"
-date: "2021-01-08"
+date: "2021-01-12"
 output:
   html_document: 
     theme: spacelab
@@ -112,15 +112,15 @@ experiments_matrix
 6. Calculate the mean temperature of all three springs.
 
 ```r
-avg <- rowSums(experiments_matrix)
+avg <- rowSums(experiments_matrix)/3
 avg
 ```
 
 ```
 ##  Bluebell Spring      Opal Spring Riverside Spring   Too Hot Spring 
-##           106.95           103.85            89.55           118.40 
+##         35.65000         34.61667         29.85000         39.46667 
 ##   Mystery Spring   Emerald Spring     Black Spring     Pearl Spring 
-##            92.55            90.60            98.20           106.40
+##         30.85000         30.20000         32.73333         35.46667
 ```
 
 
@@ -133,15 +133,15 @@ all_experiments_matrix
 ```
 
 ```
-##                   Jill Steve Susan    avg
-## Bluebell Spring  36.25 35.40 35.30 106.95
-## Opal Spring      35.15 35.35 33.35 103.85
-## Riverside Spring 30.70 29.65 29.20  89.55
-## Too Hot Spring   39.70 40.05 38.65 118.40
-## Mystery Spring   31.85 31.40 29.30  92.55
-## Emerald Spring   30.20 30.65 29.75  90.60
-## Black Spring     32.90 32.50 32.80  98.20
-## Pearl Spring     36.80 36.45 33.15 106.40
+##                   Jill Steve Susan      avg
+## Bluebell Spring  36.25 35.40 35.30 35.65000
+## Opal Spring      35.15 35.35 33.35 34.61667
+## Riverside Spring 30.70 29.65 29.20 29.85000
+## Too Hot Spring   39.70 40.05 38.65 39.46667
+## Mystery Spring   31.85 31.40 29.30 30.85000
+## Emerald Spring   30.20 30.65 29.75 30.20000
+## Black Spring     32.90 32.50 32.80 32.73333
+## Pearl Spring     36.80 36.45 33.15 35.46667
 ```
 
 8. Show Susan's value for Opal Spring only.
