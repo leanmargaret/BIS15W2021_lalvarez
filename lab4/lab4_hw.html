@@ -11,7 +11,7 @@
 
 <meta name="author" content="Lean Alvarez" />
 
-<meta name="date" content="2021-01-16" />
+<meta name="date" content="2021-01-18" />
 
 <title>Lab 4 Homework</title>
 
@@ -399,7 +399,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 4 Homework</h1>
 <h4 class="author">Lean Alvarez</h4>
-<h4 class="date">2021-01-16</h4>
+<h4 class="date">2021-01-18</h4>
 
 </div>
 
@@ -684,22 +684,7 @@ not_just_deer</code></pre>
 ## # … with 559 more rows</code></pre>
 <pre class="r"><code>deer_wrong_names &lt;- filter(not_just_deer, family == &quot;cervidae&quot;)
 deer &lt;- rename(deer_wrong_names, mean_mass_g = &quot;mean.mass.g&quot;, log10_mass = &quot;log10.mass&quot;)
-arrange(deer, desc(log10_mass))</code></pre>
-<pre><code>## # A tibble: 12 x 5
-##    mean_mass_g log10_mass family   genus      species    
-##          &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      
-##  1     307227.       5.49 cervidae alces      alces      
-##  2     234758.       5.37 cervidae cervus     elaphus    
-##  3     102059.       5.01 cervidae rangifer   tarandus   
-##  4      87884.       4.94 cervidae odocoileus virginianus
-##  5      71450.       4.85 cervidae dama       dama       
-##  6      62823.       4.80 cervidae axis       axis       
-##  7      53864.       4.73 cervidae odocoileus hemionus   
-##  8      35000.       4.54 cervidae ozotoceros bezoarticus
-##  9      29450.       4.47 cervidae cervus     nippon     
-## 10      24050.       4.38 cervidae capreolus  capreolus  
-## 11      13500.       4.13 cervidae muntiacus  reevesi    
-## 12       7500.       3.88 cervidae pudu       puda</code></pre>
+view(deer)</code></pre>
 <pre class="r"><code>filter(homerange, family == &quot;cervidae&quot;, genus == &quot;alces&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 24
 ##   taxon common.name class order family genus species primarymethod N    
@@ -713,25 +698,7 @@ arrange(deer, desc(log10_mass))</code></pre>
 <p>The largest deer is “alces,” and its common name is “moose.”</p>
 <p><strong>10. As measured by the data, which snake species has the smallest homerange? Show all of your work, please. Look this species up online and tell me about it!</strong> <strong>Snake is found in taxon column</strong></p>
 <pre class="r"><code>smallest_snake &lt;- filter(homerange, taxon == &quot;snakes&quot;)
-arrange(smallest_snake, mean.hra.m2)</code></pre>
-<pre><code>## # A tibble: 41 x 24
-##    taxon common.name class order family genus species primarymethod N    
-##    &lt;fct&gt; &lt;chr&gt;       &lt;chr&gt; &lt;fct&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;
-##  1 snak… namaqua dw… rept… squa… viper… bitis schnei… telemetry     11   
-##  2 snak… eastern wo… rept… squa… colub… carp… viridis radiotag      10   
-##  3 snak… butlers ga… rept… squa… colub… tham… butleri mark-recaptu… 1    
-##  4 snak… western wo… rept… squa… colub… carp… vermis  radiotag      1    
-##  5 snak… snubnosed … rept… squa… viper… vipe… latast… telemetry     7    
-##  6 snak… chinese pi… rept… squa… viper… gloy… shedao… telemetry     16   
-##  7 snak… ringneck s… rept… squa… colub… diad… puncta… mark-recaptu… &lt;NA&gt; 
-##  8 snak… cottonmouth rept… squa… viper… agki… pisciv… telemetry     15   
-##  9 snak… redbacked … rept… squa… colub… ooca… rufodo… telemetry     21   
-## 10 snak… gopher sna… rept… squa… colub… pitu… cateni… telemetry     4    
-## # … with 31 more rows, and 15 more variables: mean.mass.g &lt;dbl&gt;,
-## #   log10.mass &lt;dbl&gt;, alternative.mass.reference &lt;chr&gt;, mean.hra.m2 &lt;dbl&gt;,
-## #   log10.hra &lt;dbl&gt;, hra.reference &lt;chr&gt;, realm &lt;chr&gt;, thermoregulation &lt;chr&gt;,
-## #   locomotion &lt;chr&gt;, trophic.guild &lt;chr&gt;, dimension &lt;chr&gt;, preymass &lt;dbl&gt;,
-## #   log10.preymass &lt;dbl&gt;, PPMR &lt;dbl&gt;, prey.size.reference &lt;chr&gt;</code></pre>
+view(smallest_snake)</code></pre>
 <p>The snake species “schneideri” has the smallest homerange. According to (<a href="https://www.africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/" class="uri">https://www.africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/</a>), “scheideri”, also known as the “namaqua dwarf adder,” is mostly out during the day, it is located in South Africa, it eats lizards and Rain frogs, and it is “the smallest adder in the world.”</p>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">

@@ -1,7 +1,7 @@
 ---
 title: "Lab 4 Homework"
 author: "Lean Alvarez"
-date: "2021-01-16"
+date: "2021-01-18"
 output:
   html_document: 
     theme: spacelab
@@ -446,26 +446,9 @@ not_just_deer
 ```r
 deer_wrong_names <- filter(not_just_deer, family == "cervidae")
 deer <- rename(deer_wrong_names, mean_mass_g = "mean.mass.g", log10_mass = "log10.mass")
-arrange(deer, desc(log10_mass))
+view(deer)
 ```
 
-```
-## # A tibble: 12 x 5
-##    mean_mass_g log10_mass family   genus      species    
-##          <dbl>      <dbl> <chr>    <chr>      <chr>      
-##  1     307227.       5.49 cervidae alces      alces      
-##  2     234758.       5.37 cervidae cervus     elaphus    
-##  3     102059.       5.01 cervidae rangifer   tarandus   
-##  4      87884.       4.94 cervidae odocoileus virginianus
-##  5      71450.       4.85 cervidae dama       dama       
-##  6      62823.       4.80 cervidae axis       axis       
-##  7      53864.       4.73 cervidae odocoileus hemionus   
-##  8      35000.       4.54 cervidae ozotoceros bezoarticus
-##  9      29450.       4.47 cervidae cervus     nippon     
-## 10      24050.       4.38 cervidae capreolus  capreolus  
-## 11      13500.       4.13 cervidae muntiacus  reevesi    
-## 12       7500.       3.88 cervidae pudu       puda
-```
 
 ```r
 filter(homerange, family == "cervidae", genus == "alces")
@@ -491,28 +474,7 @@ The largest deer is "alces," and its common name is "moose."
 
 ```r
 smallest_snake <- filter(homerange, taxon == "snakes")
-arrange(smallest_snake, mean.hra.m2)
-```
-
-```
-## # A tibble: 41 x 24
-##    taxon common.name class order family genus species primarymethod N    
-##    <fct> <chr>       <chr> <fct> <chr>  <chr> <chr>   <chr>         <chr>
-##  1 snak… namaqua dw… rept… squa… viper… bitis schnei… telemetry     11   
-##  2 snak… eastern wo… rept… squa… colub… carp… viridis radiotag      10   
-##  3 snak… butlers ga… rept… squa… colub… tham… butleri mark-recaptu… 1    
-##  4 snak… western wo… rept… squa… colub… carp… vermis  radiotag      1    
-##  5 snak… snubnosed … rept… squa… viper… vipe… latast… telemetry     7    
-##  6 snak… chinese pi… rept… squa… viper… gloy… shedao… telemetry     16   
-##  7 snak… ringneck s… rept… squa… colub… diad… puncta… mark-recaptu… <NA> 
-##  8 snak… cottonmouth rept… squa… viper… agki… pisciv… telemetry     15   
-##  9 snak… redbacked … rept… squa… colub… ooca… rufodo… telemetry     21   
-## 10 snak… gopher sna… rept… squa… colub… pitu… cateni… telemetry     4    
-## # … with 31 more rows, and 15 more variables: mean.mass.g <dbl>,
-## #   log10.mass <dbl>, alternative.mass.reference <chr>, mean.hra.m2 <dbl>,
-## #   log10.hra <dbl>, hra.reference <chr>, realm <chr>, thermoregulation <chr>,
-## #   locomotion <chr>, trophic.guild <chr>, dimension <chr>, preymass <dbl>,
-## #   log10.preymass <dbl>, PPMR <dbl>, prey.size.reference <chr>
+view(smallest_snake)
 ```
 The snake species "schneideri" has the smallest homerange. According to (https://www.africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/), "scheideri", also known as the "namaqua dwarf adder," is mostly out during the day, it is located in South Africa, it eats lizards and Rain frogs, and it is "the smallest adder in the world."
 

@@ -147,8 +147,9 @@ not_just_deer
 ```{r}
 deer_wrong_names <- filter(not_just_deer, family == "cervidae")
 deer <- rename(deer_wrong_names, mean_mass_g = "mean.mass.g", log10_mass = "log10.mass")
-arrange(deer, desc(log10_mass))
+view(deer)
 ```
+
 ```{r}
 filter(homerange, family == "cervidae", genus == "alces")
 ```
@@ -160,7 +161,7 @@ The largest deer is "alces," and its common name is "moose."
 **10. As measured by the data, which snake species has the smallest homerange? Show all of your work, please. Look this species up online and tell me about it!** **Snake is found in taxon column**    
 ```{r}
 smallest_snake <- filter(homerange, taxon == "snakes")
-arrange(smallest_snake, mean.hra.m2)
+view(smallest_snake)
 ```
 The snake species "schneideri" has the smallest homerange. According to (https://www.africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/), "scheideri", also known as the "namaqua dwarf adder," is mostly out during the day, it is located in South Africa, it eats lizards and Rain frogs, and it is "the smallest adder in the world."
 
