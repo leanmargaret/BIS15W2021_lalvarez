@@ -49,10 +49,7 @@ sleep <- msleep
 ```
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+
 
 
 3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
@@ -66,7 +63,6 @@ dim(sleep)
 ```
 The dimensions are: 83 rows and 11 columns. I determined this using the code dim().
 
-</div>
 
 
 4. Are there any NAs in the data? How did you determine this? Please show your code.  
