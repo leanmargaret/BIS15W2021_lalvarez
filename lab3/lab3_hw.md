@@ -1,7 +1,7 @@
 ---
 title: "Lab 3 Homework"
 author: "Lean Alvarez"
-date: "2021-01-18"
+date: "2021-01-19"
 output:
   html_document: 
     theme: spacelab
@@ -47,7 +47,6 @@ These data are taken from the National Academy of Sciences, 104 (3):1051-1056, 2
 ```r
 sleep <- msleep
 ```
-
 
 
 
