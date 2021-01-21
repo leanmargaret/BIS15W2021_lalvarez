@@ -1,5 +1,6 @@
 ---
 title: "dplyr Superhero"
+author: "Lean Alvarez"
 date: "2021-01-20"
 output:
   html_document: 
