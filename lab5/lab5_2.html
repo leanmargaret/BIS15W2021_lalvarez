@@ -12,7 +12,7 @@
 
 <meta name="date" content="2021-01-20" />
 
-<title>Transforming data 2: filter()</title>
+<title>dplyr Superhero</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -1543,564 +1543,611 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Transforming data 2: <code>filter()</code></h1>
+<h1 class="title toc-ignore">dplyr Superhero</h1>
 <h4 class="date">2021-01-20</h4>
 
 </div>
 
 
+<div id="breakout-rooms" class="section level2">
+<h2>Breakout Rooms</h2>
+<p>Please take 5-8 minutes to check over your answers to the HW in your group. If you are stuck, please remember that you can check the key in <a href="https://github.com/jmledford3115/BIS15LW2021_jledford">Joel’s repository</a>.</p>
+</div>
 <div id="learning-goals" class="section level2">
 <h2>Learning Goals</h2>
 <p><em>At the end of this exercise, you will be able to:</em><br />
-1. Use the functions of dplyr (filter, select, arrange) to organize and sort data frames.<br />
-2. Use <code>mutate()</code> to calculate a new column from existing columns.</p>
+1. Develop your dplyr superpowers so you can easily and confidently manipulate dataframes.<br />
+2. Learn helpful new functions that are part of the <code>janitor</code> package.</p>
 </div>
-<div id="review" class="section level2">
-<h2>Review</h2>
-<p>In the previous lab, we used <code>select()</code> to extract columns of interest from a data frame. This helps us focus our attention on the variables relevant to our question. However, it doesn’t allow us to extract observations from within the data frame. The <code>filter()</code> function allows us to extract data that meet specific criteria. When combined with <code>select()</code>, we have the power to transform, shape, and explore data with the potential to make new discoveries.</p>
+<div id="instructions" class="section level2">
+<h2>Instructions</h2>
+<p>For the second part of lab 5 today, we are going to spend time practicing the dplyr functions we have learned and add a few new ones. We will spend most of the time in our breakout rooms. Your lab 5 homework will be to knit and push this file to your repository.</p>
 </div>
 <div id="load-the-tidyverse" class="section level2">
 <h2>Load the tidyverse</h2>
 <pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 </div>
-<div id="load-the-data" class="section level2">
-<h2>Load the data</h2>
-<p>For these exercises we will use the data from lab 4_1.</p>
-<pre class="r"><code>fish &lt;- readr::read_csv(&quot;data/Gaeta_etal_CLC_data.csv&quot;)</code></pre>
+<div id="load-the-superhero-data" class="section level2">
+<h2>Load the superhero data</h2>
+<p>These are data taken from comic books and assembled by fans. The include a good mix of categorical and continuous data. Data taken from: <a href="https://www.kaggle.com/claudiodavi/superhero-set" class="uri">https://www.kaggle.com/claudiodavi/superhero-set</a></p>
+<p>Check out the way I am loading these data. If I know there are NAs, I can take care of them at the beginning. But, we should do this very cautiously. At times it is better to keep the original columns and data intact.</p>
+<pre class="r"><code>superhero_info &lt;- readr::read_csv(&quot;data/heroes_information.csv&quot;, na = c(&quot;&quot;, &quot;-99&quot;, &quot;-&quot;))</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
-##   lakeid = col_character(),
-##   fish_id = col_double(),
-##   annnumber = col_character(),
-##   length = col_double(),
-##   radii_length_mm = col_double(),
-##   scalelength = col_double()
+##   name = col_character(),
+##   Gender = col_character(),
+##   `Eye color` = col_character(),
+##   Race = col_character(),
+##   `Hair color` = col_character(),
+##   Height = col_double(),
+##   Publisher = col_character(),
+##   `Skin color` = col_character(),
+##   Alignment = col_character(),
+##   Weight = col_double()
 ## )</code></pre>
-<pre class="r"><code>mammals &lt;- readr::read_csv(&quot;data/mammal_lifehistories_v2.csv&quot;)</code></pre>
+<pre class="r"><code>superhero_powers &lt;- readr::read_csv(&quot;data/super_hero_powers.csv&quot;, na = c(&quot;&quot;, &quot;-99&quot;, &quot;-&quot;))</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
-##   order = col_character(),
-##   family = col_character(),
-##   Genus = col_character(),
-##   species = col_character(),
-##   mass = col_double(),
-##   gestation = col_double(),
-##   newborn = col_double(),
-##   weaning = col_double(),
-##   `wean mass` = col_double(),
-##   AFR = col_double(),
-##   `max. life` = col_double(),
-##   `litter size` = col_double(),
-##   `litters/year` = col_double()
-## )</code></pre>
-<p>To keep things tidy, I am going to rename the variables in the mammals data.</p>
-<pre class="r"><code>mammals &lt;- rename(mammals, genus=Genus, wean_mass=&quot;wean mass&quot;, max_life=&quot;max. life&quot;, litter_size=&quot;litter size&quot;, litters_per_year=&quot;litters/year&quot;)
-mammals</code></pre>
-<pre><code>## # A tibble: 1,440 x 13
-##    order family genus species   mass gestation newborn weaning wean_mass    AFR
-##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Arti… Antil… Anti… americ… 4.54e4      8.13   3246.    3         8900   13.5
-##  2 Arti… Bovid… Addax nasoma… 1.82e5      9.39   5480     6.5       -999   27.3
-##  3 Arti… Bovid… Aepy… melamp… 4.15e4      6.35   5093     5.63     15900   16.7
-##  4 Arti… Bovid… Alce… busela… 1.50e5      7.9   10167.    6.5       -999   23.0
-##  5 Arti… Bovid… Ammo… clarkei 2.85e4      6.8    -999  -999         -999 -999  
-##  6 Arti… Bovid… Ammo… lervia  5.55e4      5.08   3810     4         -999   14.9
-##  7 Arti… Bovid… Anti… marsup… 3.00e4      5.72   3910     4.04      -999   10.2
-##  8 Arti… Bovid… Anti… cervic… 3.75e4      5.5    3846     2.13      -999   20.1
-##  9 Arti… Bovid… Bison bison   4.98e5      8.93  20000    10.7     157500   29.4
-## 10 Arti… Bovid… Bison bonasus 5.00e5      9.14  23000.    6.6       -999   30.0
-## # … with 1,430 more rows, and 3 more variables: max_life &lt;dbl&gt;,
-## #   litter_size &lt;dbl&gt;, litters_per_year &lt;dbl&gt;</code></pre>
+##   .default = col_logical(),
+##   hero_names = col_character()
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
 </div>
-<div id="filter" class="section level2">
-<h2><code>filter()</code></h2>
-<p>Unlike <code>select()</code>, <code>filter()</code> allows us to extract data that meet specific criteria within a variable. Let’s say that we are interested only in the fish that occur in lake “AL”. We can use <code>filter()</code> to extract these observations.<br />
--SELECT IS FOR COLUMNS -FILTER IS FOR ROWS</p>
-<pre class="r"><code>fish</code></pre>
-<pre><code>## # A tibble: 4,033 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167            2.70        2.70
-##  2 AL         299 2            167            2.04        2.70
-##  3 AL         299 1            167            1.31        2.70
-##  4 AL         300 EDGE         175            3.02        3.02
-##  5 AL         300 3            175            2.67        3.02
-##  6 AL         300 2            175            2.14        3.02
-##  7 AL         300 1            175            1.23        3.02
-##  8 AL         301 EDGE         194            3.34        3.34
-##  9 AL         301 3            194            2.97        3.34
-## 10 AL         301 2            194            2.29        3.34
-## # … with 4,023 more rows</code></pre>
-<p>-filter only to fish in Alabama -restrict character</p>
-<pre class="r"><code>filter(fish, lakeid == &quot;AL&quot;)</code></pre>
-<pre><code>## # A tibble: 383 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167            2.70        2.70
-##  2 AL         299 2            167            2.04        2.70
-##  3 AL         299 1            167            1.31        2.70
-##  4 AL         300 EDGE         175            3.02        3.02
-##  5 AL         300 3            175            2.67        3.02
-##  6 AL         300 2            175            2.14        3.02
-##  7 AL         300 1            175            1.23        3.02
-##  8 AL         301 EDGE         194            3.34        3.34
-##  9 AL         301 3            194            2.97        3.34
-## 10 AL         301 2            194            2.29        3.34
-## # … with 373 more rows</code></pre>
-<p>Similarly, if we are only interested in fish with a length greater than or equal to 350 we can use <code>filter()</code> to extract these observations.<br />
--restrict numerically</p>
-<pre class="r"><code>filter(fish, length &gt;= 350)</code></pre>
-<pre><code>## # A tibble: 890 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         306 EDGE         350            6.94        6.94
-##  2 AL         306 10           350            6.46        6.94
-##  3 AL         306 9            350            6.16        6.94
-##  4 AL         306 8            350            5.88        6.94
-##  5 AL         306 7            350            5.42        6.94
-##  6 AL         306 6            350            4.90        6.94
-##  7 AL         306 5            350            4.46        6.94
-##  8 AL         306 4            350            3.75        6.94
-##  9 AL         306 3            350            2.93        6.94
-## 10 AL         306 2            350            2.14        6.94
-## # … with 880 more rows</code></pre>
-<pre class="r"><code>filter(fish, length == 300)</code></pre>
-<pre><code>## # A tibble: 29 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 LSG         34 EDGE         300            5.68        5.68
-##  2 LSG         34 10           300            5.46        5.68
-##  3 LSG         34 9            300            5.20        5.68
-##  4 LSG         34 8            300            4.96        5.68
-##  5 LSG         34 7            300            4.67        5.68
-##  6 LSG         34 6            300            4.35        5.68
-##  7 LSG         34 5            300            4.04        5.68
-##  8 LSG         34 4            300            3.55        5.68
-##  9 LSG         34 3            300            2.98        5.68
-## 10 LSG         34 2            300            2.31        5.68
-## # … with 19 more rows</code></pre>
-<pre class="r"><code>filter(fish, length &gt;=3000)</code></pre>
-<pre><code>## # A tibble: 0 x 6
-## # … with 6 variables: lakeid &lt;chr&gt;, fish_id &lt;dbl&gt;, annnumber &lt;chr&gt;,
-## #   length &lt;dbl&gt;, radii_length_mm &lt;dbl&gt;, scalelength &lt;dbl&gt;</code></pre>
-<ul>
-<li><code>filter()</code> allows all of the expected operators; i.e. &gt;, &gt;=, &lt;, &lt;=, != (not equal), and == (equal).</li>
-</ul>
-<p>Using the <code>!</code> operator allows for the exclusion of specific observations. -can use ! to remove multiple columns</p>
-<pre class="r"><code>filter(fish, lakeid != &quot;AL&quot;)</code></pre>
-<pre><code>## # A tibble: 3,650 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AR         269 EDGE         140            2.01        2.01
-##  2 AR         269 1            140            1.48        2.01
-##  3 AR         270 EDGE         193            2.66        2.66
-##  4 AR         270 3            193            2.39        2.66
-##  5 AR         270 2            193            2.03        2.66
-##  6 AR         270 1            193            1.42        2.66
-##  7 AR         271 EDGE         220            3.50        3.50
-##  8 AR         271 5            220            3.13        3.50
-##  9 AR         271 4            220            2.86        3.50
-## 10 AR         271 3            220            2.63        3.50
-## # … with 3,640 more rows</code></pre>
-</div>
-<div id="using-filter-with-multiple-observations" class="section level2">
-<h2>Using <code>filter()</code> with multiple observations</h2>
-<p>Filtering multiple values within the same variable requires the <code>%in%</code> <a href="https://www.tutorialspoint.com/r/r_operators.htm">operator</a>.</p>
-<pre class="r"><code>filter(fish, length %in% c(167, 175))</code></pre>
-<pre><code>## # A tibble: 18 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167           2.70         2.70
-##  2 AL         299 2            167           2.04         2.70
-##  3 AL         299 1            167           1.31         2.70
-##  4 AL         300 EDGE         175           3.02         3.02
-##  5 AL         300 3            175           2.67         3.02
-##  6 AL         300 2            175           2.14         3.02
-##  7 AL         300 1            175           1.23         3.02
-##  8 BO         397 EDGE         175           2.67         2.67
-##  9 BO         397 3            175           2.39         2.67
-## 10 BO         397 2            175           1.59         2.67
-## 11 BO         397 1            175           0.830        2.67
-## 12 LSG         45 EDGE         175           3.21         3.21
-## 13 LSG         45 3            175           2.92         3.21
-## 14 LSG         45 2            175           2.44         3.21
-## 15 LSG         45 1            175           1.60         3.21
-## 16 RD         103 EDGE         167           2.80         2.80
-## 17 RD         103 2            167           2.10         2.80
-## 18 RD         103 1            167           1.31         2.80</code></pre>
-<p>Alternatively, you can use <code>between</code> if you are looking for a range of specific values.</p>
-<pre class="r"><code>filter(fish, between(scalelength, 2.5, 2.55))</code></pre>
-<pre><code>## # A tibble: 10 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 LSG         56 EDGE         145            2.55        2.55
-##  2 LSG         56 2            145            1.94        2.55
-##  3 LSG         56 1            145            1.20        2.55
-##  4 LSG         57 EDGE         143            2.52        2.52
-##  5 LSG         57 2            143            2.13        2.52
-##  6 LSG         57 1            143            1.19        2.52
-##  7 UB          80 EDGE         153            2.55        2.55
-##  8 UB          80 3            153            2.10        2.55
-##  9 UB          80 2            153            1.62        2.55
-## 10 UB          80 1            153            1.14        2.55</code></pre>
-<p>You can also extract observations “near” a certain value but you need to specify a tolerance.<br />
--values within 0.2 of 2</p>
-<pre class="r"><code>filter(fish, near(radii_length_mm, 2, tol = 0.2))</code></pre>
-<pre><code>## # A tibble: 291 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 2            167            2.04        2.70
-##  2 AL         300 2            175            2.14        3.02
-##  3 AL         302 2            324            2.19        6.07
-##  4 AL         303 2            325            2.04        6.79
-##  5 AL         306 2            350            2.14        6.94
-##  6 AL         308 2            355            1.86        6.67
-##  7 AL         312 2            367            2.17        6.81
-##  8 AL         313 2            367            2.06        6.47
-##  9 AL         315 2            372            2.04        6.47
-## 10 AL         316 2            372            1.82        6.35
-## # … with 281 more rows</code></pre>
-</div>
-<div id="practice" class="section level2">
-<h2>Practice</h2>
+<div id="data-tidy" class="section level2">
+<h2>Data tidy</h2>
 <ol style="list-style-type: decimal">
-<li>Filter the <code>fish</code> data to include the samples from lake “BO”.</li>
+<li>Some of the names used in the <code>superhero_info</code> data are problematic so you should rename them here.</li>
 </ol>
-<pre class="r"><code>filter(fish, lakeid == &quot;BO&quot;)</code></pre>
-<pre><code>## # A tibble: 197 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 BO         389 EDGE         104           1.50         1.50
-##  2 BO         389 1            104           0.736        1.50
-##  3 BO         390 EDGE         105           1.59         1.59
-##  4 BO         390 1            105           0.698        1.59
-##  5 BO         391 EDGE         107           1.43         1.43
-##  6 BO         391 1            107           0.695        1.43
-##  7 BO         392 EDGE         124           2.11         2.11
-##  8 BO         392 2            124           1.36         2.11
-##  9 BO         392 1            124           0.792        2.11
-## 10 BO         393 EDGE         141           2.16         2.16
-## # … with 187 more rows</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Filter the data to include all lakes except “AR”.</li>
-</ol>
-<pre class="r"><code>filter(fish, lakeid != &quot;AR&quot;)</code></pre>
-<pre><code>## # A tibble: 3,771 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167            2.70        2.70
-##  2 AL         299 2            167            2.04        2.70
-##  3 AL         299 1            167            1.31        2.70
-##  4 AL         300 EDGE         175            3.02        3.02
-##  5 AL         300 3            175            2.67        3.02
-##  6 AL         300 2            175            2.14        3.02
-##  7 AL         300 1            175            1.23        3.02
-##  8 AL         301 EDGE         194            3.34        3.34
-##  9 AL         301 3            194            2.97        3.34
-## 10 AL         301 2            194            2.29        3.34
-## # … with 3,761 more rows</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Filter the fish data to include all fish with a scalelength within 0.25 of 8.</li>
-</ol>
-<pre class="r"><code>filter(fish, near(scalelength, 8, tol = 0.25))</code></pre>
-<pre><code>## # A tibble: 236 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         309 EDGE         355            7.89        7.89
-##  2 AL         309 13           355            7.56        7.89
-##  3 AL         309 12           355            7.36        7.89
-##  4 AL         309 11           355            7.16        7.89
-##  5 AL         309 10           355            6.77        7.89
-##  6 AL         309 9            355            6.39        7.89
-##  7 AL         309 8            355            5.96        7.89
-##  8 AL         309 7            355            5.44        7.89
-##  9 AL         309 6            355            4.74        7.89
-## 10 AL         309 5            355            4.06        7.89
-## # … with 226 more rows</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Filter the fish data to include fish with a scalelength between 2 and 4</li>
-</ol>
-<pre class="r"><code>filter(fish, between(scalelength, 2, 4))</code></pre>
-<pre><code>## # A tibble: 723 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167            2.70        2.70
-##  2 AL         299 2            167            2.04        2.70
-##  3 AL         299 1            167            1.31        2.70
-##  4 AL         300 EDGE         175            3.02        3.02
-##  5 AL         300 3            175            2.67        3.02
-##  6 AL         300 2            175            2.14        3.02
-##  7 AL         300 1            175            1.23        3.02
-##  8 AL         301 EDGE         194            3.34        3.34
-##  9 AL         301 3            194            2.97        3.34
-## 10 AL         301 2            194            2.29        3.34
-## # … with 713 more rows</code></pre>
-<p>-run various checks to doublecheck if work is correct</p>
-<pre class="r"><code>x &lt;- filter(fish, between(scalelength, 2, 4))
-x</code></pre>
-<pre><code>## # A tibble: 723 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167            2.70        2.70
-##  2 AL         299 2            167            2.04        2.70
-##  3 AL         299 1            167            1.31        2.70
-##  4 AL         300 EDGE         175            3.02        3.02
-##  5 AL         300 3            175            2.67        3.02
-##  6 AL         300 2            175            2.14        3.02
-##  7 AL         300 1            175            1.23        3.02
-##  8 AL         301 EDGE         194            3.34        3.34
-##  9 AL         301 3            194            2.97        3.34
-## 10 AL         301 2            194            2.29        3.34
-## # … with 713 more rows</code></pre>
-<p>-filter, select, and subset do the same thing, but filter and select are better -FROM NOW, JUST USE FILTER AND SELECT EXCLUSIVELY</p>
+<pre class="r"><code>superhero_info %&gt;% 
+  rename(eye_color = &quot;Eye color&quot;, hair_color = &quot;Hair color&quot;, skin_color = &quot;Skin color&quot;) %&gt;% 
+  select_all(tolower) %&gt;% 
+  mutate_all(tolower)</code></pre>
+<pre><code>## # A tibble: 734 x 10
+##    name  gender eye_color race  hair_color height publisher skin_color alignment
+##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+##  1 a-bo… male   yellow    human no hair    203    marvel c… &lt;NA&gt;       good     
+##  2 abe … male   blue      icth… no hair    191    dark hor… blue       good     
+##  3 abin… male   blue      unga… no hair    185    dc comics red        good     
+##  4 abom… male   green     huma… no hair    203    marvel c… &lt;NA&gt;       bad      
+##  5 abra… male   blue      cosm… black      &lt;NA&gt;   marvel c… &lt;NA&gt;       bad      
+##  6 abso… male   blue      human no hair    193    marvel c… &lt;NA&gt;       bad      
+##  7 adam… male   blue      &lt;NA&gt;  blond      &lt;NA&gt;   nbc - he… &lt;NA&gt;       good     
+##  8 adam… male   blue      human blond      185    dc comics &lt;NA&gt;       good     
+##  9 agen… female blue      &lt;NA&gt;  blond      173    marvel c… &lt;NA&gt;       good     
+## 10 agen… male   brown     human brown      178    marvel c… &lt;NA&gt;       good     
+## # … with 724 more rows, and 1 more variable: weight &lt;chr&gt;</code></pre>
+<p>Yikes! <code>superhero_powers</code> has a lot of variables that are poorly named. We need some R superpowers…</p>
+<pre class="r"><code>superhero_powers %&gt;% 
+  select_all(tolower) %&gt;% 
+  mutate_all(tolower) %&gt;% 
+  select_all(~str_replace(., &quot; &quot;, &quot;_&quot;))</code></pre>
+<pre><code>## # A tibble: 667 x 168
+##    hero_names agility accelerated_hea… `lantern_power … dimensional_awa…
+##    &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;           
+##  1 3-d man    true    false            false            false           
+##  2 a-bomb     false   true             false            false           
+##  3 abe sapien true    true             false            false           
+##  4 abin sur   false   false            true             false           
+##  5 abominati… false   true             false            false           
+##  6 abraxas    false   false            false            true            
+##  7 absorbing… false   false            false            false           
+##  8 adam monr… false   true             false            false           
+##  9 adam stra… false   false            false            false           
+## 10 agent bob  false   false            false            false           
+## # … with 657 more rows, and 163 more variables: cold_resistance &lt;chr&gt;,
+## #   durability &lt;chr&gt;, stealth &lt;chr&gt;, energy_absorption &lt;chr&gt;, flight &lt;chr&gt;,
+## #   danger_sense &lt;chr&gt;, underwater_breathing &lt;chr&gt;, marksmanship &lt;chr&gt;,
+## #   weapons_master &lt;chr&gt;, power_augmentation &lt;chr&gt;, animal_attributes &lt;chr&gt;,
+## #   longevity &lt;chr&gt;, intelligence &lt;chr&gt;, super_strength &lt;chr&gt;,
+## #   cryokinesis &lt;chr&gt;, telepathy &lt;chr&gt;, energy_armor &lt;chr&gt;,
+## #   energy_blasts &lt;chr&gt;, duplication &lt;chr&gt;, size_changing &lt;chr&gt;,
+## #   density_control &lt;chr&gt;, stamina &lt;chr&gt;, astral_travel &lt;chr&gt;,
+## #   audio_control &lt;chr&gt;, dexterity &lt;chr&gt;, omnitrix &lt;chr&gt;, super_speed &lt;chr&gt;,
+## #   possession &lt;chr&gt;, `animal_oriented powers` &lt;chr&gt;,
+## #   `weapon-based_powers` &lt;chr&gt;, electrokinesis &lt;chr&gt;,
+## #   darkforce_manipulation &lt;chr&gt;, death_touch &lt;chr&gt;, teleportation &lt;chr&gt;,
+## #   enhanced_senses &lt;chr&gt;, telekinesis &lt;chr&gt;, energy_beams &lt;chr&gt;, magic &lt;chr&gt;,
+## #   hyperkinesis &lt;chr&gt;, jump &lt;chr&gt;, clairvoyance &lt;chr&gt;,
+## #   dimensional_travel &lt;chr&gt;, power_sense &lt;chr&gt;, shapeshifting &lt;chr&gt;,
+## #   `peak_human condition` &lt;chr&gt;, immortality &lt;chr&gt;, camouflage &lt;chr&gt;,
+## #   element_control &lt;chr&gt;, phasing &lt;chr&gt;, astral_projection &lt;chr&gt;,
+## #   electrical_transport &lt;chr&gt;, fire_control &lt;chr&gt;, projection &lt;chr&gt;,
+## #   summoning &lt;chr&gt;, enhanced_memory &lt;chr&gt;, reflexes &lt;chr&gt;,
+## #   invulnerability &lt;chr&gt;, energy_constructs &lt;chr&gt;, force_fields &lt;chr&gt;,
+## #   `self-sustenance` &lt;chr&gt;, `anti-gravity` &lt;chr&gt;, empathy &lt;chr&gt;,
+## #   power_nullifier &lt;chr&gt;, radiation_control &lt;chr&gt;, psionic_powers &lt;chr&gt;,
+## #   elasticity &lt;chr&gt;, substance_secretion &lt;chr&gt;,
+## #   elemental_transmogrification &lt;chr&gt;, `technopath/cyberpath` &lt;chr&gt;,
+## #   photographic_reflexes &lt;chr&gt;, seismic_power &lt;chr&gt;, animation &lt;chr&gt;,
+## #   precognition &lt;chr&gt;, mind_control &lt;chr&gt;, fire_resistance &lt;chr&gt;,
+## #   power_absorption &lt;chr&gt;, enhanced_hearing &lt;chr&gt;, nova_force &lt;chr&gt;,
+## #   insanity &lt;chr&gt;, hypnokinesis &lt;chr&gt;, animal_control &lt;chr&gt;,
+## #   natural_armor &lt;chr&gt;, intangibility &lt;chr&gt;, enhanced_sight &lt;chr&gt;,
+## #   molecular_manipulation &lt;chr&gt;, heat_generation &lt;chr&gt;, adaptation &lt;chr&gt;,
+## #   gliding &lt;chr&gt;, power_suit &lt;chr&gt;, mind_blast &lt;chr&gt;,
+## #   probability_manipulation &lt;chr&gt;, gravity_control &lt;chr&gt;, regeneration &lt;chr&gt;,
+## #   light_control &lt;chr&gt;, echolocation &lt;chr&gt;, levitation &lt;chr&gt;, `toxin_and
+## #   disease control` &lt;chr&gt;, banish &lt;chr&gt;, energy_manipulation &lt;chr&gt;,
+## #   heat_resistance &lt;chr&gt;, …</code></pre>
 </div>
-<div id="using-filter-on-multiple-conditions" class="section level2">
-<h2>Using <code>filter()</code> on multiple conditions</h2>
-<p>You can also use <code>filter()</code> to extract data based on multiple conditions. Below we extract only the fish that have lakeid “AL” and length &gt;= 350.</p>
-<pre class="r"><code>filter(fish, lakeid == &quot;AL&quot; &amp; length &gt;= 350)</code></pre>
-<pre><code>## # A tibble: 325 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         306 EDGE         350            6.94        6.94
-##  2 AL         306 10           350            6.46        6.94
-##  3 AL         306 9            350            6.16        6.94
-##  4 AL         306 8            350            5.88        6.94
-##  5 AL         306 7            350            5.42        6.94
-##  6 AL         306 6            350            4.90        6.94
-##  7 AL         306 5            350            4.46        6.94
-##  8 AL         306 4            350            3.75        6.94
-##  9 AL         306 3            350            2.93        6.94
-## 10 AL         306 2            350            2.14        6.94
-## # … with 315 more rows</code></pre>
-<p>-when you put &amp;, R is going to look for data that meets both conditions -can add as many conditions as you need</p>
-<p>Notice that the <code>|</code> operator generates a different result.</p>
-<pre class="r"><code>filter(fish, lakeid == &quot;AL&quot; | length &gt;= 350)</code></pre>
-<pre><code>## # A tibble: 948 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         299 EDGE         167            2.70        2.70
-##  2 AL         299 2            167            2.04        2.70
-##  3 AL         299 1            167            1.31        2.70
-##  4 AL         300 EDGE         175            3.02        3.02
-##  5 AL         300 3            175            2.67        3.02
-##  6 AL         300 2            175            2.14        3.02
-##  7 AL         300 1            175            1.23        3.02
-##  8 AL         301 EDGE         194            3.34        3.34
-##  9 AL         301 3            194            2.97        3.34
-## 10 AL         301 2            194            2.29        3.34
-## # … with 938 more rows</code></pre>
-<p>-using | means either or or -results will include lakes other than AL</p>
-<pre class="r"><code>y &lt;- filter(fish, lakeid == &quot;AL&quot; | length &gt;= 350)
-view(y)</code></pre>
-<p>Rules:<br />
-+ <code>filter(condition1, condition2)</code> will return rows where both conditions are met.<br />
-+ <code>filter(condition1, !condition2)</code> will return all rows where condition one is true but condition 2 is not.<br />
-+ <code>filter(condition1 | condition2)</code> will return rows where condition 1 and/or condition 2 is met.<br />
-+ <code>filter(xor(condition1, condition2)</code> will return all rows where only one of the conditions is met, and not when both conditions are met.</p>
-<p>In this case, we filter out the fish with a length over 400 and a scale length over 11 or a radii length over 8.</p>
-<pre class="r"><code>filter(fish, length &gt; 400, (scalelength &gt; 11 | radii_length_mm &gt; 8))</code></pre>
-<pre><code>## # A tibble: 23 x 6
-##    lakeid fish_id annnumber length radii_length_mm scalelength
-##    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 AL         324 EDGE         406            8.21        8.21
-##  2 AL         327 EDGE         413            8.33        8.33
-##  3 AL         327 15           413            8.11        8.33
-##  4 AL         328 EDGE         420            8.71        8.71
-##  5 AL         328 16           420            8.41        8.71
-##  6 AL         328 15           420            8.14        8.71
-##  7 WS         180 EDGE         403           11.0        11.0 
-##  8 WS         180 16           403           10.6        11.0 
-##  9 WS         180 15           403           10.3        11.0 
-## 10 WS         180 14           403            9.93       11.0 
-## # … with 13 more rows</code></pre>
-<p>-refining search even more by combining more than one operator</p>
-<pre class="r"><code>filter(fish, scalelength %in% c(2,4))</code></pre>
-<pre><code>## # A tibble: 0 x 6
-## # … with 6 variables: lakeid &lt;chr&gt;, fish_id &lt;dbl&gt;, annnumber &lt;chr&gt;,
-## #   length &lt;dbl&gt;, radii_length_mm &lt;dbl&gt;, scalelength &lt;dbl&gt;</code></pre>
-<p>-none bc it’s looking for values that are exactly 2 and 4, not between 2 and 4</p>
+<div id="janitor" class="section level2">
+<h2><code>janitor</code></h2>
+<p>The <a href="https://garthtarr.github.io/meatR/janitor.html">janitor</a> package is your friend. Make sure to install it and then load the library.</p>
+<pre class="r"><code>library(&quot;janitor&quot;)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;janitor&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+<p>The <code>clean_names</code> function takes care of everything in one line! Now that’s a superpower!</p>
+<pre class="r"><code>superhero_powers &lt;- janitor::clean_names(superhero_powers)
+superhero_info &lt;- janitor::clean_names(superhero_info)</code></pre>
 </div>
-<div id="practice-1" class="section level2">
-<h2>Practice</h2>
-<ol style="list-style-type: decimal">
-<li>Have a look at the mammals data using the summary functions of your choosing.</li>
-</ol>
-<pre class="r"><code>summary(mammals)</code></pre>
-<pre><code>##     order              family             genus             species         
-##  Length:1440        Length:1440        Length:1440        Length:1440       
-##  Class :character   Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-##                                                                             
-##                                                                             
-##                                                                             
-##       mass             gestation          newborn             weaning       
-##  Min.   :     -999   Min.   :-999.00   Min.   :   -999.0   Min.   :-999.00  
-##  1st Qu.:       50   1st Qu.:-999.00   1st Qu.:   -999.0   1st Qu.:-999.00  
-##  Median :      403   Median :   1.05   Median :      2.6   Median :   0.73  
-##  Mean   :   383577   Mean   :-287.25   Mean   :   6703.1   Mean   :-427.17  
-##  3rd Qu.:     7009   3rd Qu.:   4.50   3rd Qu.:     98.0   3rd Qu.:   2.00  
-##  Max.   :149000000   Max.   :  21.46   Max.   :2250000.0   Max.   :  48.00  
-##    wean_mass             AFR             max_life       litter_size      
-##  Min.   :    -999   Min.   :-999.00   Min.   :-999.0   Min.   :-999.000  
-##  1st Qu.:    -999   1st Qu.:-999.00   1st Qu.:-999.0   1st Qu.:   1.000  
-##  Median :    -999   Median :   2.50   Median :-999.0   Median :   2.270  
-##  Mean   :   16049   Mean   :-408.12   Mean   :-490.3   Mean   : -55.634  
-##  3rd Qu.:      10   3rd Qu.:  15.61   3rd Qu.: 147.2   3rd Qu.:   3.835  
-##  Max.   :19075000   Max.   : 210.00   Max.   :1368.0   Max.   :  14.180  
-##  litters_per_year  
-##  Min.   :-999.000  
-##  1st Qu.:-999.000  
-##  Median :   0.375  
-##  Mean   :-477.141  
-##  3rd Qu.:   1.155  
-##  Max.   :   7.500</code></pre>
+<div id="tabyl" class="section level2">
+<h2><code>tabyl</code></h2>
+<p>The <code>janitor</code> package has many awesome functions that we will explore. Here is its version of <code>table</code> which not only produces counts but also percentages. Very handy! Let’s use it to explore the proportion of good guys and bad guys in the <code>superhero_info</code> data.</p>
+<pre class="r"><code>tabyl(superhero_info, alignment)</code></pre>
+<pre><code>##  alignment   n     percent valid_percent
+##        bad 207 0.282016349    0.28473177
+##       good 496 0.675749319    0.68225585
+##    neutral  24 0.032697548    0.03301238
+##       &lt;NA&gt;   7 0.009536785            NA</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>What are the names of the variables in the mammals data?</li>
+<li>Notice that we have some neutral superheros! Who are they?</li>
 </ol>
-<pre class="r"><code>names(mammals)</code></pre>
-<pre><code>##  [1] &quot;order&quot;            &quot;family&quot;           &quot;genus&quot;            &quot;species&quot;         
-##  [5] &quot;mass&quot;             &quot;gestation&quot;        &quot;newborn&quot;          &quot;weaning&quot;         
-##  [9] &quot;wean_mass&quot;        &quot;AFR&quot;              &quot;max_life&quot;         &quot;litter_size&quot;     
-## [13] &quot;litters_per_year&quot;</code></pre>
+<pre class="r"><code>superhero_info %&gt;% 
+  select(name, alignment) %&gt;% 
+  filter(alignment==&quot;neutral&quot;)</code></pre>
+<pre><code>## # A tibble: 24 x 2
+##    name         alignment
+##    &lt;chr&gt;        &lt;chr&gt;    
+##  1 Bizarro      neutral  
+##  2 Black Flash  neutral  
+##  3 Captain Cold neutral  
+##  4 Copycat      neutral  
+##  5 Deadpool     neutral  
+##  6 Deathstroke  neutral  
+##  7 Etrigan      neutral  
+##  8 Galactus     neutral  
+##  9 Gladiator    neutral  
+## 10 Indigo       neutral  
+## # … with 14 more rows</code></pre>
+</div>
+<div id="superhero_info" class="section level2">
+<h2><code>superhero_info</code></h2>
 <ol start="3" style="list-style-type: decimal">
-<li>From the <code>mammals</code> data, filter all members of the family Bovidae with a mass greater than 450000.</li>
+<li>Let’s say we are only interested in the variables name, alignment, and “race”. How would you isolate these variables from <code>superhero_info</code>?</li>
 </ol>
-<pre class="r"><code>bovidae &lt;- filter(mammals, family == &quot;Bovidae&quot; &amp; mass &gt; 450000)
-bovidae</code></pre>
-<pre><code>## # A tibble: 7 x 13
-##   order family genus species   mass gestation newborn weaning wean_mass   AFR
-##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
-## 1 Arti… Bovid… Bison bison   4.98e5      8.93  20000    10.7     157500  29.4
-## 2 Arti… Bovid… Bison bonasus 5.00e5      9.14  23000.    6.6       -999  30.0
-## 3 Arti… Bovid… Bos   fronta… 8.00e5      9.02  23033.    4.5       -999  24.2
-## 4 Arti… Bovid… Bos   javani… 6.67e5      9.83   -999     9.5       -999  25.5
-## 5 Arti… Bovid… Buba… bubalis 9.50e5     10.5   37500     7.5       -999  19.9
-## 6 Arti… Bovid… Sync… caffer  5.05e5     11.0   42862.    9.18    166000  47.9
-## 7 Arti… Bovid… Taur… derbia… 6.80e5      8.67   -999  -999         -999  36.4
-## # … with 3 more variables: max_life &lt;dbl&gt;, litter_size &lt;dbl&gt;,
-## #   litters_per_year &lt;dbl&gt;</code></pre>
-<p>&amp; and , do the same thing but USE &amp;</p>
+<pre class="r"><code>superhero_info %&gt;% 
+  select(name, alignment, race)</code></pre>
+<pre><code>## # A tibble: 734 x 3
+##    name          alignment race             
+##    &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;            
+##  1 A-Bomb        good      Human            
+##  2 Abe Sapien    good      Icthyo Sapien    
+##  3 Abin Sur      good      Ungaran          
+##  4 Abomination   bad       Human / Radiation
+##  5 Abraxas       bad       Cosmic Entity    
+##  6 Absorbing Man bad       Human            
+##  7 Adam Monroe   good      &lt;NA&gt;             
+##  8 Adam Strange  good      Human            
+##  9 Agent 13      good      &lt;NA&gt;             
+## 10 Agent Bob     good      Human            
+## # … with 724 more rows</code></pre>
+</div>
+<div id="not-human" class="section level2">
+<h2>Not Human</h2>
 <ol start="4" style="list-style-type: decimal">
-<li>Let’s say we are only interested in family, genus, species, mass, and gestation. Relimit the mammals data frame to these variables.</li>
+<li>List all of the superheros that are not human.</li>
 </ol>
-<pre class="r"><code>names(mammals)</code></pre>
-<pre><code>##  [1] &quot;order&quot;            &quot;family&quot;           &quot;genus&quot;            &quot;species&quot;         
-##  [5] &quot;mass&quot;             &quot;gestation&quot;        &quot;newborn&quot;          &quot;weaning&quot;         
-##  [9] &quot;wean_mass&quot;        &quot;AFR&quot;              &quot;max_life&quot;         &quot;litter_size&quot;     
-## [13] &quot;litters_per_year&quot;</code></pre>
-<pre class="r"><code>mammals_relimited &lt;- select(mammals, c(&quot;family&quot;, &quot;genus&quot;, &quot;species&quot;, &quot;mass&quot;, &quot;gestation&quot;))
-mammals_relimited</code></pre>
-<pre><code>## # A tibble: 1,440 x 5
-##    family         genus       species          mass gestation
-##    &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;
-##  1 Antilocapridae Antilocapra americana      45375       8.13
-##  2 Bovidae        Addax       nasomaculatus 182375       9.39
-##  3 Bovidae        Aepyceros   melampus       41480       6.35
-##  4 Bovidae        Alcelaphus  buselaphus    150000       7.9 
-##  5 Bovidae        Ammodorcas  clarkei        28500       6.8 
-##  6 Bovidae        Ammotragus  lervia         55500       5.08
-##  7 Bovidae        Antidorcas  marsupialis    30000       5.72
-##  8 Bovidae        Antilope    cervicapra     37500       5.5 
-##  9 Bovidae        Bison       bison         497667.      8.93
-## 10 Bovidae        Bison       bonasus       500000       9.14
-## # … with 1,430 more rows</code></pre>
+<pre class="r"><code>superhero_info %&gt;% 
+  select(name, race) %&gt;% 
+  filter(race !=&quot;Human&quot;)</code></pre>
+<pre><code>## # A tibble: 222 x 2
+##    name         race             
+##    &lt;chr&gt;        &lt;chr&gt;            
+##  1 Abe Sapien   Icthyo Sapien    
+##  2 Abin Sur     Ungaran          
+##  3 Abomination  Human / Radiation
+##  4 Abraxas      Cosmic Entity    
+##  5 Ajax         Cyborg           
+##  6 Alien        Xenomorph XX121  
+##  7 Amazo        Android          
+##  8 Angel        Vampire          
+##  9 Angel Dust   Mutant           
+## 10 Anti-Monitor God / Eternal    
+## # … with 212 more rows</code></pre>
+</div>
+<div id="good-and-evil" class="section level2">
+<h2>Good and Evil</h2>
 <ol start="5" style="list-style-type: decimal">
-<li>Use the output from #4 to focus on the family Bovidae with a mass greater than 450000.</li>
+<li>Let’s make two different data frames, one focused on the “good guys” and another focused on the “bad guys”.</li>
 </ol>
-<pre class="r"><code>bovidae &lt;- filter(mammals, family == &quot;Bovidae&quot;, mass &gt; 450000)
-bovidae</code></pre>
-<pre><code>## # A tibble: 7 x 13
-##   order family genus species   mass gestation newborn weaning wean_mass   AFR
-##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
-## 1 Arti… Bovid… Bison bison   4.98e5      8.93  20000    10.7     157500  29.4
-## 2 Arti… Bovid… Bison bonasus 5.00e5      9.14  23000.    6.6       -999  30.0
-## 3 Arti… Bovid… Bos   fronta… 8.00e5      9.02  23033.    4.5       -999  24.2
-## 4 Arti… Bovid… Bos   javani… 6.67e5      9.83   -999     9.5       -999  25.5
-## 5 Arti… Bovid… Buba… bubalis 9.50e5     10.5   37500     7.5       -999  19.9
-## 6 Arti… Bovid… Sync… caffer  5.05e5     11.0   42862.    9.18    166000  47.9
-## 7 Arti… Bovid… Taur… derbia… 6.80e5      8.67   -999  -999         -999  36.4
-## # … with 3 more variables: max_life &lt;dbl&gt;, litter_size &lt;dbl&gt;,
-## #   litters_per_year &lt;dbl&gt;</code></pre>
-<pre class="r"><code>glimpse(mammals)</code></pre>
-<pre><code>## Rows: 1,440
-## Columns: 13
-## $ order            &lt;chr&gt; &quot;Artiodactyla&quot;, &quot;Artiodactyla&quot;, &quot;Artiodactyla&quot;, &quot;Art…
-## $ family           &lt;chr&gt; &quot;Antilocapridae&quot;, &quot;Bovidae&quot;, &quot;Bovidae&quot;, &quot;Bovidae&quot;, &quot;…
-## $ genus            &lt;chr&gt; &quot;Antilocapra&quot;, &quot;Addax&quot;, &quot;Aepyceros&quot;, &quot;Alcelaphus&quot;, &quot;…
-## $ species          &lt;chr&gt; &quot;americana&quot;, &quot;nasomaculatus&quot;, &quot;melampus&quot;, &quot;buselaphu…
-## $ mass             &lt;dbl&gt; 45375.0, 182375.0, 41480.0, 150000.0, 28500.0, 55500…
-## $ gestation        &lt;dbl&gt; 8.13, 9.39, 6.35, 7.90, 6.80, 5.08, 5.72, 5.50, 8.93…
-## $ newborn          &lt;dbl&gt; 3246.36, 5480.00, 5093.00, 10166.67, -999.00, 3810.0…
-## $ weaning          &lt;dbl&gt; 3.00, 6.50, 5.63, 6.50, -999.00, 4.00, 4.04, 2.13, 1…
-## $ wean_mass        &lt;dbl&gt; 8900, -999, 15900, -999, -999, -999, -999, -999, 157…
-## $ AFR              &lt;dbl&gt; 13.53, 27.27, 16.66, 23.02, -999.00, 14.89, 10.23, 2…
-## $ max_life         &lt;dbl&gt; 142, 308, 213, 240, -999, 251, 228, 255, 300, 324, 3…
-## $ litter_size      &lt;dbl&gt; 1.85, 1.00, 1.00, 1.00, 1.00, 1.37, 1.00, 1.00, 1.00…
-## $ litters_per_year &lt;dbl&gt; 1.00, 0.99, 0.95, -999.00, -999.00, 2.00, -999.00, 1…</code></pre>
-<pre class="r"><code>summary(mammals)</code></pre>
-<pre><code>##     order              family             genus             species         
-##  Length:1440        Length:1440        Length:1440        Length:1440       
-##  Class :character   Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-##                                                                             
-##                                                                             
-##                                                                             
-##       mass             gestation          newborn             weaning       
-##  Min.   :     -999   Min.   :-999.00   Min.   :   -999.0   Min.   :-999.00  
-##  1st Qu.:       50   1st Qu.:-999.00   1st Qu.:   -999.0   1st Qu.:-999.00  
-##  Median :      403   Median :   1.05   Median :      2.6   Median :   0.73  
-##  Mean   :   383577   Mean   :-287.25   Mean   :   6703.1   Mean   :-427.17  
-##  3rd Qu.:     7009   3rd Qu.:   4.50   3rd Qu.:     98.0   3rd Qu.:   2.00  
-##  Max.   :149000000   Max.   :  21.46   Max.   :2250000.0   Max.   :  48.00  
-##    wean_mass             AFR             max_life       litter_size      
-##  Min.   :    -999   Min.   :-999.00   Min.   :-999.0   Min.   :-999.000  
-##  1st Qu.:    -999   1st Qu.:-999.00   1st Qu.:-999.0   1st Qu.:   1.000  
-##  Median :    -999   Median :   2.50   Median :-999.0   Median :   2.270  
-##  Mean   :   16049   Mean   :-408.12   Mean   :-490.3   Mean   : -55.634  
-##  3rd Qu.:      10   3rd Qu.:  15.61   3rd Qu.: 147.2   3rd Qu.:   3.835  
-##  Max.   :19075000   Max.   : 210.00   Max.   :1368.0   Max.   :  14.180  
-##  litters_per_year  
-##  Min.   :-999.000  
-##  1st Qu.:-999.000  
-##  Median :   0.375  
-##  Mean   :-477.141  
-##  3rd Qu.:   1.155  
-##  Max.   :   7.500</code></pre>
-<p>-values won’t be accurate bc many NA’s in data</p>
+<pre class="r"><code>good_guys &lt;- superhero_info %&gt;% 
+  filter(alignment==&quot;good&quot;)
+good_guys</code></pre>
+<pre><code>## # A tibble: 496 x 10
+##    name  gender eye_color race  hair_color height publisher skin_color alignment
+##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+##  1 A-Bo… Male   yellow    Human No Hair       203 Marvel C… &lt;NA&gt;       good     
+##  2 Abe … Male   blue      Icth… No Hair       191 Dark Hor… blue       good     
+##  3 Abin… Male   blue      Unga… No Hair       185 DC Comics red        good     
+##  4 Adam… Male   blue      &lt;NA&gt;  Blond          NA NBC - He… &lt;NA&gt;       good     
+##  5 Adam… Male   blue      Human Blond         185 DC Comics &lt;NA&gt;       good     
+##  6 Agen… Female blue      &lt;NA&gt;  Blond         173 Marvel C… &lt;NA&gt;       good     
+##  7 Agen… Male   brown     Human Brown         178 Marvel C… &lt;NA&gt;       good     
+##  8 Agen… Male   &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;          191 Marvel C… &lt;NA&gt;       good     
+##  9 Alan… Male   blue      &lt;NA&gt;  Blond         180 DC Comics &lt;NA&gt;       good     
+## 10 Alex… Male   &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;           NA NBC - He… &lt;NA&gt;       good     
+## # … with 486 more rows, and 1 more variable: weight &lt;dbl&gt;</code></pre>
+<pre class="r"><code>bad_guys &lt;- superhero_info %&gt;% 
+  filter(alignment==&quot;bad&quot;)
+bad_guys</code></pre>
+<pre><code>## # A tibble: 207 x 10
+##    name  gender eye_color race  hair_color height publisher skin_color alignment
+##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+##  1 Abom… Male   green     Huma… No Hair       203 Marvel C… &lt;NA&gt;       bad      
+##  2 Abra… Male   blue      Cosm… Black          NA Marvel C… &lt;NA&gt;       bad      
+##  3 Abso… Male   blue      Human No Hair       193 Marvel C… &lt;NA&gt;       bad      
+##  4 Air-… Male   blue      &lt;NA&gt;  White         188 Marvel C… &lt;NA&gt;       bad      
+##  5 Ajax  Male   brown     Cybo… Black         193 Marvel C… &lt;NA&gt;       bad      
+##  6 Alex… Male   &lt;NA&gt;      Human &lt;NA&gt;           NA Wildstorm &lt;NA&gt;       bad      
+##  7 Alien Male   &lt;NA&gt;      Xeno… No Hair       244 Dark Hor… black      bad      
+##  8 Amazo Male   red       Andr… &lt;NA&gt;          257 DC Comics &lt;NA&gt;       bad      
+##  9 Ammo  Male   brown     Human Black         188 Marvel C… &lt;NA&gt;       bad      
+## 10 Ange… Female &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;           NA Image Co… &lt;NA&gt;       bad      
+## # … with 197 more rows, and 1 more variable: weight &lt;dbl&gt;</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>From the <code>mammals</code> data, build a data frame that compares <code>mass</code>, <code>gestation</code>, and <code>newborn</code> among the primate genera <code>Lophocebus</code>, <code>Erythrocebus</code>, and <code>Macaca</code>. Among these genera, which species has the smallest <code>newborn</code> mass?</li>
+<li>For the good guys, use the <code>tabyl</code> function to summarize their “race”.</li>
 </ol>
-<pre class="r"><code>primate_genera &lt;- filter(mammals, genus %in% c(&quot;Lophocebus&quot;, &quot;Erythrocebus&quot;, &quot;Macaca&quot;))
-primate_genera</code></pre>
-<pre><code>## # A tibble: 15 x 13
-##    order family genus species   mass gestation newborn weaning wean_mass    AFR
-##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Prim… Cerco… Eryt… patas    5883.      5.56    546.    5.33     1950    32.8
-##  2 Prim… Cerco… Loph… albige…  6726.      5.97    462.    7.67     2170    57.6
-##  3 Prim… Cerco… Maca… thibet… 10037.      5.67    533.   18.8      2400  -999  
-##  4 Prim… Cerco… Maca… fuscata  8858.      5.72    505.   12.1      1768.   55.0
-##  5 Prim… Cerco… Maca… maura    5575       5.43    390.   16.7      -999    60  
-##  6 Prim… Cerco… Maca… sylvan…  9753.      5.49    450     7        2420    49.8
-##  7 Prim… Cerco… Maca… arctoi…  7308.      6       486.   11.2      2300    47.8
-##  8 Prim… Cerco… Maca… nigra    6212.      5.78    458.    7        -999    63.2
-##  9 Prim… Cerco… Maca… sinica   3495    -999       446    13.0      -999    54  
-## 10 Prim… Cerco… Maca… silenus  4875       5.94    418    12        -999    53.2
-## 11 Prim… Cerco… Maca… mulatta  5413.      5.47    476.    9.47     1454    41.1
-## 12 Prim… Cerco… Maca… cyclop…  6317.      5.4     401     6.87     -999  -999  
-## 13 Prim… Cerco… Maca… nemest…  6133.      5.71    476.   10.7      1416.   43.6
-## 14 Prim… Cerco… Maca… fascic…  3456.      5.49    408.    9.58      990.   43.6
-## 15 Prim… Cerco… Maca… radiata  3735       5.43    391.   10.7      2000    45.4
-## # … with 3 more variables: max_life &lt;dbl&gt;, litter_size &lt;dbl&gt;,
-## #   litters_per_year &lt;dbl&gt;</code></pre>
-<pre class="r"><code>view(primate_genera)</code></pre>
-<p>maura has the smallest newborn mass</p>
+<pre class="r"><code>good_guys %&gt;% 
+  tabyl(race)</code></pre>
+<pre><code>##               race   n     percent valid_percent
+##              Alien   3 0.006048387   0.010752688
+##              Alpha   5 0.010080645   0.017921147
+##             Amazon   2 0.004032258   0.007168459
+##            Android   4 0.008064516   0.014336918
+##             Animal   2 0.004032258   0.007168459
+##          Asgardian   3 0.006048387   0.010752688
+##          Atlantean   4 0.008064516   0.014336918
+##         Bolovaxian   1 0.002016129   0.003584229
+##              Clone   1 0.002016129   0.003584229
+##             Cyborg   3 0.006048387   0.010752688
+##           Demi-God   2 0.004032258   0.007168459
+##              Demon   3 0.006048387   0.010752688
+##            Eternal   1 0.002016129   0.003584229
+##     Flora Colossus   1 0.002016129   0.003584229
+##        Frost Giant   1 0.002016129   0.003584229
+##      God / Eternal   6 0.012096774   0.021505376
+##             Gungan   1 0.002016129   0.003584229
+##              Human 148 0.298387097   0.530465950
+##    Human / Altered   2 0.004032258   0.007168459
+##     Human / Cosmic   2 0.004032258   0.007168459
+##  Human / Radiation   8 0.016129032   0.028673835
+##         Human-Kree   2 0.004032258   0.007168459
+##      Human-Spartoi   1 0.002016129   0.003584229
+##       Human-Vulcan   1 0.002016129   0.003584229
+##    Human-Vuldarian   1 0.002016129   0.003584229
+##      Icthyo Sapien   1 0.002016129   0.003584229
+##            Inhuman   4 0.008064516   0.014336918
+##    Kakarantharaian   1 0.002016129   0.003584229
+##         Kryptonian   4 0.008064516   0.014336918
+##            Martian   1 0.002016129   0.003584229
+##          Metahuman   1 0.002016129   0.003584229
+##             Mutant  46 0.092741935   0.164874552
+##     Mutant / Clone   1 0.002016129   0.003584229
+##             Planet   1 0.002016129   0.003584229
+##             Saiyan   1 0.002016129   0.003584229
+##           Symbiote   3 0.006048387   0.010752688
+##           Talokite   1 0.002016129   0.003584229
+##         Tamaranean   1 0.002016129   0.003584229
+##            Ungaran   1 0.002016129   0.003584229
+##            Vampire   2 0.004032258   0.007168459
+##     Yoda&#39;s species   1 0.002016129   0.003584229
+##      Zen-Whoberian   1 0.002016129   0.003584229
+##               &lt;NA&gt; 217 0.437500000            NA</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Among the good guys, Who are the Asgardians?</li>
+</ol>
+<pre class="r"><code>good_guys %&gt;% 
+  filter(race==&quot;Asgardian&quot;)</code></pre>
+<pre><code>## # A tibble: 3 x 10
+##   name  gender eye_color race  hair_color height publisher skin_color alignment
+##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+## 1 Sif   Female blue      Asga… Black         188 Marvel C… &lt;NA&gt;       good     
+## 2 Thor  Male   blue      Asga… Blond         198 Marvel C… &lt;NA&gt;       good     
+## 3 Thor… Female blue      Asga… Blond         175 Marvel C… &lt;NA&gt;       good     
+## # … with 1 more variable: weight &lt;dbl&gt;</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Among the bad guys, who are the male humans over 200 inches in height?</li>
+</ol>
+<pre class="r"><code>bad_guys %&gt;% 
+  filter(gender==&quot;Male&quot;, race==&quot;Human&quot;, height&gt;200)</code></pre>
+<pre><code>## # A tibble: 5 x 10
+##   name  gender eye_color race  hair_color height publisher skin_color alignment
+##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+## 1 Bane  Male   &lt;NA&gt;      Human &lt;NA&gt;          203 DC Comics &lt;NA&gt;       bad      
+## 2 Doct… Male   brown     Human Brown         201 Marvel C… &lt;NA&gt;       bad      
+## 3 King… Male   blue      Human No Hair       201 Marvel C… &lt;NA&gt;       bad      
+## 4 Liza… Male   red       Human No Hair       203 Marvel C… &lt;NA&gt;       bad      
+## 5 Scor… Male   brown     Human Brown         211 Marvel C… &lt;NA&gt;       bad      
+## # … with 1 more variable: weight &lt;dbl&gt;</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>OK, so are there more good guys or bad guys that are bald (personal interest)?</li>
+</ol>
+<pre class="r"><code>good_guys_bald &lt;- good_guys%&gt;% 
+  filter(hair_color==&quot;No Hair&quot;)
+good_guys_bald</code></pre>
+<pre><code>## # A tibble: 37 x 10
+##    name  gender eye_color race  hair_color height publisher skin_color alignment
+##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+##  1 A-Bo… Male   yellow    Human No Hair       203 Marvel C… &lt;NA&gt;       good     
+##  2 Abe … Male   blue      Icth… No Hair       191 Dark Hor… blue       good     
+##  3 Abin… Male   blue      Unga… No Hair       185 DC Comics red        good     
+##  4 Beta… Male   &lt;NA&gt;      &lt;NA&gt;  No Hair       201 Marvel C… &lt;NA&gt;       good     
+##  5 Bish… Male   brown     Muta… No Hair       198 Marvel C… &lt;NA&gt;       good     
+##  6 Blac… Male   brown     &lt;NA&gt;  No Hair       185 DC Comics &lt;NA&gt;       good     
+##  7 Blaq… &lt;NA&gt;   black     &lt;NA&gt;  No Hair        NA Marvel C… &lt;NA&gt;       good     
+##  8 Bloo… Male   black     Muta… No Hair        NA Marvel C… &lt;NA&gt;       good     
+##  9 Crim… Male   brown     &lt;NA&gt;  No Hair       180 Marvel C… &lt;NA&gt;       good     
+## 10 Dona… Male   green     Muta… No Hair        NA IDW Publ… green      good     
+## # … with 27 more rows, and 1 more variable: weight &lt;dbl&gt;</code></pre>
+<pre class="r"><code>bad_guys_bald &lt;- bad_guys %&gt;% 
+  filter(hair_color==&quot;No Hair&quot;)
+bad_guys_bald</code></pre>
+<pre><code>## # A tibble: 35 x 10
+##    name  gender eye_color race  hair_color height publisher skin_color alignment
+##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
+##  1 Abom… Male   green     Huma… No Hair     203   Marvel C… &lt;NA&gt;       bad      
+##  2 Abso… Male   blue      Human No Hair     193   Marvel C… &lt;NA&gt;       bad      
+##  3 Alien Male   &lt;NA&gt;      Xeno… No Hair     244   Dark Hor… black      bad      
+##  4 Anni… Male   green     &lt;NA&gt;  No Hair     180   Marvel C… &lt;NA&gt;       bad      
+##  5 Anti… Male   yellow    God … No Hair      61   DC Comics &lt;NA&gt;       bad      
+##  6 Blac… Male   black     Human No Hair     188   DC Comics &lt;NA&gt;       bad      
+##  7 Bloo… Male   white     &lt;NA&gt;  No Hair      30.5 Marvel C… &lt;NA&gt;       bad      
+##  8 Brai… Male   green     Andr… No Hair     198   DC Comics green      bad      
+##  9 Dark… Male   red       New … No Hair     267   DC Comics grey       bad      
+## 10 Dart… Male   yellow    Cybo… No Hair     198   George L… &lt;NA&gt;       bad      
+## # … with 25 more rows, and 1 more variable: weight &lt;dbl&gt;</code></pre>
+<p>There are more good guys who are bald (37) than bad guys who are bald (35).</p>
+<ol start="10" style="list-style-type: decimal">
+<li>Let’s explore who the really “big” superheros are. In the <code>superhero_info</code> data, which have a height over 200 or weight over 300?</li>
+</ol>
+<pre class="r"><code>superhero_info %&gt;% 
+  select(name, height, weight) %&gt;% 
+  filter(height&gt;200 | weight&gt;300)</code></pre>
+<pre><code>## # A tibble: 65 x 3
+##    name          height weight
+##    &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;
+##  1 A-Bomb           203    441
+##  2 Abomination      203    441
+##  3 Alien            244    169
+##  4 Amazo            257    173
+##  5 Ant-Man          211    122
+##  6 Anti-Venom       229    358
+##  7 Apocalypse       213    135
+##  8 Bane             203    180
+##  9 Beta Ray Bill    201    216
+## 10 Bloodaxe         218    495
+## # … with 55 more rows</code></pre>
+<ol start="11" style="list-style-type: decimal">
+<li>Just to be clear on the <code>|</code> operator, have a look at the superheros over 300 in height…</li>
+</ol>
+<pre class="r"><code>superhero_info %&gt;% 
+  select(name, height) %&gt;% 
+  filter(height&gt;300)</code></pre>
+<pre><code>## # A tibble: 8 x 2
+##   name          height
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 Fin Fang Foom   975 
+## 2 Galactus        876 
+## 3 Groot           701 
+## 4 MODOK           366 
+## 5 Onslaught       305 
+## 6 Sasquatch       305 
+## 7 Wolfsbane       366 
+## 8 Ymir            305.</code></pre>
+<ol start="12" style="list-style-type: decimal">
+<li>…and the superheros over 450 in weight. Bonus question! Why do we not have 16 rows in question #10?</li>
+</ol>
+<pre class="r"><code>superhero_info %&gt;% 
+  select(name, weight) %&gt;% 
+  filter(weight&gt;450)</code></pre>
+<pre><code>## # A tibble: 8 x 2
+##   name       weight
+##   &lt;chr&gt;       &lt;dbl&gt;
+## 1 Bloodaxe      495
+## 2 Darkseid      817
+## 3 Giganta       630
+## 4 Hulk          630
+## 5 Juggernaut    855
+## 6 Red Hulk      630
+## 7 Sasquatch     900
+## 8 Wolfsbane     473</code></pre>
+<p>We do not have 16 rows in question #10 because question #11 does not account for superheroes with heights between 200 and 300, and question #12 does not account for superheroes with weights between 300 and 450, unlike question #10.</p>
 </div>
-<div id="wrap-up" class="section level2">
-<h2>Wrap-up</h2>
-<p>Please review the learning goals and be sure to use the code here as a reference when completing the homework.<br />
-–&gt;<a href="https://jmledford3115.github.io/datascibiol/">Home</a></p>
+<div id="height-to-weight-ratio" class="section level2">
+<h2>Height to Weight Ratio</h2>
+<ol start="13" style="list-style-type: decimal">
+<li>It’s easy to be strong when you are heavy and tall, but who is heavy and short? Which superheros have the highest height to weight ratio?</li>
+</ol>
+<pre class="r"><code>superhero_info %&gt;% 
+  mutate(height_weight_ratio=height/weight) %&gt;% 
+  select(name, height_weight_ratio) %&gt;% 
+  arrange(desc(height_weight_ratio))</code></pre>
+<pre><code>## # A tibble: 734 x 2
+##    name            height_weight_ratio
+##    &lt;chr&gt;                         &lt;dbl&gt;
+##  1 Groot                        175.  
+##  2 Galactus                      54.8 
+##  3 Fin Fang Foom                 54.2 
+##  4 Longshot                       5.22
+##  5 Jack-Jack                      5.07
+##  6 Rocket Raccoon                 4.88
+##  7 Dash                           4.52
+##  8 Howard the Duck                4.39
+##  9 Swarm                          4.17
+## 10 Yoda                           3.88
+## # … with 724 more rows</code></pre>
+</div>
+<div id="superhero_powers" class="section level2">
+<h2><code>superhero_powers</code></h2>
+<p>Have a quick look at the <code>superhero_powers</code> data frame.</p>
+<pre class="r"><code>superhero_powers</code></pre>
+<pre><code>## # A tibble: 667 x 168
+##    hero_names agility accelerated_hea… lantern_power_r… dimensional_awa…
+##    &lt;chr&gt;      &lt;lgl&gt;   &lt;lgl&gt;            &lt;lgl&gt;            &lt;lgl&gt;           
+##  1 3-D Man    TRUE    FALSE            FALSE            FALSE           
+##  2 A-Bomb     FALSE   TRUE             FALSE            FALSE           
+##  3 Abe Sapien TRUE    TRUE             FALSE            FALSE           
+##  4 Abin Sur   FALSE   FALSE            TRUE             FALSE           
+##  5 Abominati… FALSE   TRUE             FALSE            FALSE           
+##  6 Abraxas    FALSE   FALSE            FALSE            TRUE            
+##  7 Absorbing… FALSE   FALSE            FALSE            FALSE           
+##  8 Adam Monr… FALSE   TRUE             FALSE            FALSE           
+##  9 Adam Stra… FALSE   FALSE            FALSE            FALSE           
+## 10 Agent Bob  FALSE   FALSE            FALSE            FALSE           
+## # … with 657 more rows, and 163 more variables: cold_resistance &lt;lgl&gt;,
+## #   durability &lt;lgl&gt;, stealth &lt;lgl&gt;, energy_absorption &lt;lgl&gt;, flight &lt;lgl&gt;,
+## #   danger_sense &lt;lgl&gt;, underwater_breathing &lt;lgl&gt;, marksmanship &lt;lgl&gt;,
+## #   weapons_master &lt;lgl&gt;, power_augmentation &lt;lgl&gt;, animal_attributes &lt;lgl&gt;,
+## #   longevity &lt;lgl&gt;, intelligence &lt;lgl&gt;, super_strength &lt;lgl&gt;,
+## #   cryokinesis &lt;lgl&gt;, telepathy &lt;lgl&gt;, energy_armor &lt;lgl&gt;,
+## #   energy_blasts &lt;lgl&gt;, duplication &lt;lgl&gt;, size_changing &lt;lgl&gt;,
+## #   density_control &lt;lgl&gt;, stamina &lt;lgl&gt;, astral_travel &lt;lgl&gt;,
+## #   audio_control &lt;lgl&gt;, dexterity &lt;lgl&gt;, omnitrix &lt;lgl&gt;, super_speed &lt;lgl&gt;,
+## #   possession &lt;lgl&gt;, animal_oriented_powers &lt;lgl&gt;, weapon_based_powers &lt;lgl&gt;,
+## #   electrokinesis &lt;lgl&gt;, darkforce_manipulation &lt;lgl&gt;, death_touch &lt;lgl&gt;,
+## #   teleportation &lt;lgl&gt;, enhanced_senses &lt;lgl&gt;, telekinesis &lt;lgl&gt;,
+## #   energy_beams &lt;lgl&gt;, magic &lt;lgl&gt;, hyperkinesis &lt;lgl&gt;, jump &lt;lgl&gt;,
+## #   clairvoyance &lt;lgl&gt;, dimensional_travel &lt;lgl&gt;, power_sense &lt;lgl&gt;,
+## #   shapeshifting &lt;lgl&gt;, peak_human_condition &lt;lgl&gt;, immortality &lt;lgl&gt;,
+## #   camouflage &lt;lgl&gt;, element_control &lt;lgl&gt;, phasing &lt;lgl&gt;,
+## #   astral_projection &lt;lgl&gt;, electrical_transport &lt;lgl&gt;, fire_control &lt;lgl&gt;,
+## #   projection &lt;lgl&gt;, summoning &lt;lgl&gt;, enhanced_memory &lt;lgl&gt;, reflexes &lt;lgl&gt;,
+## #   invulnerability &lt;lgl&gt;, energy_constructs &lt;lgl&gt;, force_fields &lt;lgl&gt;,
+## #   self_sustenance &lt;lgl&gt;, anti_gravity &lt;lgl&gt;, empathy &lt;lgl&gt;,
+## #   power_nullifier &lt;lgl&gt;, radiation_control &lt;lgl&gt;, psionic_powers &lt;lgl&gt;,
+## #   elasticity &lt;lgl&gt;, substance_secretion &lt;lgl&gt;,
+## #   elemental_transmogrification &lt;lgl&gt;, technopath_cyberpath &lt;lgl&gt;,
+## #   photographic_reflexes &lt;lgl&gt;, seismic_power &lt;lgl&gt;, animation &lt;lgl&gt;,
+## #   precognition &lt;lgl&gt;, mind_control &lt;lgl&gt;, fire_resistance &lt;lgl&gt;,
+## #   power_absorption &lt;lgl&gt;, enhanced_hearing &lt;lgl&gt;, nova_force &lt;lgl&gt;,
+## #   insanity &lt;lgl&gt;, hypnokinesis &lt;lgl&gt;, animal_control &lt;lgl&gt;,
+## #   natural_armor &lt;lgl&gt;, intangibility &lt;lgl&gt;, enhanced_sight &lt;lgl&gt;,
+## #   molecular_manipulation &lt;lgl&gt;, heat_generation &lt;lgl&gt;, adaptation &lt;lgl&gt;,
+## #   gliding &lt;lgl&gt;, power_suit &lt;lgl&gt;, mind_blast &lt;lgl&gt;,
+## #   probability_manipulation &lt;lgl&gt;, gravity_control &lt;lgl&gt;, regeneration &lt;lgl&gt;,
+## #   light_control &lt;lgl&gt;, echolocation &lt;lgl&gt;, levitation &lt;lgl&gt;,
+## #   toxin_and_disease_control &lt;lgl&gt;, banish &lt;lgl&gt;, energy_manipulation &lt;lgl&gt;,
+## #   heat_resistance &lt;lgl&gt;, …</code></pre>
+<ol start="14" style="list-style-type: decimal">
+<li>How many superheros have a combination of accelerated healing, durability, and super strength?</li>
+</ol>
+<pre class="r"><code>superhero_powers %&gt;% 
+  filter(accelerated_healing==&quot;TRUE&quot; &amp; durability==&quot;TRUE&quot; &amp; super_strength==&quot;TRUE&quot;)</code></pre>
+<pre><code>## # A tibble: 97 x 168
+##    hero_names agility accelerated_hea… lantern_power_r… dimensional_awa…
+##    &lt;chr&gt;      &lt;lgl&gt;   &lt;lgl&gt;            &lt;lgl&gt;            &lt;lgl&gt;           
+##  1 A-Bomb     FALSE   TRUE             FALSE            FALSE           
+##  2 Abe Sapien TRUE    TRUE             FALSE            FALSE           
+##  3 Angel      TRUE    TRUE             FALSE            FALSE           
+##  4 Anti-Moni… FALSE   TRUE             FALSE            TRUE            
+##  5 Anti-Venom FALSE   TRUE             FALSE            FALSE           
+##  6 Aquaman    TRUE    TRUE             FALSE            FALSE           
+##  7 Arachne    TRUE    TRUE             FALSE            FALSE           
+##  8 Archangel  TRUE    TRUE             FALSE            FALSE           
+##  9 Ardina     TRUE    TRUE             FALSE            FALSE           
+## 10 Ares       TRUE    TRUE             FALSE            FALSE           
+## # … with 87 more rows, and 163 more variables: cold_resistance &lt;lgl&gt;,
+## #   durability &lt;lgl&gt;, stealth &lt;lgl&gt;, energy_absorption &lt;lgl&gt;, flight &lt;lgl&gt;,
+## #   danger_sense &lt;lgl&gt;, underwater_breathing &lt;lgl&gt;, marksmanship &lt;lgl&gt;,
+## #   weapons_master &lt;lgl&gt;, power_augmentation &lt;lgl&gt;, animal_attributes &lt;lgl&gt;,
+## #   longevity &lt;lgl&gt;, intelligence &lt;lgl&gt;, super_strength &lt;lgl&gt;,
+## #   cryokinesis &lt;lgl&gt;, telepathy &lt;lgl&gt;, energy_armor &lt;lgl&gt;,
+## #   energy_blasts &lt;lgl&gt;, duplication &lt;lgl&gt;, size_changing &lt;lgl&gt;,
+## #   density_control &lt;lgl&gt;, stamina &lt;lgl&gt;, astral_travel &lt;lgl&gt;,
+## #   audio_control &lt;lgl&gt;, dexterity &lt;lgl&gt;, omnitrix &lt;lgl&gt;, super_speed &lt;lgl&gt;,
+## #   possession &lt;lgl&gt;, animal_oriented_powers &lt;lgl&gt;, weapon_based_powers &lt;lgl&gt;,
+## #   electrokinesis &lt;lgl&gt;, darkforce_manipulation &lt;lgl&gt;, death_touch &lt;lgl&gt;,
+## #   teleportation &lt;lgl&gt;, enhanced_senses &lt;lgl&gt;, telekinesis &lt;lgl&gt;,
+## #   energy_beams &lt;lgl&gt;, magic &lt;lgl&gt;, hyperkinesis &lt;lgl&gt;, jump &lt;lgl&gt;,
+## #   clairvoyance &lt;lgl&gt;, dimensional_travel &lt;lgl&gt;, power_sense &lt;lgl&gt;,
+## #   shapeshifting &lt;lgl&gt;, peak_human_condition &lt;lgl&gt;, immortality &lt;lgl&gt;,
+## #   camouflage &lt;lgl&gt;, element_control &lt;lgl&gt;, phasing &lt;lgl&gt;,
+## #   astral_projection &lt;lgl&gt;, electrical_transport &lt;lgl&gt;, fire_control &lt;lgl&gt;,
+## #   projection &lt;lgl&gt;, summoning &lt;lgl&gt;, enhanced_memory &lt;lgl&gt;, reflexes &lt;lgl&gt;,
+## #   invulnerability &lt;lgl&gt;, energy_constructs &lt;lgl&gt;, force_fields &lt;lgl&gt;,
+## #   self_sustenance &lt;lgl&gt;, anti_gravity &lt;lgl&gt;, empathy &lt;lgl&gt;,
+## #   power_nullifier &lt;lgl&gt;, radiation_control &lt;lgl&gt;, psionic_powers &lt;lgl&gt;,
+## #   elasticity &lt;lgl&gt;, substance_secretion &lt;lgl&gt;,
+## #   elemental_transmogrification &lt;lgl&gt;, technopath_cyberpath &lt;lgl&gt;,
+## #   photographic_reflexes &lt;lgl&gt;, seismic_power &lt;lgl&gt;, animation &lt;lgl&gt;,
+## #   precognition &lt;lgl&gt;, mind_control &lt;lgl&gt;, fire_resistance &lt;lgl&gt;,
+## #   power_absorption &lt;lgl&gt;, enhanced_hearing &lt;lgl&gt;, nova_force &lt;lgl&gt;,
+## #   insanity &lt;lgl&gt;, hypnokinesis &lt;lgl&gt;, animal_control &lt;lgl&gt;,
+## #   natural_armor &lt;lgl&gt;, intangibility &lt;lgl&gt;, enhanced_sight &lt;lgl&gt;,
+## #   molecular_manipulation &lt;lgl&gt;, heat_generation &lt;lgl&gt;, adaptation &lt;lgl&gt;,
+## #   gliding &lt;lgl&gt;, power_suit &lt;lgl&gt;, mind_blast &lt;lgl&gt;,
+## #   probability_manipulation &lt;lgl&gt;, gravity_control &lt;lgl&gt;, regeneration &lt;lgl&gt;,
+## #   light_control &lt;lgl&gt;, echolocation &lt;lgl&gt;, levitation &lt;lgl&gt;,
+## #   toxin_and_disease_control &lt;lgl&gt;, banish &lt;lgl&gt;, energy_manipulation &lt;lgl&gt;,
+## #   heat_resistance &lt;lgl&gt;, …</code></pre>
+</div>
+<div id="kinesis" class="section level2">
+<h2><code>kinesis</code></h2>
+<ol start="15" style="list-style-type: decimal">
+<li>We are only interested in the superheros that do some kind of “kinesis”. How would we isolate them from the <code>superhero_powers</code> data?</li>
+</ol>
+<pre class="r"><code>superhero_powers %&gt;% 
+  select(hero_names, ends_with(&quot;kinesis&quot;))</code></pre>
+<pre><code>## # A tibble: 667 x 10
+##    hero_names cryokinesis electrokinesis telekinesis hyperkinesis hypnokinesis
+##    &lt;chr&gt;      &lt;lgl&gt;       &lt;lgl&gt;          &lt;lgl&gt;       &lt;lgl&gt;        &lt;lgl&gt;       
+##  1 3-D Man    FALSE       FALSE          FALSE       FALSE        FALSE       
+##  2 A-Bomb     FALSE       FALSE          FALSE       FALSE        FALSE       
+##  3 Abe Sapien FALSE       FALSE          FALSE       FALSE        FALSE       
+##  4 Abin Sur   FALSE       FALSE          FALSE       FALSE        FALSE       
+##  5 Abominati… FALSE       FALSE          FALSE       FALSE        FALSE       
+##  6 Abraxas    FALSE       FALSE          FALSE       FALSE        FALSE       
+##  7 Absorbing… FALSE       FALSE          FALSE       FALSE        FALSE       
+##  8 Adam Monr… FALSE       FALSE          FALSE       FALSE        FALSE       
+##  9 Adam Stra… FALSE       FALSE          FALSE       FALSE        FALSE       
+## 10 Agent Bob  FALSE       FALSE          FALSE       FALSE        FALSE       
+## # … with 657 more rows, and 4 more variables: thirstokinesis &lt;lgl&gt;,
+## #   biokinesis &lt;lgl&gt;, terrakinesis &lt;lgl&gt;, vitakinesis &lt;lgl&gt;</code></pre>
+<ol start="16" style="list-style-type: decimal">
+<li>Pick your favorite superhero and let’s see their powers!</li>
+</ol>
+<pre class="r"><code>superhero_powers %&gt;% 
+  filter(hero_names==&quot;Thor&quot;) %&gt;% 
+  select_if(all_vars(.==&quot;TRUE&quot;))</code></pre>
+<pre><code>## Warning: The `.predicate` argument of `select_if()` can&#39;t contain quosures. as of dplyr 0.8.3.
+## Please use a one-sided formula, a function, or a function name.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## # A tibble: 1 x 18
+##   agility accelerated_hea… durability flight longevity super_strength stamina
+##   &lt;lgl&gt;   &lt;lgl&gt;            &lt;lgl&gt;      &lt;lgl&gt;  &lt;lgl&gt;     &lt;lgl&gt;          &lt;lgl&gt;  
+## 1 TRUE    TRUE             TRUE       TRUE   TRUE      TRUE           TRUE   
+## # … with 11 more variables: super_speed &lt;lgl&gt;, weapon_based_powers &lt;lgl&gt;,
+## #   teleportation &lt;lgl&gt;, enhanced_senses &lt;lgl&gt;, magic &lt;lgl&gt;,
+## #   element_control &lt;lgl&gt;, reflexes &lt;lgl&gt;, invulnerability &lt;lgl&gt;,
+## #   toxin_and_disease_resistance &lt;lgl&gt;, weather_control &lt;lgl&gt;, odin_force &lt;lgl&gt;</code></pre>
+</div>
+<div id="push-your-final-code-to-github" class="section level2">
+<h2>Push your final code to GitHub!</h2>
+<p>Please be sure that you check the <code>keep md</code> file in the knit preferences.</p>
 </div>
 
 
