@@ -486,29 +486,32 @@ There are more good guys who are bald (37) than bad guys who are bald (35).
 
 
 
-10. Let's explore who the really "big" superheros are. In the `superhero_info` data, which have a height over 200 or weight over 300?
+10. Let's explore who the really "big" superheros are. In the `superhero_info` data, which have a height over 300 or weight over 450?
 
 ```r
 superhero_info %>% 
   select(name, height, weight) %>% 
-  filter(height>200 | weight>300)
+  filter(height>300 | weight>450)
 ```
 
 ```
-## # A tibble: 65 x 3
+## # A tibble: 14 x 3
 ##    name          height weight
 ##    <chr>          <dbl>  <dbl>
-##  1 A-Bomb           203    441
-##  2 Abomination      203    441
-##  3 Alien            244    169
-##  4 Amazo            257    173
-##  5 Ant-Man          211    122
-##  6 Anti-Venom       229    358
-##  7 Apocalypse       213    135
-##  8 Bane             203    180
-##  9 Beta Ray Bill    201    216
-## 10 Bloodaxe         218    495
-## # … with 55 more rows
+##  1 Bloodaxe       218      495
+##  2 Darkseid       267      817
+##  3 Fin Fang Foom  975       18
+##  4 Galactus       876       16
+##  5 Giganta         62.5    630
+##  6 Groot          701        4
+##  7 Hulk           244      630
+##  8 Juggernaut     287      855
+##  9 MODOK          366      338
+## 10 Onslaught      305      405
+## 11 Red Hulk       213      630
+## 12 Sasquatch      305      900
+## 13 Wolfsbane      366      473
+## 14 Ymir           305.      NA
 ```
 
 11. Just to be clear on the `|` operator,  have a look at the superheros over 300 in height...
@@ -554,7 +557,7 @@ superhero_info %>%
 ## 7 Sasquatch     900
 ## 8 Wolfsbane     473
 ```
-We do not have 16 rows in question #10 because question #11 does not account for superheroes with heights between 200 and 300, and question #12 does not account for superheroes with weights between 300 and 450, unlike question #10.
+We do not have 16 rows in question #10 because there are some superheroes who are both over 300 in height and over 450 in weight, so they are accounted for twice when you add up the results from #11 and #12.
 
 
 ## Height to Weight Ratio
