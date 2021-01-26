@@ -701,6 +701,10 @@ superhero_powers %>%
 ## #   toxin_and_disease_control <lgl>, banish <lgl>, energy_manipulation <lgl>,
 ## #   heat_resistance <lgl>, ...
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 ## `kinesis`
 15. We are only interested in the superheros that do some kind of "kinesis". How would we isolate them from the `superhero_powers` data?
@@ -727,6 +731,7 @@ superhero_powers %>%
 ## # ... with 657 more rows, and 4 more variables: thirstokinesis <lgl>,
 ## #   biokinesis <lgl>, terrakinesis <lgl>, vitakinesis <lgl>
 ```
+</div>
 
 16. Pick your favorite superhero and let's see their powers!
 

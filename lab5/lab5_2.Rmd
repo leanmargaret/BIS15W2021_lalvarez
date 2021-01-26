@@ -191,6 +191,10 @@ superhero_powers
 superhero_powers %>% 
   filter(accelerated_healing=="TRUE" & durability=="TRUE" & super_strength=="TRUE")
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 ## `kinesis`
 15. We are only interested in the superheros that do some kind of "kinesis". How would we isolate them from the `superhero_powers` data?
@@ -198,6 +202,7 @@ superhero_powers %>%
 superhero_powers %>% 
   select(hero_names, ends_with("kinesis"))
 ```
+</div>
 
 16. Pick your favorite superhero and let's see their powers!
 ```{r}
