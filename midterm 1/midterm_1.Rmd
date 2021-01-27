@@ -1,0 +1,183 @@
+---
+title: "Midterm 1"
+author: "Lean Alvarez"
+date: "`r Sys.Date()`"
+output:
+  html_document: 
+    theme: spacelab
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your code should be organized, clean, and run free from errors. Be sure to **add your name** to the author header above. You may use any resources to answer these questions (including each other), but you may not post questions to Open Stacks or external help sites. There are 12 total questions.  
+
+Make sure to use the formatting conventions of RMarkdown to make your report neat and clean!  
+
+This exam is due by **12:00p on Thursday, January 28**.  
+
+## Load the tidyverse
+If you plan to use any other libraries to complete this assignment then you should load them here.
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(janitor)
+```
+
+## Questions
+**1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?**  
+R and RStudio allows us develop codes that help us organize and analyze our data. GitHub allows us to share our work from R and RStudio to others so they are able to see what we did, allowing them to replicate our work and make improvements. RMarkdown is useful because it can create outputs of our work that others are able to see easily, such as an md file, and others can see our step-by-step processes and easily make improvements on our work by simply accessing the same RMarkdown as us.
+
+**2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
+We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people's work), and data frames allow us to have as much data of any kind put together all in just one structure.
+
+
+In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
+
+**3. (2 points) Please load these data as a new object called `elephants`. Use the function(s) of your choice to get an idea of the structure of the data. Be sure to show the class of each variable.**
+```{r}
+elephants <- readr::read_csv("data/ElephantsMF.csv")
+```
+```{r}
+summary(elephants)
+```
+```{r}
+glimpse(elephants)
+```
+
+```{r}
+class("Age")
+class("Height")
+class("Sex")
+```
+
+
+
+**4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
+```{r}
+elephants <- janitor::clean_names(elephants)
+elephants$sex <- as.factor(elephants$sex)
+elephants
+```
+
+
+
+**5. (2 points) How many male and female elephants are represented in the data?**
+```{r}
+elephants %>% 
+  count(sex)
+```
+There are 150 female elephants and 138 male elephants in the data.
+
+**6. (2 points) What is the average age of all elephants in the data?**
+```{r}
+elephants %>% 
+  summarise(mean_age_elephants=mean(age))
+```
+The average age of all elephants in the data is about 11 years old.
+
+**7. (2 points) How does the average age and height of elephants compare by sex?**
+```{r}
+elephants %>% 
+  filter(sex=="M") %>% 
+  summarize(mean_age=mean(age), mean_height=mean(height))
+```
+```{r}
+elephants %>% 
+  filter(sex=="F") %>% 
+  summarize(mean_age=mean(age), mean_height=mean(height))
+```
+On average, females are older and taller than males.
+
+
+**8. (2 points) How does the average height of elephants compare by sex for individuals over 25 years old. Include the min and max height as well as the number of individuals in the sample as part of your analysis.**
+
+```{r}
+elephants %>% 
+  filter(sex=="M", age>25) %>% 
+  summarize(min_height_M=min(height), max_height_M=max(height), mean_height_M=mean(height),
+            n=n())
+```
+```{r}
+elephants %>% 
+  filter(sex=="F", age>25) %>% 
+  summarize(min_height_F=min(height), max_height_F=max(height), mean_height_F=mean(height),
+            n=n())
+```
+For individuals over 25 years old, males have a higher minimum, maximum, and mean height. However, since there are only 8 samples for males compared to the 25 samples for females, this would likely change when more samples are added.
+
+
+
+For the next series of questions, we will use data from a study on vertebrate community composition and impacts from defaunation in [Gabon, Africa](https://en.wikipedia.org/wiki/Gabon). One thing to notice is that the data include 24 separate transects. Each transect represents a path through different forest management areas.  
+
+Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ. Vertebrate community composition and diversity declines along a defaunation gradient radiating from rural villages in Gabon. _Journal of Applied Ecology_. 2016. This paper, along with a description of the variables is included inside the midterm 1 folder.  
+
+**9. (2 points) Load `IvindoData_DryadVersion.csv` and use the function(s) of your choice to get an idea of the overall structure. Change the variables `HuntCat` and `LandUse` to factors.**
+```{r}
+gabon <- readr::read_csv("data/IvindoData_DryadVersion.csv")
+```
+
+```{r}
+gabon <- janitor::clean_names(gabon)
+gabon
+```
+
+
+```{r}
+summary(gabon)
+```
+```{r}
+gabon$hunt_cat <- as.factor(gabon$hunt_cat)
+gabon$land_use <- as.factor(gabon$land_use)
+```
+
+
+
+**10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
+
+```{r}
+gabon %>% 
+  filter(hunt_cat=="Moderate") %>% 
+  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))
+```
+```{r}
+gabon %>% 
+  filter(hunt_cat=="High") %>% 
+  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))
+```
+Transects with high hunting intensity have a higher average diversity of birds and mammals than transects with moderate hunting intensity.
+
+
+
+**11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let's try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable `Distance` measures the distance of the transect from the nearest village. Hint: try using the `across` operator.**  
+```{r}
+far <- gabon %>% 
+  filter(distance>20) %>% 
+  summarize(across(contains("ra_"), mean))
+far
+```
+```{r}
+near <- gabon %>% 
+  filter(distance<5) %>% 
+  summarize(across(contains("ra_"), mean))
+near
+```
+For apes, elephants, monkeys, and ungulates, their relative abundances are higher when they are more than 20 km away from a village. This might be because larger animals would tend to live away from humans because they might be hunted by humans or there is not enough space for them to live close to humans. For birds and rodents, their relative abundances are lower when they are less than 5 km away from a village. Perhaps this is because birds can fly, so they can easily travel back and forth and live in the trees where humans are not also living in. As for rodents, it might be because they are quite small in size, so they are able to live with humans.
+
+```{r}
+gabon
+```
+
+
+**12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
+```{r}
+gabon %>% 
+  filter(hunt_cat=="None") %>% 
+  summarize(avg_rich_birds=mean(rich_bird_species), avg_rich_mammals=mean(rich_mammal_species))
+```
+When their transects have no hunting intensity, mammals have a higher species richness than birds. 
+
+
+
