@@ -1,7 +1,7 @@
 ---
 title: "dplyr Superhero"
 author: "Lean Alvarez"
-date: "2021-01-20"
+date: "2021-01-25"
 output:
   html_document: 
     theme: spacelab
@@ -28,18 +28,18 @@ library("tidyverse")
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
 ```
 
 ```
-## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.0
+## √ ggplot2 3.3.3     √ purrr   0.3.4
+## √ tibble  3.0.5     √ dplyr   1.0.3
+## √ tidyr   1.1.2     √ stringr 1.4.0
+## √ readr   1.4.0     √ forcats 0.5.0
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -55,7 +55,7 @@ superhero_info <- readr::read_csv("data/heroes_information.csv", na = c("", "-99
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   name = col_character(),
 ##   Gender = col_character(),
@@ -76,12 +76,12 @@ superhero_powers <- readr::read_csv("data/super_hero_powers.csv", na = c("", "-9
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_logical(),
 ##   hero_names = col_character()
 ## )
-## ℹ Use `spec()` for the full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 ## Data tidy
@@ -98,17 +98,17 @@ superhero_info %>%
 ## # A tibble: 734 x 10
 ##    name  gender eye_color race  hair_color height publisher skin_color alignment
 ##    <chr> <chr>  <chr>     <chr> <chr>      <chr>  <chr>     <chr>      <chr>    
-##  1 a-bo… male   yellow    human no hair    203    marvel c… <NA>       good     
-##  2 abe … male   blue      icth… no hair    191    dark hor… blue       good     
-##  3 abin… male   blue      unga… no hair    185    dc comics red        good     
-##  4 abom… male   green     huma… no hair    203    marvel c… <NA>       bad      
-##  5 abra… male   blue      cosm… black      <NA>   marvel c… <NA>       bad      
-##  6 abso… male   blue      human no hair    193    marvel c… <NA>       bad      
-##  7 adam… male   blue      <NA>  blond      <NA>   nbc - he… <NA>       good     
-##  8 adam… male   blue      human blond      185    dc comics <NA>       good     
-##  9 agen… female blue      <NA>  blond      173    marvel c… <NA>       good     
-## 10 agen… male   brown     human brown      178    marvel c… <NA>       good     
-## # … with 724 more rows, and 1 more variable: weight <chr>
+##  1 a-bo~ male   yellow    human no hair    203    marvel c~ <NA>       good     
+##  2 abe ~ male   blue      icth~ no hair    191    dark hor~ blue       good     
+##  3 abin~ male   blue      unga~ no hair    185    dc comics red        good     
+##  4 abom~ male   green     huma~ no hair    203    marvel c~ <NA>       bad      
+##  5 abra~ male   blue      cosm~ black      <NA>   marvel c~ <NA>       bad      
+##  6 abso~ male   blue      human no hair    193    marvel c~ <NA>       bad      
+##  7 adam~ male   blue      <NA>  blond      <NA>   nbc - he~ <NA>       good     
+##  8 adam~ male   blue      human blond      185    dc comics <NA>       good     
+##  9 agen~ female blue      <NA>  blond      173    marvel c~ <NA>       good     
+## 10 agen~ male   brown     human brown      178    marvel c~ <NA>       good     
+## # ... with 724 more rows, and 1 more variable: weight <chr>
 ```
 
 Yikes! `superhero_powers` has a lot of variables that are poorly named. We need some R superpowers...
@@ -122,19 +122,19 @@ superhero_powers %>%
 
 ```
 ## # A tibble: 667 x 168
-##    hero_names agility accelerated_hea… `lantern_power … dimensional_awa…
+##    hero_names agility accelerated_hea~ `lantern_power ~ dimensional_awa~
 ##    <chr>      <chr>   <chr>            <chr>            <chr>           
 ##  1 3-d man    true    false            false            false           
 ##  2 a-bomb     false   true             false            false           
 ##  3 abe sapien true    true             false            false           
 ##  4 abin sur   false   false            true             false           
-##  5 abominati… false   true             false            false           
+##  5 abominati~ false   true             false            false           
 ##  6 abraxas    false   false            false            true            
-##  7 absorbing… false   false            false            false           
-##  8 adam monr… false   true             false            false           
-##  9 adam stra… false   false            false            false           
+##  7 absorbing~ false   false            false            false           
+##  8 adam monr~ false   true             false            false           
+##  9 adam stra~ false   false            false            false           
 ## 10 agent bob  false   false            false            false           
-## # … with 657 more rows, and 163 more variables: cold_resistance <chr>,
+## # ... with 657 more rows, and 163 more variables: cold_resistance <chr>,
 ## #   durability <chr>, stealth <chr>, energy_absorption <chr>, flight <chr>,
 ## #   danger_sense <chr>, underwater_breathing <chr>, marksmanship <chr>,
 ## #   weapons_master <chr>, power_augmentation <chr>, animal_attributes <chr>,
@@ -168,7 +168,7 @@ superhero_powers %>%
 ## #   probability_manipulation <chr>, gravity_control <chr>, regeneration <chr>,
 ## #   light_control <chr>, echolocation <chr>, levitation <chr>, `toxin_and
 ## #   disease control` <chr>, banish <chr>, energy_manipulation <chr>,
-## #   heat_resistance <chr>, …
+## #   heat_resistance <chr>, ...
 ```
 
 
@@ -235,7 +235,7 @@ superhero_info %>%
 ##  8 Galactus     neutral  
 ##  9 Gladiator    neutral  
 ## 10 Indigo       neutral  
-## # … with 14 more rows
+## # ... with 14 more rows
 ```
 
 
@@ -262,7 +262,7 @@ superhero_info %>%
 ##  8 Adam Strange  good      Human            
 ##  9 Agent 13      good      <NA>             
 ## 10 Agent Bob     good      Human            
-## # … with 724 more rows
+## # ... with 724 more rows
 ```
 
 
@@ -289,7 +289,7 @@ superhero_info %>%
 ##  8 Angel        Vampire          
 ##  9 Angel Dust   Mutant           
 ## 10 Anti-Monitor God / Eternal    
-## # … with 212 more rows
+## # ... with 212 more rows
 ```
 
 
@@ -306,17 +306,17 @@ good_guys
 ## # A tibble: 496 x 10
 ##    name  gender eye_color race  hair_color height publisher skin_color alignment
 ##    <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
-##  1 A-Bo… Male   yellow    Human No Hair       203 Marvel C… <NA>       good     
-##  2 Abe … Male   blue      Icth… No Hair       191 Dark Hor… blue       good     
-##  3 Abin… Male   blue      Unga… No Hair       185 DC Comics red        good     
-##  4 Adam… Male   blue      <NA>  Blond          NA NBC - He… <NA>       good     
-##  5 Adam… Male   blue      Human Blond         185 DC Comics <NA>       good     
-##  6 Agen… Female blue      <NA>  Blond         173 Marvel C… <NA>       good     
-##  7 Agen… Male   brown     Human Brown         178 Marvel C… <NA>       good     
-##  8 Agen… Male   <NA>      <NA>  <NA>          191 Marvel C… <NA>       good     
-##  9 Alan… Male   blue      <NA>  Blond         180 DC Comics <NA>       good     
-## 10 Alex… Male   <NA>      <NA>  <NA>           NA NBC - He… <NA>       good     
-## # … with 486 more rows, and 1 more variable: weight <dbl>
+##  1 A-Bo~ Male   yellow    Human No Hair       203 Marvel C~ <NA>       good     
+##  2 Abe ~ Male   blue      Icth~ No Hair       191 Dark Hor~ blue       good     
+##  3 Abin~ Male   blue      Unga~ No Hair       185 DC Comics red        good     
+##  4 Adam~ Male   blue      <NA>  Blond          NA NBC - He~ <NA>       good     
+##  5 Adam~ Male   blue      Human Blond         185 DC Comics <NA>       good     
+##  6 Agen~ Female blue      <NA>  Blond         173 Marvel C~ <NA>       good     
+##  7 Agen~ Male   brown     Human Brown         178 Marvel C~ <NA>       good     
+##  8 Agen~ Male   <NA>      <NA>  <NA>          191 Marvel C~ <NA>       good     
+##  9 Alan~ Male   blue      <NA>  Blond         180 DC Comics <NA>       good     
+## 10 Alex~ Male   <NA>      <NA>  <NA>           NA NBC - He~ <NA>       good     
+## # ... with 486 more rows, and 1 more variable: weight <dbl>
 ```
 
 
@@ -330,17 +330,17 @@ bad_guys
 ## # A tibble: 207 x 10
 ##    name  gender eye_color race  hair_color height publisher skin_color alignment
 ##    <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
-##  1 Abom… Male   green     Huma… No Hair       203 Marvel C… <NA>       bad      
-##  2 Abra… Male   blue      Cosm… Black          NA Marvel C… <NA>       bad      
-##  3 Abso… Male   blue      Human No Hair       193 Marvel C… <NA>       bad      
-##  4 Air-… Male   blue      <NA>  White         188 Marvel C… <NA>       bad      
-##  5 Ajax  Male   brown     Cybo… Black         193 Marvel C… <NA>       bad      
-##  6 Alex… Male   <NA>      Human <NA>           NA Wildstorm <NA>       bad      
-##  7 Alien Male   <NA>      Xeno… No Hair       244 Dark Hor… black      bad      
-##  8 Amazo Male   red       Andr… <NA>          257 DC Comics <NA>       bad      
-##  9 Ammo  Male   brown     Human Black         188 Marvel C… <NA>       bad      
-## 10 Ange… Female <NA>      <NA>  <NA>           NA Image Co… <NA>       bad      
-## # … with 197 more rows, and 1 more variable: weight <dbl>
+##  1 Abom~ Male   green     Huma~ No Hair       203 Marvel C~ <NA>       bad      
+##  2 Abra~ Male   blue      Cosm~ Black          NA Marvel C~ <NA>       bad      
+##  3 Abso~ Male   blue      Human No Hair       193 Marvel C~ <NA>       bad      
+##  4 Air-~ Male   blue      <NA>  White         188 Marvel C~ <NA>       bad      
+##  5 Ajax  Male   brown     Cybo~ Black         193 Marvel C~ <NA>       bad      
+##  6 Alex~ Male   <NA>      Human <NA>           NA Wildstorm <NA>       bad      
+##  7 Alien Male   <NA>      Xeno~ No Hair       244 Dark Hor~ black      bad      
+##  8 Amazo Male   red       Andr~ <NA>          257 DC Comics <NA>       bad      
+##  9 Ammo  Male   brown     Human Black         188 Marvel C~ <NA>       bad      
+## 10 Ange~ Female <NA>      <NA>  <NA>           NA Image Co~ <NA>       bad      
+## # ... with 197 more rows, and 1 more variable: weight <dbl>
 ```
 
 6. For the good guys, use the `tabyl` function to summarize their "race".
@@ -370,13 +370,13 @@ good_guys %>%
 ##      God / Eternal   6 0.012096774   0.021505376
 ##             Gungan   1 0.002016129   0.003584229
 ##              Human 148 0.298387097   0.530465950
-##    Human / Altered   2 0.004032258   0.007168459
-##     Human / Cosmic   2 0.004032258   0.007168459
-##  Human / Radiation   8 0.016129032   0.028673835
 ##         Human-Kree   2 0.004032258   0.007168459
 ##      Human-Spartoi   1 0.002016129   0.003584229
 ##       Human-Vulcan   1 0.002016129   0.003584229
 ##    Human-Vuldarian   1 0.002016129   0.003584229
+##    Human / Altered   2 0.004032258   0.007168459
+##     Human / Cosmic   2 0.004032258   0.007168459
+##  Human / Radiation   8 0.016129032   0.028673835
 ##      Icthyo Sapien   1 0.002016129   0.003584229
 ##            Inhuman   4 0.008064516   0.014336918
 ##    Kakarantharaian   1 0.002016129   0.003584229
@@ -408,10 +408,10 @@ good_guys %>%
 ## # A tibble: 3 x 10
 ##   name  gender eye_color race  hair_color height publisher skin_color alignment
 ##   <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
-## 1 Sif   Female blue      Asga… Black         188 Marvel C… <NA>       good     
-## 2 Thor  Male   blue      Asga… Blond         198 Marvel C… <NA>       good     
-## 3 Thor… Female blue      Asga… Blond         175 Marvel C… <NA>       good     
-## # … with 1 more variable: weight <dbl>
+## 1 Sif   Female blue      Asga~ Black         188 Marvel C~ <NA>       good     
+## 2 Thor  Male   blue      Asga~ Blond         198 Marvel C~ <NA>       good     
+## 3 Thor~ Female blue      Asga~ Blond         175 Marvel C~ <NA>       good     
+## # ... with 1 more variable: weight <dbl>
 ```
 
 8. Among the bad guys, who are the male humans over 200 inches in height?
@@ -426,11 +426,11 @@ bad_guys %>%
 ##   name  gender eye_color race  hair_color height publisher skin_color alignment
 ##   <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
 ## 1 Bane  Male   <NA>      Human <NA>          203 DC Comics <NA>       bad      
-## 2 Doct… Male   brown     Human Brown         201 Marvel C… <NA>       bad      
-## 3 King… Male   blue      Human No Hair       201 Marvel C… <NA>       bad      
-## 4 Liza… Male   red       Human No Hair       203 Marvel C… <NA>       bad      
-## 5 Scor… Male   brown     Human Brown         211 Marvel C… <NA>       bad      
-## # … with 1 more variable: weight <dbl>
+## 2 Doct~ Male   brown     Human Brown         201 Marvel C~ <NA>       bad      
+## 3 King~ Male   blue      Human No Hair       201 Marvel C~ <NA>       bad      
+## 4 Liza~ Male   red       Human No Hair       203 Marvel C~ <NA>       bad      
+## 5 Scor~ Male   brown     Human Brown         211 Marvel C~ <NA>       bad      
+## # ... with 1 more variable: weight <dbl>
 ```
 
 
@@ -446,17 +446,17 @@ good_guys_bald
 ## # A tibble: 37 x 10
 ##    name  gender eye_color race  hair_color height publisher skin_color alignment
 ##    <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
-##  1 A-Bo… Male   yellow    Human No Hair       203 Marvel C… <NA>       good     
-##  2 Abe … Male   blue      Icth… No Hair       191 Dark Hor… blue       good     
-##  3 Abin… Male   blue      Unga… No Hair       185 DC Comics red        good     
-##  4 Beta… Male   <NA>      <NA>  No Hair       201 Marvel C… <NA>       good     
-##  5 Bish… Male   brown     Muta… No Hair       198 Marvel C… <NA>       good     
-##  6 Blac… Male   brown     <NA>  No Hair       185 DC Comics <NA>       good     
-##  7 Blaq… <NA>   black     <NA>  No Hair        NA Marvel C… <NA>       good     
-##  8 Bloo… Male   black     Muta… No Hair        NA Marvel C… <NA>       good     
-##  9 Crim… Male   brown     <NA>  No Hair       180 Marvel C… <NA>       good     
-## 10 Dona… Male   green     Muta… No Hair        NA IDW Publ… green      good     
-## # … with 27 more rows, and 1 more variable: weight <dbl>
+##  1 A-Bo~ Male   yellow    Human No Hair       203 Marvel C~ <NA>       good     
+##  2 Abe ~ Male   blue      Icth~ No Hair       191 Dark Hor~ blue       good     
+##  3 Abin~ Male   blue      Unga~ No Hair       185 DC Comics red        good     
+##  4 Beta~ Male   <NA>      <NA>  No Hair       201 Marvel C~ <NA>       good     
+##  5 Bish~ Male   brown     Muta~ No Hair       198 Marvel C~ <NA>       good     
+##  6 Blac~ Male   brown     <NA>  No Hair       185 DC Comics <NA>       good     
+##  7 Blaq~ <NA>   black     <NA>  No Hair        NA Marvel C~ <NA>       good     
+##  8 Bloo~ Male   black     Muta~ No Hair        NA Marvel C~ <NA>       good     
+##  9 Crim~ Male   brown     <NA>  No Hair       180 Marvel C~ <NA>       good     
+## 10 Dona~ Male   green     Muta~ No Hair        NA IDW Publ~ green      good     
+## # ... with 27 more rows, and 1 more variable: weight <dbl>
 ```
 
 
@@ -470,17 +470,17 @@ bad_guys_bald
 ## # A tibble: 35 x 10
 ##    name  gender eye_color race  hair_color height publisher skin_color alignment
 ##    <chr> <chr>  <chr>     <chr> <chr>       <dbl> <chr>     <chr>      <chr>    
-##  1 Abom… Male   green     Huma… No Hair     203   Marvel C… <NA>       bad      
-##  2 Abso… Male   blue      Human No Hair     193   Marvel C… <NA>       bad      
-##  3 Alien Male   <NA>      Xeno… No Hair     244   Dark Hor… black      bad      
-##  4 Anni… Male   green     <NA>  No Hair     180   Marvel C… <NA>       bad      
-##  5 Anti… Male   yellow    God … No Hair      61   DC Comics <NA>       bad      
-##  6 Blac… Male   black     Human No Hair     188   DC Comics <NA>       bad      
-##  7 Bloo… Male   white     <NA>  No Hair      30.5 Marvel C… <NA>       bad      
-##  8 Brai… Male   green     Andr… No Hair     198   DC Comics green      bad      
-##  9 Dark… Male   red       New … No Hair     267   DC Comics grey       bad      
-## 10 Dart… Male   yellow    Cybo… No Hair     198   George L… <NA>       bad      
-## # … with 25 more rows, and 1 more variable: weight <dbl>
+##  1 Abom~ Male   green     Huma~ No Hair     203   Marvel C~ <NA>       bad      
+##  2 Abso~ Male   blue      Human No Hair     193   Marvel C~ <NA>       bad      
+##  3 Alien Male   <NA>      Xeno~ No Hair     244   Dark Hor~ black      bad      
+##  4 Anni~ Male   green     <NA>  No Hair     180   Marvel C~ <NA>       bad      
+##  5 Anti~ Male   yellow    God ~ No Hair      61   DC Comics <NA>       bad      
+##  6 Blac~ Male   black     Human No Hair     188   DC Comics <NA>       bad      
+##  7 Bloo~ Male   white     <NA>  No Hair      30.5 Marvel C~ <NA>       bad      
+##  8 Brai~ Male   green     Andr~ No Hair     198   DC Comics green      bad      
+##  9 Dark~ Male   red       New ~ No Hair     267   DC Comics grey       bad      
+## 10 Dart~ Male   yellow    Cybo~ No Hair     198   George L~ <NA>       bad      
+## # ... with 25 more rows, and 1 more variable: weight <dbl>
 ```
 There are more good guys who are bald (37) than bad guys who are bald (35).
 
@@ -584,7 +584,7 @@ superhero_info %>%
 ##  8 Howard the Duck                4.39
 ##  9 Swarm                          4.17
 ## 10 Yoda                           3.88
-## # … with 724 more rows
+## # ... with 724 more rows
 ```
 
 
@@ -597,19 +597,19 @@ superhero_powers
 
 ```
 ## # A tibble: 667 x 168
-##    hero_names agility accelerated_hea… lantern_power_r… dimensional_awa…
+##    hero_names agility accelerated_hea~ lantern_power_r~ dimensional_awa~
 ##    <chr>      <lgl>   <lgl>            <lgl>            <lgl>           
 ##  1 3-D Man    TRUE    FALSE            FALSE            FALSE           
 ##  2 A-Bomb     FALSE   TRUE             FALSE            FALSE           
 ##  3 Abe Sapien TRUE    TRUE             FALSE            FALSE           
 ##  4 Abin Sur   FALSE   FALSE            TRUE             FALSE           
-##  5 Abominati… FALSE   TRUE             FALSE            FALSE           
+##  5 Abominati~ FALSE   TRUE             FALSE            FALSE           
 ##  6 Abraxas    FALSE   FALSE            FALSE            TRUE            
-##  7 Absorbing… FALSE   FALSE            FALSE            FALSE           
-##  8 Adam Monr… FALSE   TRUE             FALSE            FALSE           
-##  9 Adam Stra… FALSE   FALSE            FALSE            FALSE           
+##  7 Absorbing~ FALSE   FALSE            FALSE            FALSE           
+##  8 Adam Monr~ FALSE   TRUE             FALSE            FALSE           
+##  9 Adam Stra~ FALSE   FALSE            FALSE            FALSE           
 ## 10 Agent Bob  FALSE   FALSE            FALSE            FALSE           
-## # … with 657 more rows, and 163 more variables: cold_resistance <lgl>,
+## # ... with 657 more rows, and 163 more variables: cold_resistance <lgl>,
 ## #   durability <lgl>, stealth <lgl>, energy_absorption <lgl>, flight <lgl>,
 ## #   danger_sense <lgl>, underwater_breathing <lgl>, marksmanship <lgl>,
 ## #   weapons_master <lgl>, power_augmentation <lgl>, animal_attributes <lgl>,
@@ -642,7 +642,7 @@ superhero_powers
 ## #   probability_manipulation <lgl>, gravity_control <lgl>, regeneration <lgl>,
 ## #   light_control <lgl>, echolocation <lgl>, levitation <lgl>,
 ## #   toxin_and_disease_control <lgl>, banish <lgl>, energy_manipulation <lgl>,
-## #   heat_resistance <lgl>, …
+## #   heat_resistance <lgl>, ...
 ```
 
 14. How many superheros have a combination of accelerated healing, durability, and super strength?
@@ -654,19 +654,19 @@ superhero_powers %>%
 
 ```
 ## # A tibble: 97 x 168
-##    hero_names agility accelerated_hea… lantern_power_r… dimensional_awa…
+##    hero_names agility accelerated_hea~ lantern_power_r~ dimensional_awa~
 ##    <chr>      <lgl>   <lgl>            <lgl>            <lgl>           
 ##  1 A-Bomb     FALSE   TRUE             FALSE            FALSE           
 ##  2 Abe Sapien TRUE    TRUE             FALSE            FALSE           
 ##  3 Angel      TRUE    TRUE             FALSE            FALSE           
-##  4 Anti-Moni… FALSE   TRUE             FALSE            TRUE            
+##  4 Anti-Moni~ FALSE   TRUE             FALSE            TRUE            
 ##  5 Anti-Venom FALSE   TRUE             FALSE            FALSE           
 ##  6 Aquaman    TRUE    TRUE             FALSE            FALSE           
 ##  7 Arachne    TRUE    TRUE             FALSE            FALSE           
 ##  8 Archangel  TRUE    TRUE             FALSE            FALSE           
 ##  9 Ardina     TRUE    TRUE             FALSE            FALSE           
 ## 10 Ares       TRUE    TRUE             FALSE            FALSE           
-## # … with 87 more rows, and 163 more variables: cold_resistance <lgl>,
+## # ... with 87 more rows, and 163 more variables: cold_resistance <lgl>,
 ## #   durability <lgl>, stealth <lgl>, energy_absorption <lgl>, flight <lgl>,
 ## #   danger_sense <lgl>, underwater_breathing <lgl>, marksmanship <lgl>,
 ## #   weapons_master <lgl>, power_augmentation <lgl>, animal_attributes <lgl>,
@@ -699,8 +699,12 @@ superhero_powers %>%
 ## #   probability_manipulation <lgl>, gravity_control <lgl>, regeneration <lgl>,
 ## #   light_control <lgl>, echolocation <lgl>, levitation <lgl>,
 ## #   toxin_and_disease_control <lgl>, banish <lgl>, energy_manipulation <lgl>,
-## #   heat_resistance <lgl>, …
+## #   heat_resistance <lgl>, ...
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 ## `kinesis`
 15. We are only interested in the superheros that do some kind of "kinesis". How would we isolate them from the `superhero_powers` data?
@@ -718,15 +722,16 @@ superhero_powers %>%
 ##  2 A-Bomb     FALSE       FALSE          FALSE       FALSE        FALSE       
 ##  3 Abe Sapien FALSE       FALSE          FALSE       FALSE        FALSE       
 ##  4 Abin Sur   FALSE       FALSE          FALSE       FALSE        FALSE       
-##  5 Abominati… FALSE       FALSE          FALSE       FALSE        FALSE       
+##  5 Abominati~ FALSE       FALSE          FALSE       FALSE        FALSE       
 ##  6 Abraxas    FALSE       FALSE          FALSE       FALSE        FALSE       
-##  7 Absorbing… FALSE       FALSE          FALSE       FALSE        FALSE       
-##  8 Adam Monr… FALSE       FALSE          FALSE       FALSE        FALSE       
-##  9 Adam Stra… FALSE       FALSE          FALSE       FALSE        FALSE       
+##  7 Absorbing~ FALSE       FALSE          FALSE       FALSE        FALSE       
+##  8 Adam Monr~ FALSE       FALSE          FALSE       FALSE        FALSE       
+##  9 Adam Stra~ FALSE       FALSE          FALSE       FALSE        FALSE       
 ## 10 Agent Bob  FALSE       FALSE          FALSE       FALSE        FALSE       
-## # … with 657 more rows, and 4 more variables: thirstokinesis <lgl>,
+## # ... with 657 more rows, and 4 more variables: thirstokinesis <lgl>,
 ## #   biokinesis <lgl>, terrakinesis <lgl>, vitakinesis <lgl>
 ```
+</div>
 
 16. Pick your favorite superhero and let's see their powers!
 
@@ -745,10 +750,10 @@ superhero_powers %>%
 
 ```
 ## # A tibble: 1 x 18
-##   agility accelerated_hea… durability flight longevity super_strength stamina
+##   agility accelerated_hea~ durability flight longevity super_strength stamina
 ##   <lgl>   <lgl>            <lgl>      <lgl>  <lgl>     <lgl>          <lgl>  
 ## 1 TRUE    TRUE             TRUE       TRUE   TRUE      TRUE           TRUE   
-## # … with 11 more variables: super_speed <lgl>, weapon_based_powers <lgl>,
+## # ... with 11 more variables: super_speed <lgl>, weapon_based_powers <lgl>,
 ## #   teleportation <lgl>, enhanced_senses <lgl>, magic <lgl>,
 ## #   element_control <lgl>, reflexes <lgl>, invulnerability <lgl>,
 ## #   toxin_and_disease_resistance <lgl>, weather_control <lgl>, odin_force <lgl>
