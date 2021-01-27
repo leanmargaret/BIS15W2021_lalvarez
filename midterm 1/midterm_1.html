@@ -11,7 +11,7 @@
 
 <meta name="author" content="Lean Alvarez" />
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
 <title>Midterm 1</title>
 
@@ -399,7 +399,7 @@ summary {
 
 <h1 class="title toc-ignore">Midterm 1</h1>
 <h4 class="author">Lean Alvarez</h4>
-<h4 class="date">2021-01-26</h4>
+<h4 class="date">2021-01-27</h4>
 
 </div>
 
@@ -420,7 +420,7 @@ library(janitor)</code></pre>
 <h2>Questions</h2>
 <p><strong>1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?</strong><br />
 R and RStudio allows us develop codes that help us organize and analyze our data. GitHub allows us to share our work from R and RStudio to others so they are able to see what we did, allowing them to replicate our work and make improvements. RMarkdown is useful because it can create outputs of our work that others are able to see easily, such as an md file, and others can see our step-by-step processes and easily make improvements on our work by simply accessing the same RMarkdown as us.</p>
-<p><strong>2. (2 points) What are the three types of <code>data structures</code> that we have discussed? Why are we using data frames for BIS 15L?</strong> We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people’s work), and data frames allow us to have as much data of any kind put together all in just one structure.</p>
+<p><strong>2. (2 points) What are the three types of <code>data structures</code> that we have discussed? Why are we using data frames for BIS 15L?</strong> We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people’s work), and data frames allow us to have as much data of any kind put together all in one place.</p>
 <p>In the midterm 1 folder there is a second folder called <code>data</code>. Inside the <code>data</code> folder, there is a .csv file called <code>ElephantsMF</code>. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), “Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana),” Biology Letters, 9: 20130011. <a href="https://www.kaggle.com/mostafaelseidy/elephantsmf">kaggle</a>.</p>
 <p><strong>3. (2 points) Please load these data as a new object called <code>elephants</code>. Use the function(s) of your choice to get an idea of the structure of the data. Be sure to show the class of each variable.</strong></p>
 <pre class="r"><code>elephants &lt;- readr::read_csv(&quot;data/ElephantsMF.csv&quot;)</code></pre>
@@ -453,11 +453,10 @@ R and RStudio allows us develop codes that help us organize and analyze our data
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p><strong>4. (2 points) Change the names of the variables to lower case and change the class of the variable <code>sex</code> to a factor.</strong></p>
 <pre class="r"><code>elephants &lt;- janitor::clean_names(elephants)
-elephants$sex &lt;- as.factor(elephants$sex)
 elephants</code></pre>
 <pre><code>## # A tibble: 288 x 3
 ##      age height sex  
-##    &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;
+##    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
 ##  1   1.4   120  M    
 ##  2  17.5   227  M    
 ##  3  12.8   235  M    
@@ -469,6 +468,9 @@ elephants</code></pre>
 ##  9  28.2   266. M    
 ## 10  11.7   233  M    
 ## # … with 278 more rows</code></pre>
+<pre class="r"><code>elephants$sex &lt;- as.factor(elephants$sex)
+class(elephants$sex)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
 <p><strong>5. (2 points) How many male and female elephants are represented in the data?</strong></p>
 <pre class="r"><code>elephants %&gt;% 
   count(sex)</code></pre>
@@ -488,37 +490,28 @@ elephants</code></pre>
 <p>The average age of all elephants in the data is about 11 years old.</p>
 <p><strong>7. (2 points) How does the average age and height of elephants compare by sex?</strong></p>
 <pre class="r"><code>elephants %&gt;% 
-  filter(sex==&quot;M&quot;) %&gt;% 
-  summarize(mean_age=mean(age), mean_height=mean(height))</code></pre>
-<pre><code>## # A tibble: 1 x 2
-##   mean_age mean_height
-##      &lt;dbl&gt;       &lt;dbl&gt;
-## 1     8.95        185.</code></pre>
-<pre class="r"><code>elephants %&gt;% 
-  filter(sex==&quot;F&quot;) %&gt;% 
-  summarize(mean_age=mean(age), mean_height=mean(height))</code></pre>
-<pre><code>## # A tibble: 1 x 2
-##   mean_age mean_height
-##      &lt;dbl&gt;       &lt;dbl&gt;
-## 1     12.8        190.</code></pre>
+  group_by(sex) %&gt;% 
+  summarize(mean_age=mean(age), 
+            mean_height=mean(height))</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##   sex   mean_age mean_height
+## * &lt;fct&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+## 1 F        12.8         190.
+## 2 M         8.95        185.</code></pre>
 <p>On average, females are older and taller than males.</p>
 <p><strong>8. (2 points) How does the average height of elephants compare by sex for individuals over 25 years old. Include the min and max height as well as the number of individuals in the sample as part of your analysis.</strong></p>
 <pre class="r"><code>elephants %&gt;% 
-  filter(sex==&quot;M&quot;, age&gt;25) %&gt;% 
-  summarize(min_height_M=min(height), max_height_M=max(height), mean_height_M=mean(height),
+  group_by(sex) %&gt;% 
+  filter(age&gt;25) %&gt;% 
+  summarize(min_height_M=min(height), 
+            max_height_M=max(height), 
+            mean_height_M=mean(height),
             n=n())</code></pre>
-<pre><code>## # A tibble: 1 x 4
-##   min_height_M max_height_M mean_height_M     n
-##          &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt;
-## 1         237.         304.          273.     8</code></pre>
-<pre class="r"><code>elephants %&gt;% 
-  filter(sex==&quot;F&quot;, age&gt;25) %&gt;% 
-  summarize(min_height_F=min(height), max_height_F=max(height), mean_height_F=mean(height),
-            n=n())</code></pre>
-<pre><code>## # A tibble: 1 x 4
-##   min_height_F max_height_F mean_height_F     n
-##          &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt;
-## 1         206.         278.          233.    25</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   sex   min_height_M max_height_M mean_height_M     n
+##   &lt;fct&gt;        &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt; &lt;int&gt;
+## 1 F             206.         278.          233.    25
+## 2 M             237.         304.          273.     8</code></pre>
 <p>For individuals over 25 years old, males have a higher minimum, maximum, and mean height. However, since there are only 8 samples for males compared to the 25 samples for females, this would likely change when more samples are added.</p>
 <p>For the next series of questions, we will use data from a study on vertebrate community composition and impacts from defaunation in <a href="https://en.wikipedia.org/wiki/Gabon">Gabon, Africa</a>. One thing to notice is that the data include 24 separate transects. Each transect represents a path through different forest management areas.</p>
 <p>Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ. Vertebrate community composition and diversity declines along a defaunation gradient radiating from rural villages in Gabon. <em>Journal of Applied Ecology</em>. 2016. This paper, along with a description of the variables is included inside the midterm 1 folder.</p>
@@ -606,23 +599,23 @@ gabon</code></pre>
 ##  3rd Qu.:11.000      3rd Qu.:0.7847          3rd Qu.:1.815           
 ##  Max.   :12.000      Max.   :0.8610          Max.   :2.065</code></pre>
 <pre class="r"><code>gabon$hunt_cat &lt;- as.factor(gabon$hunt_cat)
-gabon$land_use &lt;- as.factor(gabon$land_use)</code></pre>
+gabon$land_use &lt;- as.factor(gabon$land_use)
+class(gabon$hunt_cat)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>class(gabon$land_use)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
 <p><strong>10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?</strong></p>
 <pre class="r"><code>gabon %&gt;% 
-  filter(hunt_cat==&quot;Moderate&quot;) %&gt;% 
-  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))</code></pre>
-<pre><code>## # A tibble: 1 x 2
-##   avg_div_birds avg_div_mammals
-##           &lt;dbl&gt;           &lt;dbl&gt;
-## 1          1.62            1.68</code></pre>
-<pre class="r"><code>gabon %&gt;% 
-  filter(hunt_cat==&quot;High&quot;) %&gt;% 
-  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))</code></pre>
-<pre><code>## # A tibble: 1 x 2
-##   avg_div_birds avg_div_mammals
-##           &lt;dbl&gt;           &lt;dbl&gt;
-## 1          1.66            1.74</code></pre>
-<p>Transects with high hunting intensity have a higher average diversity of birds and mammals than transects with moderate hunting intensity.</p>
+  group_by(hunt_cat) %&gt;% 
+  filter(hunt_cat==&quot;Moderate&quot; | hunt_cat==&quot;High&quot;) %&gt;% 
+  summarize(avg_div_birds=mean(diversity_bird_species), 
+            avg_div_mammals=mean(diversity_mammal_species))</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##   hunt_cat avg_div_birds avg_div_mammals
+##   &lt;fct&gt;            &lt;dbl&gt;           &lt;dbl&gt;
+## 1 High              1.66            1.74
+## 2 Moderate          1.62            1.68</code></pre>
+<p>Transects with high hunting intensity have a higher average diversity of both birds and mammals than transects with moderate hunting intensity.</p>
 <p><strong>11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let’s try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable <code>Distance</code> measures the distance of the transect from the nearest village. Hint: try using the <code>across</code> operator.</strong></p>
 <pre class="r"><code>far &lt;- gabon %&gt;% 
   filter(distance&gt;20) %&gt;% 
@@ -641,32 +634,11 @@ near</code></pre>
 ##     &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
 ## 1    0.08     70.4      0.0967       24.1      3.66        1.59</code></pre>
 <p>For apes, elephants, monkeys, and ungulates, their relative abundances are higher when they are more than 20 km away from a village. This might be because larger animals would tend to live away from humans because they might be hunted by humans or there is not enough space for them to live close to humans. For birds and rodents, their relative abundances are lower when they are less than 5 km away from a village. Perhaps this is because birds can fly, so they can easily travel back and forth and live in the trees where humans are not also living in. As for rodents, it might be because they are quite small in size, so they are able to live with humans.</p>
-<pre class="r"><code>gabon</code></pre>
-<pre><code>## # A tibble: 24 x 26
-##    transect_id distance hunt_cat num_households land_use veg_rich veg_stems
-##          &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;             &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-##  1           1     7.14 Moderate             54 Park         16.7      31.2
-##  2           2    17.3  None                 54 Park         15.8      37.4
-##  3           2    18.3  None                 29 Park         16.9      32.3
-##  4           3    20.8  None                 29 Logging      12.4      29.4
-##  5           4    16.0  None                 29 Park         17.1      36  
-##  6           5    17.5  None                 29 Park         16.5      29.2
-##  7           6    24.1  None                 29 Park         14.8      31.2
-##  8           7    19.8  None                 54 Logging      13.2      32.6
-##  9           8     5.78 High                 25 Neither      12.6      23.7
-## 10           9     5.13 High                 73 Logging      16        27.1
-## # … with 14 more rows, and 19 more variables: veg_liana &lt;dbl&gt;, veg_dbh &lt;dbl&gt;,
-## #   veg_canopy &lt;dbl&gt;, veg_understory &lt;dbl&gt;, ra_apes &lt;dbl&gt;, ra_birds &lt;dbl&gt;,
-## #   ra_elephant &lt;dbl&gt;, ra_monkeys &lt;dbl&gt;, ra_rodent &lt;dbl&gt;, ra_ungulate &lt;dbl&gt;,
-## #   rich_all_species &lt;dbl&gt;, evenness_all_species &lt;dbl&gt;,
-## #   diversity_all_species &lt;dbl&gt;, rich_bird_species &lt;dbl&gt;,
-## #   evenness_bird_species &lt;dbl&gt;, diversity_bird_species &lt;dbl&gt;,
-## #   rich_mammal_species &lt;dbl&gt;, evenness_mammal_species &lt;dbl&gt;,
-## #   diversity_mammal_species &lt;dbl&gt;</code></pre>
 <p><strong>12. (4 points) Based on your interest, do one exploratory analysis on the <code>gabon</code> data of your choice. This analysis needs to include a minimum of two functions in <code>dplyr.</code></strong></p>
 <pre class="r"><code>gabon %&gt;% 
   filter(hunt_cat==&quot;None&quot;) %&gt;% 
-  summarize(avg_rich_birds=mean(rich_bird_species), avg_rich_mammals=mean(rich_mammal_species))</code></pre>
+  summarize(avg_rich_birds=mean(rich_bird_species), 
+            avg_rich_mammals=mean(rich_mammal_species))</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##   avg_rich_birds avg_rich_mammals
 ##            &lt;dbl&gt;            &lt;dbl&gt;

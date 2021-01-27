@@ -31,7 +31,7 @@ library(janitor)
 R and RStudio allows us develop codes that help us organize and analyze our data. GitHub allows us to share our work from R and RStudio to others so they are able to see what we did, allowing them to replicate our work and make improvements. RMarkdown is useful because it can create outputs of our work that others are able to see easily, such as an md file, and others can see our step-by-step processes and easily make improvements on our work by simply accessing the same RMarkdown as us.
 
 **2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
-We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people's work), and data frames allow us to have as much data of any kind put together all in just one structure.
+We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people's work), and data frames allow us to have as much data of any kind put together all in one place.
 
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
@@ -58,8 +58,11 @@ class("Sex")
 **4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
 ```{r}
 elephants <- janitor::clean_names(elephants)
-elephants$sex <- as.factor(elephants$sex)
 elephants
+```
+```{r}
+elephants$sex <- as.factor(elephants$sex)
+class(elephants$sex)
 ```
 
 
@@ -81,13 +84,9 @@ The average age of all elephants in the data is about 11 years old.
 **7. (2 points) How does the average age and height of elephants compare by sex?**
 ```{r}
 elephants %>% 
-  filter(sex=="M") %>% 
-  summarize(mean_age=mean(age), mean_height=mean(height))
-```
-```{r}
-elephants %>% 
-  filter(sex=="F") %>% 
-  summarize(mean_age=mean(age), mean_height=mean(height))
+  group_by(sex) %>% 
+  summarize(mean_age=mean(age), 
+            mean_height=mean(height))
 ```
 On average, females are older and taller than males.
 
@@ -96,14 +95,11 @@ On average, females are older and taller than males.
 
 ```{r}
 elephants %>% 
-  filter(sex=="M", age>25) %>% 
-  summarize(min_height_M=min(height), max_height_M=max(height), mean_height_M=mean(height),
-            n=n())
-```
-```{r}
-elephants %>% 
-  filter(sex=="F", age>25) %>% 
-  summarize(min_height_F=min(height), max_height_F=max(height), mean_height_F=mean(height),
+  group_by(sex) %>% 
+  filter(age>25) %>% 
+  summarize(min_height_M=min(height), 
+            max_height_M=max(height), 
+            mean_height_M=mean(height),
             n=n())
 ```
 For individuals over 25 years old, males have a higher minimum, maximum, and mean height. However, since there are only 8 samples for males compared to the 25 samples for females, this would likely change when more samples are added.
@@ -131,6 +127,8 @@ summary(gabon)
 ```{r}
 gabon$hunt_cat <- as.factor(gabon$hunt_cat)
 gabon$land_use <- as.factor(gabon$land_use)
+class(gabon$hunt_cat)
+class(gabon$land_use)
 ```
 
 
@@ -139,15 +137,12 @@ gabon$land_use <- as.factor(gabon$land_use)
 
 ```{r}
 gabon %>% 
-  filter(hunt_cat=="Moderate") %>% 
-  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))
+  group_by(hunt_cat) %>% 
+  filter(hunt_cat=="Moderate" | hunt_cat=="High") %>% 
+  summarize(avg_div_birds=mean(diversity_bird_species), 
+            avg_div_mammals=mean(diversity_mammal_species))
 ```
-```{r}
-gabon %>% 
-  filter(hunt_cat=="High") %>% 
-  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))
-```
-Transects with high hunting intensity have a higher average diversity of birds and mammals than transects with moderate hunting intensity.
+Transects with high hunting intensity have a higher average diversity of both birds and mammals than transects with moderate hunting intensity.
 
 
 
@@ -166,16 +161,14 @@ near
 ```
 For apes, elephants, monkeys, and ungulates, their relative abundances are higher when they are more than 20 km away from a village. This might be because larger animals would tend to live away from humans because they might be hunted by humans or there is not enough space for them to live close to humans. For birds and rodents, their relative abundances are lower when they are less than 5 km away from a village. Perhaps this is because birds can fly, so they can easily travel back and forth and live in the trees where humans are not also living in. As for rodents, it might be because they are quite small in size, so they are able to live with humans.
 
-```{r}
-gabon
-```
 
 
 **12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
 ```{r}
 gabon %>% 
   filter(hunt_cat=="None") %>% 
-  summarize(avg_rich_birds=mean(rich_bird_species), avg_rich_mammals=mean(rich_mammal_species))
+  summarize(avg_rich_birds=mean(rich_bird_species), 
+            avg_rich_mammals=mean(rich_mammal_species))
 ```
 When their transects have no hunting intensity, mammals have a higher species richness than birds. 
 

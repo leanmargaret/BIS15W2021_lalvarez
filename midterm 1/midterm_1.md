@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1"
 author: "Lean Alvarez"
-date: "2021-01-26"
+date: "2021-01-27"
 output:
   html_document: 
     theme: spacelab
@@ -30,7 +30,7 @@ library(janitor)
 R and RStudio allows us develop codes that help us organize and analyze our data. GitHub allows us to share our work from R and RStudio to others so they are able to see what we did, allowing them to replicate our work and make improvements. RMarkdown is useful because it can create outputs of our work that others are able to see easily, such as an md file, and others can see our step-by-step processes and easily make improvements on our work by simply accessing the same RMarkdown as us.
 
 **2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
-We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people's work), and data frames allow us to have as much data of any kind put together all in just one structure.
+We have used vectors, matrices, and data frames. We are using data frames for BIS15L because they are used the most by others(so we can be familiar with other people's work), and data frames allow us to have as much data of any kind put together all in one place.
 
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
@@ -108,14 +108,13 @@ class("Sex")
 
 ```r
 elephants <- janitor::clean_names(elephants)
-elephants$sex <- as.factor(elephants$sex)
 elephants
 ```
 
 ```
 ## # A tibble: 288 x 3
 ##      age height sex  
-##    <dbl>  <dbl> <fct>
+##    <dbl>  <dbl> <chr>
 ##  1   1.4   120  M    
 ##  2  17.5   227  M    
 ##  3  12.8   235  M    
@@ -127,6 +126,15 @@ elephants
 ##  9  28.2   266. M    
 ## 10  11.7   233  M    
 ## # … with 278 more rows
+```
+
+```r
+elephants$sex <- as.factor(elephants$sex)
+class(elephants$sex)
+```
+
+```
+## [1] "factor"
 ```
 
 
@@ -166,28 +174,17 @@ The average age of all elephants in the data is about 11 years old.
 
 ```r
 elephants %>% 
-  filter(sex=="M") %>% 
-  summarize(mean_age=mean(age), mean_height=mean(height))
+  group_by(sex) %>% 
+  summarize(mean_age=mean(age), 
+            mean_height=mean(height))
 ```
 
 ```
-## # A tibble: 1 x 2
-##   mean_age mean_height
-##      <dbl>       <dbl>
-## 1     8.95        185.
-```
-
-```r
-elephants %>% 
-  filter(sex=="F") %>% 
-  summarize(mean_age=mean(age), mean_height=mean(height))
-```
-
-```
-## # A tibble: 1 x 2
-##   mean_age mean_height
-##      <dbl>       <dbl>
-## 1     12.8        190.
+## # A tibble: 2 x 3
+##   sex   mean_age mean_height
+## * <fct>    <dbl>       <dbl>
+## 1 F        12.8         190.
+## 2 M         8.95        185.
 ```
 On average, females are older and taller than males.
 
@@ -197,30 +194,20 @@ On average, females are older and taller than males.
 
 ```r
 elephants %>% 
-  filter(sex=="M", age>25) %>% 
-  summarize(min_height_M=min(height), max_height_M=max(height), mean_height_M=mean(height),
+  group_by(sex) %>% 
+  filter(age>25) %>% 
+  summarize(min_height_M=min(height), 
+            max_height_M=max(height), 
+            mean_height_M=mean(height),
             n=n())
 ```
 
 ```
-## # A tibble: 1 x 4
-##   min_height_M max_height_M mean_height_M     n
-##          <dbl>        <dbl>         <dbl> <int>
-## 1         237.         304.          273.     8
-```
-
-```r
-elephants %>% 
-  filter(sex=="F", age>25) %>% 
-  summarize(min_height_F=min(height), max_height_F=max(height), mean_height_F=mean(height),
-            n=n())
-```
-
-```
-## # A tibble: 1 x 4
-##   min_height_F max_height_F mean_height_F     n
-##          <dbl>        <dbl>         <dbl> <int>
-## 1         206.         278.          233.    25
+## # A tibble: 2 x 5
+##   sex   min_height_M max_height_M mean_height_M     n
+##   <fct>        <dbl>        <dbl>         <dbl> <int>
+## 1 F             206.         278.          233.    25
+## 2 M             237.         304.          273.     8
 ```
 For individuals over 25 years old, males have a higher minimum, maximum, and mean height. However, since there are only 8 samples for males compared to the 25 samples for females, this would likely change when more samples are added.
 
@@ -338,6 +325,19 @@ summary(gabon)
 ```r
 gabon$hunt_cat <- as.factor(gabon$hunt_cat)
 gabon$land_use <- as.factor(gabon$land_use)
+class(gabon$hunt_cat)
+```
+
+```
+## [1] "factor"
+```
+
+```r
+class(gabon$land_use)
+```
+
+```
+## [1] "factor"
 ```
 
 
@@ -347,30 +347,20 @@ gabon$land_use <- as.factor(gabon$land_use)
 
 ```r
 gabon %>% 
-  filter(hunt_cat=="Moderate") %>% 
-  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))
+  group_by(hunt_cat) %>% 
+  filter(hunt_cat=="Moderate" | hunt_cat=="High") %>% 
+  summarize(avg_div_birds=mean(diversity_bird_species), 
+            avg_div_mammals=mean(diversity_mammal_species))
 ```
 
 ```
-## # A tibble: 1 x 2
-##   avg_div_birds avg_div_mammals
-##           <dbl>           <dbl>
-## 1          1.62            1.68
+## # A tibble: 2 x 3
+##   hunt_cat avg_div_birds avg_div_mammals
+##   <fct>            <dbl>           <dbl>
+## 1 High              1.66            1.74
+## 2 Moderate          1.62            1.68
 ```
-
-```r
-gabon %>% 
-  filter(hunt_cat=="High") %>% 
-  summarize(avg_div_birds=mean(diversity_bird_species), avg_div_mammals=mean(diversity_mammal_species))
-```
-
-```
-## # A tibble: 1 x 2
-##   avg_div_birds avg_div_mammals
-##           <dbl>           <dbl>
-## 1          1.66            1.74
-```
-Transects with high hunting intensity have a higher average diversity of birds and mammals than transects with moderate hunting intensity.
+Transects with high hunting intensity have a higher average diversity of both birds and mammals than transects with moderate hunting intensity.
 
 
 
@@ -406,41 +396,14 @@ near
 For apes, elephants, monkeys, and ungulates, their relative abundances are higher when they are more than 20 km away from a village. This might be because larger animals would tend to live away from humans because they might be hunted by humans or there is not enough space for them to live close to humans. For birds and rodents, their relative abundances are lower when they are less than 5 km away from a village. Perhaps this is because birds can fly, so they can easily travel back and forth and live in the trees where humans are not also living in. As for rodents, it might be because they are quite small in size, so they are able to live with humans.
 
 
-```r
-gabon
-```
-
-```
-## # A tibble: 24 x 26
-##    transect_id distance hunt_cat num_households land_use veg_rich veg_stems
-##          <dbl>    <dbl> <fct>             <dbl> <fct>       <dbl>     <dbl>
-##  1           1     7.14 Moderate             54 Park         16.7      31.2
-##  2           2    17.3  None                 54 Park         15.8      37.4
-##  3           2    18.3  None                 29 Park         16.9      32.3
-##  4           3    20.8  None                 29 Logging      12.4      29.4
-##  5           4    16.0  None                 29 Park         17.1      36  
-##  6           5    17.5  None                 29 Park         16.5      29.2
-##  7           6    24.1  None                 29 Park         14.8      31.2
-##  8           7    19.8  None                 54 Logging      13.2      32.6
-##  9           8     5.78 High                 25 Neither      12.6      23.7
-## 10           9     5.13 High                 73 Logging      16        27.1
-## # … with 14 more rows, and 19 more variables: veg_liana <dbl>, veg_dbh <dbl>,
-## #   veg_canopy <dbl>, veg_understory <dbl>, ra_apes <dbl>, ra_birds <dbl>,
-## #   ra_elephant <dbl>, ra_monkeys <dbl>, ra_rodent <dbl>, ra_ungulate <dbl>,
-## #   rich_all_species <dbl>, evenness_all_species <dbl>,
-## #   diversity_all_species <dbl>, rich_bird_species <dbl>,
-## #   evenness_bird_species <dbl>, diversity_bird_species <dbl>,
-## #   rich_mammal_species <dbl>, evenness_mammal_species <dbl>,
-## #   diversity_mammal_species <dbl>
-```
-
 
 **12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
 
 ```r
 gabon %>% 
   filter(hunt_cat=="None") %>% 
-  summarize(avg_rich_birds=mean(rich_bird_species), avg_rich_mammals=mean(rich_mammal_species))
+  summarize(avg_rich_birds=mean(rich_bird_species), 
+            avg_rich_mammals=mean(rich_mammal_species))
 ```
 
 ```
