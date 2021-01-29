@@ -817,7 +817,7 @@ amphibio_na</code></pre>
 <p><strong>10. Now that we know how NA’s are represented in the <code>amniota</code> data, how would you load the data such that the values which represent NA’s are automatically converted?</strong></p>
 <pre class="r"><code>amniota &lt;- 
   readr::read_csv(file = &quot;data/amniota.csv&quot;, 
-                  na = c(&quot;NA&quot;, &quot; &quot;, &quot;.&quot;, &quot;-999&quot;, &quot;-&quot;))</code></pre>
+                  na = c(&quot;NA&quot;, &quot; &quot;, &quot;.&quot;, &quot;-999&quot;, &quot;-&quot;, &quot;-30258.71&quot;))</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(

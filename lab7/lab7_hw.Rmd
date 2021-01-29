@@ -136,7 +136,7 @@ I do not think these are NA's, but instead, they represent how some species are 
 ```{r}
 amniota <- 
   readr::read_csv(file = "data/amniota.csv", 
-                  na = c("NA", " ", ".", "-999", "-"))
+                  na = c("NA", " ", ".", "-999", "-", "-30258.71"))
 ```
 
 ## Push your final code to GitHub!
