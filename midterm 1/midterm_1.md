@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1"
 author: "Lean Alvarez"
-date: "2021-01-27"
+date: "2021-01-28"
 output:
   html_document: 
     theme: spacelab
@@ -77,9 +77,8 @@ glimpse(elephants)
 ## $ Sex    <chr> "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M…
 ```
 
-
 ```r
-class("Age")
+class("age")
 ```
 
 ```
@@ -87,7 +86,7 @@ class("Age")
 ```
 
 ```r
-class("Height")
+class("height")
 ```
 
 ```
@@ -95,12 +94,13 @@ class("Height")
 ```
 
 ```r
-class("Sex")
+class("sex")
 ```
 
 ```
 ## [1] "character"
 ```
+
 
 
 
@@ -108,34 +108,9 @@ class("Sex")
 
 ```r
 elephants <- janitor::clean_names(elephants)
-elephants
-```
-
-```
-## # A tibble: 288 x 3
-##      age height sex  
-##    <dbl>  <dbl> <chr>
-##  1   1.4   120  M    
-##  2  17.5   227  M    
-##  3  12.8   235  M    
-##  4  11.2   210  M    
-##  5  12.7   220  M    
-##  6  12.7   189  M    
-##  7  12.2   225  M    
-##  8  12.2   204  M    
-##  9  28.2   266. M    
-## 10  11.7   233  M    
-## # … with 278 more rows
-```
-
-```r
 elephants$sex <- as.factor(elephants$sex)
-class(elephants$sex)
 ```
 
-```
-## [1] "factor"
-```
 
 
 
@@ -234,34 +209,10 @@ gabon <- readr::read_csv("data/IvindoData_DryadVersion.csv")
 ## ℹ Use `spec()` for the full column specifications.
 ```
 
-
 ```r
 gabon <- janitor::clean_names(gabon)
-gabon
-```
-
-```
-## # A tibble: 24 x 26
-##    transect_id distance hunt_cat num_households land_use veg_rich veg_stems
-##          <dbl>    <dbl> <chr>             <dbl> <chr>       <dbl>     <dbl>
-##  1           1     7.14 Moderate             54 Park         16.7      31.2
-##  2           2    17.3  None                 54 Park         15.8      37.4
-##  3           2    18.3  None                 29 Park         16.9      32.3
-##  4           3    20.8  None                 29 Logging      12.4      29.4
-##  5           4    16.0  None                 29 Park         17.1      36  
-##  6           5    17.5  None                 29 Park         16.5      29.2
-##  7           6    24.1  None                 29 Park         14.8      31.2
-##  8           7    19.8  None                 54 Logging      13.2      32.6
-##  9           8     5.78 High                 25 Neither      12.6      23.7
-## 10           9     5.13 High                 73 Logging      16        27.1
-## # … with 14 more rows, and 19 more variables: veg_liana <dbl>, veg_dbh <dbl>,
-## #   veg_canopy <dbl>, veg_understory <dbl>, ra_apes <dbl>, ra_birds <dbl>,
-## #   ra_elephant <dbl>, ra_monkeys <dbl>, ra_rodent <dbl>, ra_ungulate <dbl>,
-## #   rich_all_species <dbl>, evenness_all_species <dbl>,
-## #   diversity_all_species <dbl>, rich_bird_species <dbl>,
-## #   evenness_bird_species <dbl>, diversity_bird_species <dbl>,
-## #   rich_mammal_species <dbl>, evenness_mammal_species <dbl>,
-## #   diversity_mammal_species <dbl>
+gabon$hunt_cat <- as.factor(gabon$hunt_cat)
+gabon$land_use <- as.factor(gabon$land_use)
 ```
 
 
@@ -271,73 +222,91 @@ summary(gabon)
 ```
 
 ```
-##   transect_id       distance        hunt_cat         num_households 
-##  Min.   : 1.00   Min.   : 2.700   Length:24          Min.   :13.00  
-##  1st Qu.: 5.75   1st Qu.: 5.668   Class :character   1st Qu.:24.75  
-##  Median :14.50   Median : 9.720   Mode  :character   Median :29.00  
-##  Mean   :13.50   Mean   :11.879                      Mean   :37.88  
-##  3rd Qu.:20.25   3rd Qu.:17.683                      3rd Qu.:54.00  
-##  Max.   :27.00   Max.   :26.760                      Max.   :73.00  
-##    land_use            veg_rich       veg_stems       veg_liana     
-##  Length:24          Min.   :10.88   Min.   :23.44   Min.   : 4.750  
-##  Class :character   1st Qu.:13.10   1st Qu.:28.69   1st Qu.: 9.033  
-##  Mode  :character   Median :14.94   Median :32.45   Median :11.940  
-##                     Mean   :14.83   Mean   :32.80   Mean   :11.040  
-##                     3rd Qu.:16.54   3rd Qu.:37.08   3rd Qu.:13.250  
-##                     Max.   :18.75   Max.   :47.56   Max.   :16.380  
-##     veg_dbh        veg_canopy    veg_understory     ra_apes      
-##  Min.   :28.45   Min.   :2.500   Min.   :2.380   Min.   : 0.000  
-##  1st Qu.:40.65   1st Qu.:3.250   1st Qu.:2.875   1st Qu.: 0.000  
-##  Median :43.90   Median :3.430   Median :3.000   Median : 0.485  
-##  Mean   :46.09   Mean   :3.469   Mean   :3.020   Mean   : 2.045  
-##  3rd Qu.:50.58   3rd Qu.:3.750   3rd Qu.:3.167   3rd Qu.: 3.815  
-##  Max.   :76.48   Max.   :4.000   Max.   :3.880   Max.   :12.930  
-##     ra_birds      ra_elephant       ra_monkeys      ra_rodent    
-##  Min.   :31.56   Min.   :0.0000   Min.   : 5.84   Min.   :1.060  
-##  1st Qu.:52.51   1st Qu.:0.0000   1st Qu.:22.70   1st Qu.:2.047  
-##  Median :57.90   Median :0.3600   Median :31.74   Median :3.230  
-##  Mean   :58.64   Mean   :0.5450   Mean   :31.30   Mean   :3.278  
-##  3rd Qu.:68.17   3rd Qu.:0.8925   3rd Qu.:39.88   3rd Qu.:4.093  
-##  Max.   :85.03   Max.   :2.3000   Max.   :54.12   Max.   :6.310  
-##   ra_ungulate     rich_all_species evenness_all_species diversity_all_species
-##  Min.   : 0.000   Min.   :15.00    Min.   :0.6680       Min.   :1.966        
-##  1st Qu.: 1.232   1st Qu.:19.00    1st Qu.:0.7542       1st Qu.:2.248        
-##  Median : 2.545   Median :20.00    Median :0.7760       Median :2.317        
-##  Mean   : 4.166   Mean   :20.21    Mean   :0.7699       Mean   :2.310        
-##  3rd Qu.: 5.157   3rd Qu.:22.00    3rd Qu.:0.8083       3rd Qu.:2.429        
-##  Max.   :13.860   Max.   :24.00    Max.   :0.8330       Max.   :2.566        
-##  rich_bird_species evenness_bird_species diversity_bird_species
-##  Min.   : 8.00     Min.   :0.5590        Min.   :1.162         
-##  1st Qu.:10.00     1st Qu.:0.6825        1st Qu.:1.603         
-##  Median :11.00     Median :0.7220        Median :1.680         
-##  Mean   :10.33     Mean   :0.7137        Mean   :1.661         
-##  3rd Qu.:11.00     3rd Qu.:0.7722        3rd Qu.:1.784         
-##  Max.   :13.00     Max.   :0.8240        Max.   :2.008         
-##  rich_mammal_species evenness_mammal_species diversity_mammal_species
-##  Min.   : 6.000      Min.   :0.6190          Min.   :1.378           
-##  1st Qu.: 9.000      1st Qu.:0.7073          1st Qu.:1.567           
-##  Median :10.000      Median :0.7390          Median :1.699           
-##  Mean   : 9.875      Mean   :0.7477          Mean   :1.698           
-##  3rd Qu.:11.000      3rd Qu.:0.7847          3rd Qu.:1.815           
-##  Max.   :12.000      Max.   :0.8610          Max.   :2.065
+##   transect_id       distance          hunt_cat num_households     land_use 
+##  Min.   : 1.00   Min.   : 2.700   High    :7   Min.   :13.00   Logging:13  
+##  1st Qu.: 5.75   1st Qu.: 5.668   Moderate:8   1st Qu.:24.75   Neither: 4  
+##  Median :14.50   Median : 9.720   None    :9   Median :29.00   Park   : 7  
+##  Mean   :13.50   Mean   :11.879                Mean   :37.88               
+##  3rd Qu.:20.25   3rd Qu.:17.683                3rd Qu.:54.00               
+##  Max.   :27.00   Max.   :26.760                Max.   :73.00               
+##     veg_rich       veg_stems       veg_liana         veg_dbh     
+##  Min.   :10.88   Min.   :23.44   Min.   : 4.750   Min.   :28.45  
+##  1st Qu.:13.10   1st Qu.:28.69   1st Qu.: 9.033   1st Qu.:40.65  
+##  Median :14.94   Median :32.45   Median :11.940   Median :43.90  
+##  Mean   :14.83   Mean   :32.80   Mean   :11.040   Mean   :46.09  
+##  3rd Qu.:16.54   3rd Qu.:37.08   3rd Qu.:13.250   3rd Qu.:50.58  
+##  Max.   :18.75   Max.   :47.56   Max.   :16.380   Max.   :76.48  
+##    veg_canopy    veg_understory     ra_apes          ra_birds    
+##  Min.   :2.500   Min.   :2.380   Min.   : 0.000   Min.   :31.56  
+##  1st Qu.:3.250   1st Qu.:2.875   1st Qu.: 0.000   1st Qu.:52.51  
+##  Median :3.430   Median :3.000   Median : 0.485   Median :57.90  
+##  Mean   :3.469   Mean   :3.020   Mean   : 2.045   Mean   :58.64  
+##  3rd Qu.:3.750   3rd Qu.:3.167   3rd Qu.: 3.815   3rd Qu.:68.17  
+##  Max.   :4.000   Max.   :3.880   Max.   :12.930   Max.   :85.03  
+##   ra_elephant       ra_monkeys      ra_rodent      ra_ungulate    
+##  Min.   :0.0000   Min.   : 5.84   Min.   :1.060   Min.   : 0.000  
+##  1st Qu.:0.0000   1st Qu.:22.70   1st Qu.:2.047   1st Qu.: 1.232  
+##  Median :0.3600   Median :31.74   Median :3.230   Median : 2.545  
+##  Mean   :0.5450   Mean   :31.30   Mean   :3.278   Mean   : 4.166  
+##  3rd Qu.:0.8925   3rd Qu.:39.88   3rd Qu.:4.093   3rd Qu.: 5.157  
+##  Max.   :2.3000   Max.   :54.12   Max.   :6.310   Max.   :13.860  
+##  rich_all_species evenness_all_species diversity_all_species rich_bird_species
+##  Min.   :15.00    Min.   :0.6680       Min.   :1.966         Min.   : 8.00    
+##  1st Qu.:19.00    1st Qu.:0.7542       1st Qu.:2.248         1st Qu.:10.00    
+##  Median :20.00    Median :0.7760       Median :2.317         Median :11.00    
+##  Mean   :20.21    Mean   :0.7699       Mean   :2.310         Mean   :10.33    
+##  3rd Qu.:22.00    3rd Qu.:0.8083       3rd Qu.:2.429         3rd Qu.:11.00    
+##  Max.   :24.00    Max.   :0.8330       Max.   :2.566         Max.   :13.00    
+##  evenness_bird_species diversity_bird_species rich_mammal_species
+##  Min.   :0.5590        Min.   :1.162          Min.   : 6.000     
+##  1st Qu.:0.6825        1st Qu.:1.603          1st Qu.: 9.000     
+##  Median :0.7220        Median :1.680          Median :10.000     
+##  Mean   :0.7137        Mean   :1.661          Mean   : 9.875     
+##  3rd Qu.:0.7722        3rd Qu.:1.784          3rd Qu.:11.000     
+##  Max.   :0.8240        Max.   :2.008          Max.   :12.000     
+##  evenness_mammal_species diversity_mammal_species
+##  Min.   :0.6190          Min.   :1.378           
+##  1st Qu.:0.7073          1st Qu.:1.567           
+##  Median :0.7390          Median :1.699           
+##  Mean   :0.7477          Mean   :1.698           
+##  3rd Qu.:0.7847          3rd Qu.:1.815           
+##  Max.   :0.8610          Max.   :2.065
 ```
+
 
 ```r
-gabon$hunt_cat <- as.factor(gabon$hunt_cat)
-gabon$land_use <- as.factor(gabon$land_use)
-class(gabon$hunt_cat)
+glimpse(gabon)
 ```
 
 ```
-## [1] "factor"
-```
-
-```r
-class(gabon$land_use)
-```
-
-```
-## [1] "factor"
+## Rows: 24
+## Columns: 26
+## $ transect_id              <dbl> 1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15, 16…
+## $ distance                 <dbl> 7.14, 17.31, 18.32, 20.85, 15.95, 17.47, 24.…
+## $ hunt_cat                 <fct> Moderate, None, None, None, None, None, None…
+## $ num_households           <dbl> 54, 54, 29, 29, 29, 29, 29, 54, 25, 73, 46, …
+## $ land_use                 <fct> Park, Park, Park, Logging, Park, Park, Park,…
+## $ veg_rich                 <dbl> 16.67, 15.75, 16.88, 12.44, 17.13, 16.50, 14…
+## $ veg_stems                <dbl> 31.20, 37.44, 32.33, 29.39, 36.00, 29.22, 31…
+## $ veg_liana                <dbl> 5.78, 13.25, 4.75, 9.78, 13.25, 12.88, 8.38,…
+## $ veg_dbh                  <dbl> 49.57, 34.59, 42.82, 36.62, 41.52, 44.07, 51…
+## $ veg_canopy               <dbl> 3.78, 3.75, 3.43, 3.75, 3.88, 2.50, 4.00, 4.…
+## $ veg_understory           <dbl> 2.89, 3.88, 3.00, 2.75, 3.25, 3.00, 2.38, 2.…
+## $ ra_apes                  <dbl> 1.87, 0.00, 4.49, 12.93, 0.00, 2.48, 3.78, 6…
+## $ ra_birds                 <dbl> 52.66, 52.17, 37.44, 59.29, 52.62, 38.64, 42…
+## $ ra_elephant              <dbl> 0.00, 0.86, 1.33, 0.56, 1.00, 0.00, 1.11, 0.…
+## $ ra_monkeys               <dbl> 38.59, 28.53, 41.82, 19.85, 41.34, 43.29, 46…
+## $ ra_rodent                <dbl> 4.22, 6.04, 1.06, 3.66, 2.52, 1.83, 3.10, 1.…
+## $ ra_ungulate              <dbl> 2.66, 12.41, 13.86, 3.71, 2.53, 13.75, 3.10,…
+## $ rich_all_species         <dbl> 22, 20, 22, 19, 20, 22, 23, 19, 19, 19, 21, …
+## $ evenness_all_species     <dbl> 0.793, 0.773, 0.740, 0.681, 0.811, 0.786, 0.…
+## $ diversity_all_species    <dbl> 2.452, 2.314, 2.288, 2.006, 2.431, 2.429, 2.…
+## $ rich_bird_species        <dbl> 11, 10, 11, 8, 8, 10, 11, 11, 11, 9, 11, 11,…
+## $ evenness_bird_species    <dbl> 0.732, 0.704, 0.688, 0.559, 0.799, 0.771, 0.…
+## $ diversity_bird_species   <dbl> 1.756, 1.620, 1.649, 1.162, 1.660, 1.775, 1.…
+## $ rich_mammal_species      <dbl> 11, 10, 11, 11, 12, 12, 12, 8, 8, 10, 10, 11…
+## $ evenness_mammal_species  <dbl> 0.736, 0.705, 0.650, 0.619, 0.736, 0.694, 0.…
+## $ diversity_mammal_species <dbl> 1.764, 1.624, 1.558, 1.484, 1.829, 1.725, 1.…
 ```
 
 
@@ -369,7 +338,7 @@ Transects with high hunting intensity have a higher average diversity of both bi
 ```r
 far <- gabon %>% 
   filter(distance>20) %>% 
-  summarize(across(contains("ra_"), mean))
+  summarize(across(contains("ra_"), mean, na.rm=T))
 far
 ```
 
@@ -383,7 +352,7 @@ far
 ```r
 near <- gabon %>% 
   filter(distance<5) %>% 
-  summarize(across(contains("ra_"), mean))
+  summarize(across(contains("ra_"), mean, na.rm=T))
 near
 ```
 
@@ -413,6 +382,4 @@ gabon %>%
 ## 1           10.2             10.8
 ```
 When their transects have no hunting intensity, mammals have a higher species richness than birds. 
-
-
 
