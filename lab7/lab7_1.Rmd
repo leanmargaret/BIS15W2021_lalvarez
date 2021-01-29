@@ -2,10 +2,11 @@
 title: "Fun with NA's"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
     theme: spacelab
     toc: yes
     toc_float: yes
+    keep_md: yes
   pdf_document:
     toc: yes
 ---
@@ -124,6 +125,8 @@ amniota <- readr::read_csv("data/amniota.csv")
 ```{r}
 summary(amniota)
 ```
+They are represented as -999.0.
+
 
 2. Use one of the tools explained above to summarize NA's in the data.
 ```{r}
@@ -139,6 +142,8 @@ hist(amniota$egg_mass_g)
 ```
 
 4. Given that we know that the output of #2 is wrong, what do you think is the best approach for dealing with NA's in the `amniote` data?  
+Replace -999.0 values by actual NAs.
+
 
 
 ## Replacing values with NA
@@ -167,6 +172,9 @@ amniota_tidy %>%
     values_to = "num_nas") %>% 
   arrange(desc(num_nas))
 ```
+NA bc scientist hasn't recorded data or data not applicable.
+
+
 
 ## Replacing NAs with `na_if()` and `mutate()`
 On occasion, we may want to treat recorded data as NA. To do this, we need to use `na_if` and `mutate()`. Let's switch to the built-in `msleep` data to keep things clear.  

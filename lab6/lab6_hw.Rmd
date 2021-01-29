@@ -138,16 +138,11 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 fisheries_tidy %>% 
   filter(between(year, 1990, 2000)) %>% 
   filter(asfis_species_name=="Sardina pilchardus") %>% 
+  group_by(country) %>% 
   arrange(desc(catch))
 ```
 Morocco caught the most sardines between the years 1990-2000.
 
-</div>
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 
 8. Which five countries caught the most cephalopods between 2008-2012?
 ```{r}
@@ -158,24 +153,16 @@ fisheries_tidy %>%
 ```
 India, China, Italy, Spain, and Algeria caught the most cephalopods between 2008-2012.
 
-</div>
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 ```{r}
 fisheries_tidy %>% 
-  filter(between(year, 2008, 2012)) %>% 
+  filter(year>=2008 & year<=2012) %>% 
   group_by(asfis_species_name) %>% 
-  summarize(total_catch = sum(catch), na.rm=T) %>% 
+  summarize(total_catch = sum(catch, na.rm=T)) %>% 
   arrange(desc(total_catch))
 ```
 Theragra chalcogramma had the highest total catch between 2008-2012.
-
-</div>
 
 
 10. Use the data to do at least one analysis of your choice.
