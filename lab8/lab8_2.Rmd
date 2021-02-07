@@ -136,6 +136,8 @@ tb_data %>%
 gene_exp <- readr::read_csv("data/gene_exp.csv")
 gene_exp
 ```
+-make sure theres only one value per cell
+-most of the time the data is wide
 
 ```{r}
 gene_exp %>% 
