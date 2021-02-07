@@ -1,7 +1,7 @@
 ---
 title: "Lab 9 Homework"
-author: "Please Add Your Name Here"
-date: "2021-02-06"
+author: "Lean Alvarez"
+date: "2021-02-07"
 output:
   html_document: 
     theme: spacelab
@@ -160,7 +160,7 @@ colleges %>%
   ggplot(aes(x=reorder(city, n), y=n))+
   geom_col()+
   coord_flip()+
-  labs(title="Number of Colleges in the Top 10 Cities")
+  labs(title="Top 10 Cities With the Most Number of Colleges")
 ```
 
 ![](lab9_hw_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
@@ -212,16 +212,12 @@ colleges %>%
 colleges %>% 
   ggplot(aes(x=adm_rate, y=c150_4_pooled))+
   geom_point(na.rm=T)+
-  geom_smooth(method=lm, se=T)+
+  geom_smooth(method=lm, se=T, na.rm=T)+
   labs(title="Admission Rate vs. 4-Year Completion Rate")
 ```
 
 ```
 ## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
-## Warning: Removed 251 rows containing non-finite values (stat_smooth).
 ```
 
 ![](lab9_hw_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
@@ -233,16 +229,12 @@ The slope is negative. Therefore, the 4-year completion rate increases when scho
 colleges %>% 
   ggplot(aes(x=costt4_a, y=c150_4_pooled))+
   geom_point(na.rm=T)+
-  geom_smooth(method=lm, se=T)+
+  geom_smooth(method=lm, se=T, na.rm=T)+
   labs(title="Cost vs. 4-Year Completion Rate")
 ```
 
 ```
 ## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
-## Warning: Removed 225 rows containing non-finite values (stat_smooth).
 ```
 
 ![](lab9_hw_files/figure-html/unnamed-chunk-11-1.png)<!-- -->

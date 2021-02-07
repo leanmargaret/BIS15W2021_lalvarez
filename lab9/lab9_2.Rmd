@@ -47,7 +47,7 @@ glimpse(penguins)
 
 In a previous lab, we asked how many penguins are on each island.
 ```{r}
-penguins %>% count(island, species, sort = F)
+penguins %>% count(island, species, sort = T)
 ```
 
 What if we wanted a plot that showed the number of measured penguins per species and the number of measured penguins per island?

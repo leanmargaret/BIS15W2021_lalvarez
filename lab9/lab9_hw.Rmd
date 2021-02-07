@@ -1,6 +1,6 @@
 ---
 title: "Lab 9 Homework"
-author: "Please Add Your Name Here"
+author: "Lean Alvarez"
 date: "`r Sys.Date()`"
 output:
   html_document: 
@@ -73,7 +73,7 @@ colleges %>%
   ggplot(aes(x=reorder(city, n), y=n))+
   geom_col()+
   coord_flip()+
-  labs(title="Number of Colleges in the Top 10 Cities")
+  labs(title="Top 10 Cities With the Most Number of Colleges")
 ```
 
 4. The column `COSTT4_A` is the annual cost of each institution. Which city has the highest average cost? Where is it located?
@@ -100,7 +100,7 @@ colleges %>%
 colleges %>% 
   ggplot(aes(x=adm_rate, y=c150_4_pooled))+
   geom_point(na.rm=T)+
-  geom_smooth(method=lm, se=T)+
+  geom_smooth(method=lm, se=T, na.rm=T)+
   labs(title="Admission Rate vs. 4-Year Completion Rate")
 ```
 The slope is negative. Therefore, the 4-year completion rate increases when schools are more selective.
@@ -110,7 +110,7 @@ The slope is negative. Therefore, the 4-year completion rate increases when scho
 colleges %>% 
   ggplot(aes(x=costt4_a, y=c150_4_pooled))+
   geom_point(na.rm=T)+
-  geom_smooth(method=lm, se=T)+
+  geom_smooth(method=lm, se=T, na.rm=T)+
   labs(title="Cost vs. 4-Year Completion Rate")
 ```
 The slope is positive. Therefore, institutions with high 4-year completion rates are more expensive.
