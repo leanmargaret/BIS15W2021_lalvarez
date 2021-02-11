@@ -61,12 +61,18 @@ The quotes show the folder structure from the root directory.
 sydneybeaches <- read_csv(here("lab8", "data", "sydneybeaches.csv")) %>% janitor::clean_names()
 ```
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 2. Are these data "tidy" per the definitions of the tidyverse? How do you know? Are they in wide or long format?
 ```{r}
 sydneybeaches
 ```
 They are not tidy because some of the columns are actually a part of the data. They are in a wide format.
 
+</div>
 
 3. We are only interested in the variables site, date, and enterococci_cfu_100ml. Make a new object focused on these variables only. Name the object `sydneybeaches_long`
 ```{r}
