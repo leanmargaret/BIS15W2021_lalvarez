@@ -171,7 +171,7 @@ Albigula and spectabilis have the highest weight on average.
 
 ```{r}
 deserts %>% 
-  filter(weight!="NA") %>%
+  filter(weight!="NA", sex!="NA", species=="albigula" | species== "spectabilis") %>%
   mutate(weight_to_hindfoot_length_ratio=weight/hindfoot_length) %>%
   group_by(species) %>% 
   select(species, weight_to_hindfoot_length_ratio) %>% 
@@ -181,10 +181,10 @@ deserts %>%
 
 ```{r}
 deserts %>% 
-  filter(weight!="NA", sex!="NA")%>%
+  filter(weight!="NA", sex!="NA", species=="albigula" | species== "spectabilis")%>%
   mutate(weight_to_hindfoot_length_ratio=weight/hindfoot_length) %>% 
   ggplot(aes(x=species, y=weight_to_hindfoot_length_ratio, fill=sex))+
-  geom_boxplot(size=0.75, na.rm=T)+
+  geom_boxplot(na.rm=T)+
   labs(title="Ratio of Weight to Hindfoot Length by Sex", x="Species", y="Weight to Hindfoot Length Ratio")+
   coord_flip()+
   theme(plot.title = element_text(size = 14, face = "bold"),

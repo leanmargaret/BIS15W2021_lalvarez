@@ -345,7 +345,7 @@ Albigula and spectabilis have the highest weight on average.
 
 ```r
 deserts %>% 
-  filter(weight!="NA") %>%
+  filter(weight!="NA", sex!="NA", species=="albigula" | species== "spectabilis") %>%
   mutate(weight_to_hindfoot_length_ratio=weight/hindfoot_length) %>%
   group_by(species) %>% 
   select(species, weight_to_hindfoot_length_ratio) %>% 
@@ -353,31 +353,31 @@ deserts %>%
 ```
 
 ```
-## # A tibble: 32,283 x 2
-## # Groups:   species [22]
+## # A tibble: 3,462 x 2
+## # Groups:   species [2]
 ##    species  weight_to_hindfoot_length_ratio
 ##    <chr>                              <dbl>
-##  1 baileyi                            15   
-##  2 albigula                            8.69
-##  3 albigula                            8.48
-##  4 albigula                            8.44
-##  5 albigula                            8.30
-##  6 albigula                            7.91
+##  1 albigula                            8.69
+##  2 albigula                            8.48
+##  3 albigula                            8.44
+##  4 albigula                            8.30
+##  5 albigula                            7.91
+##  6 albigula                            7.88
 ##  7 albigula                            7.88
-##  8 albigula                            7.88
+##  8 albigula                            7.85
 ##  9 albigula                            7.85
-## 10 albigula                            7.85
-## # … with 32,273 more rows
+## 10 albigula                            7.79
+## # … with 3,452 more rows
 ```
 
 
 
 ```r
 deserts %>% 
-  filter(weight!="NA", sex!="NA")%>%
+  filter(weight!="NA", sex!="NA", species=="albigula" | species== "spectabilis")%>%
   mutate(weight_to_hindfoot_length_ratio=weight/hindfoot_length) %>% 
   ggplot(aes(x=species, y=weight_to_hindfoot_length_ratio, fill=sex))+
-  geom_boxplot(size=0.75, na.rm=T)+
+  geom_boxplot(na.rm=T)+
   labs(title="Ratio of Weight to Hindfoot Length by Sex", x="Species", y="Weight to Hindfoot Length Ratio")+
   coord_flip()+
   theme(plot.title = element_text(size = 14, face = "bold"),
