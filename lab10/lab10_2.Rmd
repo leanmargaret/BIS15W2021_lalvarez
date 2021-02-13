@@ -105,7 +105,8 @@ homerange %>%
 We can also have counts of each trophic guild within taxonomic group shown side-by-side by specifying `position="dodge"`.
 ```{r}
 homerange %>% 
-  ggplot(aes(x = taxon, fill = trophic.guild)) + geom_bar(position = "dodge") +
+  ggplot(aes(x = taxon, fill = trophic.guild)) + 
+  geom_bar(position = "dodge") +
   coord_flip() +
   labs(title = "Observations by Taxon in Homerange Data",
        x = "Taxonomic Group",
