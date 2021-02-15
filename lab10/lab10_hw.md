@@ -1,7 +1,7 @@
 ---
 title: "Lab 10 Homework"
 author: "Lean Alvarez"
-date: "2021-02-10"
+date: "2021-02-15"
 output:
   html_document: 
     theme: spacelab
@@ -34,7 +34,7 @@ deserts <- read_csv(here("lab10", "data", "surveys_complete.csv"))
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   record_id = col_double(),
 ##   month = col_double(),
@@ -61,19 +61,19 @@ glimpse(deserts)
 ```
 ## Rows: 34,786
 ## Columns: 13
-## $ record_id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
-## $ month           <dbl> 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,…
-## $ day             <dbl> 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 1…
-## $ year            <dbl> 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977,…
-## $ plot_id         <dbl> 2, 3, 2, 7, 3, 1, 2, 1, 1, 6, 5, 7, 3, 8, 6, 4, 3, 2,…
-## $ species_id      <chr> "NL", "NL", "DM", "DM", "DM", "PF", "PE", "DM", "DM",…
-## $ sex             <chr> "M", "M", "F", "M", "M", "M", "F", "M", "F", "F", "F"…
-## $ hindfoot_length <dbl> 32, 33, 37, 36, 35, 14, NA, 37, 34, 20, 53, 38, 35, N…
-## $ weight          <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ genus           <chr> "Neotoma", "Neotoma", "Dipodomys", "Dipodomys", "Dipo…
-## $ species         <chr> "albigula", "albigula", "merriami", "merriami", "merr…
-## $ taxa            <chr> "Rodent", "Rodent", "Rodent", "Rodent", "Rodent", "Ro…
-## $ plot_type       <chr> "Control", "Long-term Krat Exclosure", "Control", "Ro…
+## $ record_id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...
+## $ month           <dbl> 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, ...
+## $ day             <dbl> 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,...
+## $ year            <dbl> 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 197...
+## $ plot_id         <dbl> 2, 3, 2, 7, 3, 1, 2, 1, 1, 6, 5, 7, 3, 8, 6, 4, 3, ...
+## $ species_id      <chr> "NL", "NL", "DM", "DM", "DM", "PF", "PE", "DM", "DM...
+## $ sex             <chr> "M", "M", "F", "M", "M", "M", "F", "M", "F", "F", "...
+## $ hindfoot_length <dbl> 32, 33, 37, 36, 35, 14, NA, 37, 34, 20, 53, 38, 35,...
+## $ weight          <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ genus           <chr> "Neotoma", "Neotoma", "Dipodomys", "Dipodomys", "Di...
+## $ species         <chr> "albigula", "albigula", "merriami", "merriami", "me...
+## $ taxa            <chr> "Rodent", "Rodent", "Rodent", "Rodent", "Rodent", "...
+## $ plot_type       <chr> "Control", "Long-term Krat Exclosure", "Control", "...
 ```
 
 
@@ -119,7 +119,7 @@ deserts
 ##  8         8     7    16  1977       1 DM         M                  37     NA
 ##  9         9     7    16  1977       1 DM         F                  34     NA
 ## 10        10     7    16  1977       6 PF         F                  20     NA
-## # … with 34,776 more rows, and 4 more variables: genus <chr>, species <chr>,
+## # ... with 34,776 more rows, and 4 more variables: genus <chr>, species <chr>,
 ## #   taxa <chr>, plot_type <chr>
 ```
  The data is tidy.
@@ -160,7 +160,7 @@ deserts %>%
 ##  8 Chaetodipus       6029
 ##  9 Cnemidophorus        2
 ## 10 Crotalus             2
-## # … with 16 more rows
+## # ... with 16 more rows
 ```
 There are a total of 26 genera represented in the data.
 
@@ -186,7 +186,7 @@ deserts %>%
 ##  8 flavus        1597
 ##  9 eremicus      1299
 ## 10 albigula      1252
-## # … with 30 more rows
+## # ... with 30 more rows
 ```
 There are a total of 40 species represented in the data. Merriami is the most sampled, and clarki, scutalatus, tereticaudus, tigris, uniparens, and viridis are the least frequently sampled.
 
@@ -338,7 +338,7 @@ deserts %>%
 ##  8 merriami           43.2
 ##  9 baileyi            31.7
 ## 10 leucogaster        31.6
-## # … with 12 more rows
+## # ... with 12 more rows
 ```
 Albigula and spectabilis have the highest weight on average.
 
@@ -367,7 +367,7 @@ deserts %>%
 ##  8 albigula                            7.85
 ##  9 albigula                            7.85
 ## 10 albigula                            7.79
-## # … with 3,452 more rows
+## # ... with 3,452 more rows
 ```
 
 
