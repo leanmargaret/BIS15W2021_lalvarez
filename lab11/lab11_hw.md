@@ -1,7 +1,7 @@
 ---
 title: "Lab 11 Homework"
 author: "Please Add Your Name Here"
-date: "2021-02-12"
+date: "2021-02-17"
 output:
   html_document: 
     theme: spacelab
@@ -54,12 +54,12 @@ glimpse(gapminder)
 ```
 ## Rows: 1,704
 ## Columns: 6
-## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afghani…
-## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia,…
-## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,…
-## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.…
-## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 1…
-## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134,…
+## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afgha...
+## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asi...
+## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 199...
+## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 4...
+## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372,...
+## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.113...
 ```
 
 
@@ -100,7 +100,7 @@ gapminder
 ##  8 Afghanistan Asia       1987     40.8 13867957       852.
 ##  9 Afghanistan Asia       1992     41.7 16317921       649.
 ## 10 Afghanistan Asia       1997     41.8 22227415       635.
-## # … with 1,694 more rows
+## # ... with 1,694 more rows
 ```
 
 
@@ -197,7 +197,7 @@ gapminder %>%
 ##  8 1957  Asia              30.3          49.3         67.8
 ##  9 1957  Europe            48.1          66.7         73.5
 ## 10 1957  Oceania           70.3          70.3         70.3
-## # … with 50 more rows
+## # ... with 50 more rows
 ```
 
 
@@ -261,7 +261,7 @@ gapminder %>%
 ##  8 Nigeria        33119096  135031164  101912068
 ##  9 Mexico         30144317  108700891   78556574
 ## 10 Philippines    22438691   91077287   68638596
-## # … with 132 more rows
+## # ... with 132 more rows
 ```
 China, India, U.S, Indonesia, and Brazil had the largest population growth since 1952.
 
