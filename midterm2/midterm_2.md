@@ -2085,6 +2085,7 @@ population %>%
 ## 10 Austria                 1
 ## # … with 185 more rows
 ```
+
 There are 195 countries in the population data.
 
 
@@ -2109,6 +2110,7 @@ income %>%
 ## 10 Austria                 1
 ## # … with 183 more rows
 ```
+
 There are 193 countries in the income data.
 
 
@@ -2133,6 +2135,7 @@ life_expectancy %>%
 ## 10 Austria                 1
 ## # … with 177 more rows
 ```
+
 There are 187 countries in the life expectancy data.
 
 
@@ -2167,6 +2170,7 @@ life_expectancy_tidy %>%
 ## 10 United Kingdom         71.1
 ## # … with 177 more rows
 ```
+
 Sweden has the highest life expectancy between 1920 and 2020.
 
 
@@ -2196,6 +2200,7 @@ life_expectancy_tidy %>%
 ## 10 Yemen                            43.6
 ## # … with 177 more rows
 ```
+
 Central African Republic has the lowest life expectancy between 1920 and 2020.
 
 
@@ -2227,6 +2232,7 @@ life_expectancy_tidy %>%
 ## 10 Iran                 26.8      78                     51.2
 ## # … with 177 more rows
 ```
+
 Kuwait, Kyrgyz Republic, Turkmenistan, South Korea, and Tajikistan experienced the biggest improvement in life expectancy between 1920-2020.
 
 
@@ -2250,6 +2256,7 @@ life_expectancy_tidy %>%
 ```
 
 ![](midterm_2_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+
 Life expectancy in Kuwait have improved the most over the past 100 years compared to other countries because they set up a development plan in which they focused on improving their health care, living environment, economy, human capital (i.e. education) and more.
 
 
@@ -2282,6 +2289,7 @@ population_tidy %>%
 ## 10 Philippines     9400000  110000000         100600000
 ## # … with 185 more rows
 ```
+
 India, China, Indonesia, United States, and Pakistan had the highest population growth over the past 100 years.
 
 
@@ -2306,6 +2314,7 @@ population_tidy %>%
 ```
 
 ![](midterm_2_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+
 India appear to have had exponential growth.
 
 
@@ -2427,6 +2436,7 @@ gapminder_join %>%
 ```
 
 ![](midterm_2_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+
 There is a positive correlation between GDP Per Person and Life Expectancy in the United States. This suggests that, generally, the more money someone has, the longer they will live.
 
 
