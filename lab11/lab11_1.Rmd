@@ -71,9 +71,7 @@ deserts %>%
   summarise(n=n())
 ```
 
-```{r}
-deserts$year <- as.factor(deserts$year)
-```
+
 
 ```{r}
 deserts %>% 

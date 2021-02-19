@@ -225,7 +225,6 @@ income_tidy %>%
   filter(country=="Qatar" | country=="Luxembourg" | country=="Singapore" | country=="Brunei" | country=="Ireland") %>% 
   group_by(country) %>% 
   ggplot(aes(x=year, y=GDP_per_person))+
-  geom_point()+
   facet_wrap(~country)+
   geom_line()+
   labs(title = "Top 5 Countries With the Highest GDP Per Person Growth (1920-2020)", x = "Year", y = "GDP Per Person") +
