@@ -1,7 +1,7 @@
 ---
 title: "Midterm 2"
 author: "Lean Alvarez"
-date: "2021-02-19"
+date: "2021-02-22"
 output:
   html_document: 
     theme: spacelab
@@ -77,7 +77,7 @@ One thing to note is that the data include years beyond 2021. These are projecti
 
 
 ```r
-population <- read_csv(here("midterm2", "data", "population_total.csv"))
+population <- readr::read_csv("data/population_total.csv")
 ```
 
 ```
@@ -133,7 +133,7 @@ population
 
 
 ```r
-income <- read_csv(here("midterm2", "data", "income_per_person_gdppercapita_ppp_inflation_adjusted.csv"))
+income <- readr::read_csv("data/income_per_person_gdppercapita_ppp_inflation_adjusted.csv")
 ```
 
 ```
@@ -189,7 +189,7 @@ income
 
 
 ```r
-life_expectancy <- read_csv(here("midterm2", "data", "life_expectancy_years.csv"))
+life_expectancy <- readr::read_csv("data/life_expectancy_years.csv")
 ```
 
 ```
@@ -2270,24 +2270,19 @@ population_tidy %>%
               names_prefix = "year_",
               values_from = population) %>% 
   mutate(population_change= year_2020-year_1920) %>% 
-  arrange(desc(population_change))
+  arrange(desc(population_change)) %>% 
+  top_n(population_change, n=5)
 ```
 
 ```
-## # A tibble: 195 x 4
-##    country       year_1920  year_2020 population_change
-##    <chr>             <dbl>      <dbl>             <dbl>
-##  1 India         317000000 1380000000        1063000000
-##  2 China         472000000 1440000000         968000000
-##  3 Indonesia      47300000  274000000         226700000
-##  4 United States 111000000  331000000         220000000
-##  5 Pakistan       21700000  221000000         199300000
-##  6 Brazil         27600000  213000000         185400000
-##  7 Nigeria        23300000  206000000         182700000
-##  8 Bangladesh     27300000  165000000         137700000
-##  9 Mexico         14800000  129000000         114200000
-## 10 Philippines     9400000  110000000         100600000
-## # … with 185 more rows
+## # A tibble: 5 x 4
+##   country       year_1920  year_2020 population_change
+##   <chr>             <dbl>      <dbl>             <dbl>
+## 1 India         317000000 1380000000        1063000000
+## 2 China         472000000 1440000000         968000000
+## 3 Indonesia      47300000  274000000         226700000
+## 4 United States 111000000  331000000         220000000
+## 5 Pakistan       21700000  221000000         199300000
 ```
 
 India, China, Indonesia, United States, and Pakistan had the highest population growth over the past 100 years.
@@ -2315,7 +2310,7 @@ population_tidy %>%
 
 ![](midterm_2_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
-India appear to have had exponential growth.
+India appear to have had exponential growth (China is also growing very quickly, but it's more of a quadratic, not exponential).
 
 
 ## Income
@@ -2335,24 +2330,19 @@ income_tidy %>%
               names_prefix = "year_",
               values_from = GDP_per_person) %>% 
   mutate(GDP_per_person= year_2020-year_1920) %>% 
-  arrange(desc(GDP_per_person))
+  arrange(desc(GDP_per_person)) %>% 
+  top_n(GDP_per_person, n=5)
 ```
 
 ```
-## # A tibble: 193 x 4
-##    country              year_1920 year_2020 GDP_per_person
-##    <chr>                    <dbl>     <dbl>          <dbl>
-##  1 Qatar                     2300    116000         113700
-##  2 Luxembourg                5730     95100          89370
-##  3 Singapore                 2440     90500          88060
-##  4 Brunei                    2130     75100          72970
-##  5 Ireland                   5170     74100          68930
-##  6 United Arab Emirates      2090     65300          63210
-##  7 Kuwait                    2350     64300          61950
-##  8 Norway                    8960     67500          58540
-##  9 Monaco                    6630     62000          55370
-## 10 San Marino                3280     57900          54620
-## # … with 183 more rows
+## # A tibble: 5 x 4
+##   country    year_1920 year_2020 GDP_per_person
+##   <chr>          <dbl>     <dbl>          <dbl>
+## 1 Qatar           2300    116000         113700
+## 2 Luxembourg      5730     95100          89370
+## 3 Singapore       2440     90500          88060
+## 4 Brunei          2130     75100          72970
+## 5 Ireland         5170     74100          68930
 ```
 
 
@@ -2360,10 +2350,9 @@ income_tidy %>%
 income_tidy %>% 
   filter(country=="Qatar" | country=="Luxembourg" | country=="Singapore" | country=="Brunei" | country=="Ireland") %>% 
   group_by(country) %>% 
-  ggplot(aes(x=year, y=GDP_per_person))+
-  facet_wrap(~country)+
+  ggplot(aes(x=year, y=GDP_per_person, group=country, color=country))+
   geom_line()+
-  labs(title = "Top 5 Countries With the Highest GDP Per Person Growth (1920-2020)", x = "Year", y = "GDP Per Person") +
+  labs(title = "Top 5 Countries With the Highest Income (1920-2020)", x = "Year", y = "Income(GDP Per Person)") +
   theme(plot.title = element_text(size = 14, face = "bold"),
         axis.text = element_text(size = 10),
         axis.title = element_text(size = 12))
@@ -2371,6 +2360,7 @@ income_tidy %>%
 
 ![](midterm_2_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
+Brunei and Qatar experienced dramatic downturns during the 1980's because oil production decreased due to the Iran-Iraq war disrupting them.
 
 
 9. (3 points) Create three new objects that restrict each data set (life expectancy, population, income) to the years 1920-2020. Hint: I suggest doing this with the long form of your data. Once this is done, merge all three data sets using the code I provide below. You may need to adjust the code depending on how you have named your objects. I called mine `life_expectancy_100`, `population_100`, and `income_100`. For some of you, learning these `joins` will be important for your project.  
@@ -2429,7 +2419,7 @@ gapminder_join %>%
   filter(country=="United States") %>% 
   ggplot(aes(x=GDP_per_person, y=life_expectancy))+
   geom_line()+
-  labs(title = "GDP Per Person vs. Life Expectancy in the U.S.", x = "GDP Per Person", y = "Life Expectancy") +
+  labs(title = "Income(GDP Per Person) vs. Life Expectancy in the U.S.", x = "Income(GDP Per Person)", y = "Life Expectancy") +
   theme(plot.title = element_text(size = 14, face = "bold"),
         axis.text = element_text(size = 10),
         axis.title = element_text(size = 12))
