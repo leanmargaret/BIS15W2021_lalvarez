@@ -1,7 +1,7 @@
 ---
 title: "Midterm 2"
 author: "Lean Alvarez"
-date: "2021-02-22"
+date: "2021-02-23"
 output:
   html_document: 
     theme: spacelab
@@ -2060,6 +2060,7 @@ life_expectancy_tidy
 ## # … with 56,277 more rows
 ```
 
+##### I did not remove NA's because I wanted to be fully transparent. I did not remove countries that did not have data because they might provide important information later on once their data are updated.
 
 
 2. (1 point) How many different countries are represented in the data? Provide the total number and their names. Since each data set includes different numbers of countries, you will need to do this for each one.
@@ -2202,6 +2203,7 @@ life_expectancy_tidy %>%
 ```
 
 Central African Republic has the lowest life expectancy between 1920 and 2020.
+
 
 
 4. (3 points) Although we can see which country has the highest life expectancy for the past 100 years, we don't know which countries have changed the most. What are the top 5 countries that have experienced the biggest improvement in life expectancy between 1920-2020?
