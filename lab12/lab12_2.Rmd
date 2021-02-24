@@ -162,11 +162,11 @@ ggplot() +
   theme(panel.grid = element_blank()) +
   theme(legend.position = c(0.9, 0.3)) -> uso_map
 
-ggsave(filename = "map.svg", device = "svg", plot = uso_map, height = 5, width = 7)
+ggsave(filename = "map.pdf", device = "pdf", plot = uso_map, height = 5, width = 7)
 ```
 
 ## Practice
-1. Make a new new column that labels each specimen as occuring in a cave or on the surface. The word "Cave" is part of the locality information.
+1. Make a new new column that labels each specimen as occurring in a cave or on the surface. The word "Cave" is part of the locality information.
 ```{r}
 
 ```

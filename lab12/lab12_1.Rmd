@@ -2,10 +2,11 @@
 title: "Joins and Lubridate"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  html_document: 
     theme: spacelab
     toc: yes
     toc_float: yes
+    keep_md: yes
 ---
 
 ```{r setup, include = FALSE}
@@ -60,7 +61,7 @@ class(spider_list[[3]])
 ## Practice
 1. What are the names of our list elements?
 ```{r}
-
+names(spider_list[[3]])
 ```
 
 ## Naming List Elements
@@ -161,8 +162,9 @@ We will use a join here to merge lat/long to our data frame. Both files contain 
 1. Which type of join is most appropriate in this case?  
 ```{r}
 spiders_with_locs <- left_join(spiders_all, spiders_locs, by = c("Accession"))
-summary(spiders_with_locs)
+spiders_with_locs
 ```
+
 
 As a side note, joining data can highlight problems or typos with the data when the join does not go as expected.  
 
@@ -207,23 +209,23 @@ dateformat5 <- "20200922 170000"
 ## Practice 
 1. Convert each of the examples above using lubridate.
 ```{r}
-
+ymd(dateformat1)
 ```
 
 ```{r}
-
+mdy(dateformat2)
 ```
 
 ```{r}
-
+dmy(dateformat3)
 ```
 
 ```{r}
-
+mdy_hms(dateformat4)
 ```
 
 ```{r}
-
+ymd_hms(dateformat5)
 ```
 
 Have a look at these options.
@@ -249,12 +251,17 @@ It will be very helpful if you can install the following packages before the nex
 ```{r}
 #install.packages("devtools")
 #library(devtools)
+#library(usethis)
 #devtools::install_github("dkahle/ggmap")
 ```
 
 `rgeos`, `rgdal`, and `albersusa`
 ```{r, message = FALSE}
 #install.packages("albersusa")
+```
+
+```{r}
+#remotes::install_git("https://git.rud.is/hrbrmstr/albersusa.git")
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  
