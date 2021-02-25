@@ -1,7 +1,7 @@
 ---
 title: "Lab 12 Homework"
 author: "Please Add Your Name Here"
-date: "2021-02-23"
+date: "2021-02-24"
 output:
   html_document: 
     theme: spacelab
@@ -190,12 +190,12 @@ n_distinct(wolves$pop)
 
 ```r
 wolves_lower_48 <- wolves %>% 
-    filter(pop=="MI"| pop=="MT"| pop=="YNP"| pop=="GTNP"| pop=="SNF")
+  filter(lat<=48)
 wolves_lower_48
 ```
 
 ```
-## # A tibble: 988 x 23
+## # A tibble: 1,169 x 23
 ##    pop    year age_cat sex   color   lat  long habitat human pop_density
 ##    <chr> <dbl> <chr>   <chr> <chr> <dbl> <dbl>   <dbl> <dbl>       <dbl>
 ##  1 GTNP   2012 P       M     G      43.8 -111.  10375. 3924.        34.0
@@ -208,13 +208,21 @@ wolves_lower_48
 ##  8 GTNP   2013 P       M     G      43.8 -111.  10375. 3924.        34.0
 ##  9 GTNP   2013 P       M     G      43.8 -111.  10375. 3924.        34.0
 ## 10 GTNP   2013 P       F     G      43.8 -111.  10375. 3924.        34.0
-## # … with 978 more rows, and 13 more variables: pack_size <dbl>,
+## # … with 1,159 more rows, and 13 more variables: pack_size <dbl>,
 ## #   standard_habitat <dbl>, standard_human <dbl>, standard_pop <dbl>,
 ## #   standard_packsize <dbl>, standard_latitude <dbl>, standard_longitude <dbl>,
 ## #   cav_binary <dbl>, cdv_binary <dbl>, cpv_binary <dbl>, chv_binary <dbl>,
 ## #   neo_binary <dbl>, toxo_binary <dbl>
 ```
 
+
+```r
+n_distinct(wolves_lower_48$pop)
+```
+
+```
+## [1] 6
+```
 
 
 7. Use the `albersusa` package to make a base map of the lower 48 US states.
@@ -235,7 +243,7 @@ ggplot() +
         axis.title = element_text(size = 12))
 ```
 
-![](lab12_hw_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](lab12_hw_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 
 8. Use the relimited data to plot the distribution of wolf populations in the lower 48 US states.
@@ -250,7 +258,7 @@ ggplot()+
         axis.title = element_text(size = 12))
 ```
 
-![](lab12_hw_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+![](lab12_hw_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
 
 9. What is the average pack size for the wolves in this study by region?
 
@@ -296,7 +304,7 @@ ggplot()+
         axis.title = element_text(size = 12))
 ```
 
-![](lab12_hw_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](lab12_hw_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 

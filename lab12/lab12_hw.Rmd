@@ -98,10 +98,13 @@ n_distinct(wolves$pop)
 
 ```{r}
 wolves_lower_48 <- wolves %>% 
-    filter(pop=="MI"| pop=="MT"| pop=="YNP"| pop=="GTNP"| pop=="SNF")
+  filter(lat<=48)
 wolves_lower_48
 ```
 
+```{r}
+n_distinct(wolves_lower_48$pop)
+```
 
 
 7. Use the `albersusa` package to make a base map of the lower 48 US states.
