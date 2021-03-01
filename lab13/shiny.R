@@ -40,6 +40,13 @@ server <- function(input, output) {
   })
 }
 
+
+
+
+
+
+
+
 shinyApp(ui, server)ui <- fluidPage(    
   
   titlePanel("Log 10 Homerange by Taxon"), # give the page a title

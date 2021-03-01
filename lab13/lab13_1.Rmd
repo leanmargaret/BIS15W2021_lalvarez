@@ -151,6 +151,9 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+-inside render plot is ggplot
+-input$x means you're selecting "bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g" for the x-axis
+
 
 Congratulations, you made your first shiny app!  
 
@@ -183,7 +186,6 @@ library(shiny)
 ui <- fluidPage(titlePanel("Homerange Locomotion"),
                 radioButtons("x", "Select Fill Variable", choices=c("trophic.guild", "thermoregulation"), selected = "trophic.guild"),
                 plotOutput("plot", width="600px", height="500px")
-  
 )
 
 server <- function(input, output, session) {
@@ -198,6 +200,8 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
+-selected is where the button starts out
+
 
 
 3. The app below adds some nicer aesthetics. It makes a density plot of log10.hra with taxon as a reactive variable. Edit the app to explore log10.hra by locomotion type.  
