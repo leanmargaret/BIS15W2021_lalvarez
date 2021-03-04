@@ -22,19 +22,20 @@ library(qtl)
 library(qtlcharts)
 library(tidyverse)
 library(ggmap)
+library(lubridate)
 ```
 
 **1. We have a satellite collars on a number of different individuals and want to be able to quickly look at all of their recent movements at once. Please load all the data files from `us_individual_collar_data` and use for loop to create plots for all different individuals of the path they move on longitude and latitude.**
 ```{r}
-data_us <- list.files("data/us_individual_collar_data", full.names = TRUE)
+data_us <- list.files("data/us_individual_collar_data", pattern = "collar-data-*", full.names = TRUE)
 data_us
 ```
 
 ```{r}
 for (i in 1:length(data_us)){
-  data_us1 <- as.data.frame(read_csv(data_us[i]))
+  data0 <- as.data.frame(read_csv(data_us[i]))
   print(
-    ggplot(data_us1, aes(x=long,y=lat))+
+    ggplot(data0, aes(x=long,y=lat))+
       geom_path()+
       geom_point()+
       labs(title = data_us[i], x = "Longitude", y = "Latitude")
@@ -47,8 +48,7 @@ for (i in 1:length(data_us)){
 **2. Please load all the data files from `us_individual_collar_data` and combine all data into one data frame. Create a summary to show what is the maximum and minimum of recorded data points on longitude and latitude.**
 ```{r}
 all_data <- lapply(data_us, read_csv)
-all_data_us <- bind_rows(all_data) %>% 
-  select(X1, lat, long)
+all_data_us <- bind_rows(all_data)
 all_data_us
 ```
 
@@ -92,10 +92,6 @@ summary(hyper)
 ```
 
 ```{r}
-nind(hyper)
-nphe(hyper)
-nchr(hyper)
-totmar(hyper)
 nmar(hyper)
 ```
 
@@ -158,7 +154,7 @@ D4Mit154 has the highest LOD score, and chromosome 4 contains it. This means tha
 **10. Please save your interactive chart from Q9 as a html file `hyper_iplotScanone.html` and make sure your upload it to your github repository with your lab14 homework as well.**
 ```{r}
 scanone <- iplotScanone(out.em, hyper1, chr=c(1, 2, 4, 5, 6, 15))
-htmlwidgets::saveWidget(scanone, file="hyper_iplotScanone.htm")
+htmlwidgets::saveWidget(scanone, file="hyper_iplotScanone.html")
 ```
 ```
 

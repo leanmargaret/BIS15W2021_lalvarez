@@ -15,7 +15,6 @@ output:
 4. use loops through multiple files and create a summary.
 
 ## Resources and references
-- [Statistics Globe](https://statisticsglobe.com/loops-in-r/)
 - [R - Loops](https://www.tutorialspoint.com/r/r_loops.htm)
 - [Data Carpentry for Biologists](https://datacarpentry.org/semester-biology/materials/for-loops-R/)
 - [Data Carpentry](https://github.com/datacarpentry/semester-biology)
@@ -85,6 +84,16 @@ data1
 data(iris)                          # Loading data frame
 head(iris)                          # Head of example data
 iris1 <- iris                       # Replicate example data
+
+i <- 1
+repeat{
+  iris[ , i] <- iris1[ ,1] * 10
+  i <- i + 1
+  if(!is.numeric(iris1[ ,1])){
+    break
+  }
+}
+head
 ```
 
 ## While-Loops
@@ -123,6 +132,13 @@ data2
 ```{r}
 head(iris)                                        # Showing head of data in RStudio console
 iris2 <- iris                                     # Replicate example data
+
+i <- 1
+while(is.numeric(iris2[ , i])){
+  iris2[ , i] <- iris2[ , i] * 10
+  i <- i + 1
+}
+head(iris2)
 ```
 
 ## For-Loops
@@ -157,10 +173,20 @@ data3
 ```{r}                                                 
 head(iris)                                             # Inspecting iris flower data set
 iris3 <- iris                                          # Replicate iris data set
+
+for(i in c(2,4)){
+  iris3[ ,i] <- iris3[ , i]*10
+}
+head(iris3)
+
+for(i in 1:ncol(iris3)){
+  if(str_detect(colnames(iris3)[i], "width")){
+    iris3[ ,1] <- iris3[ ,1]*10
+    }
+}
 ```
 
 ### example 2: Looping over files
-The simulated satellite collar data is downloaded from [Data Carpentry](http://www.datacarpentry.org/semester-biology/data/locations.zip).
 We can get the names of each of the files we want to loop over by using `list.files()`.
 ```{r}
 data_files <- list.files("data/locations", pattern = "locations-2*", full.names = TRUE)
@@ -208,10 +234,10 @@ for (i in 1:length(data_files3)){
 ### example 4: Looping over files for basic genetic analysis
 [Bioconductor](https://www.bioconductor.org/) project is an open source software repository that hosts a wide range of statistical tools developed in the R programming environment. Please use standard R installation procedures to install the BiocManager package and then install "ShortRead" and "Biostrings". 
 ```{r message=FALSE, warning=FALSE}
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#     install.packages("BiocManager")
-# BiocManager::install()                            # To install core packages or update installed packages
-# BiocManager::install(c("ShortRead", "Biostrings"))# Install specific packages
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+ #    install.packages("BiocManager")
+ #BiocManager::install()                            # To install core packages or update installed packages
+ #BiocManager::install(c("ShortRead", "Biostrings"))# Install specific packages
 library(ShortRead)
 library(Biostrings)
 ```
@@ -233,6 +259,9 @@ data_files2
 
 GC_results <- data.frame(file_name = vector(mode = "character", length = length(data_files2)),
                          gc_content = vector(mode = "integer", length = length(data_files2)))
+```
+```{r}
+summary(GC_results)
 ```
 
 ## Packages for next time  
