@@ -6,6 +6,7 @@ output:
   html_document: 
     theme: spacelab
     keep_md: yes
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
