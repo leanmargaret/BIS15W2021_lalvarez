@@ -2,4 +2,4 @@
 
 # Lean Margaret Alvarez
 #### **Major:** Neurobiology, Physiology, and Behavior
-#### **Email:**  [lalvarez@ucdavis.edu](mailto: lalvarez@ucdavis.edu)
+#### **Email:**  [lalvarez@ucdavis.edu](lalvarez@ucdavis.edu)
